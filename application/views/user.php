@@ -13,9 +13,9 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="<?php echo site_url('js/jquery.js'); ?>"></script>
-	<script src="<?php echo site_url('js/global.js'); ?>"></script>
-	<script src="<?php echo site_url('js/user.js'); ?>"></script>
+	<script src="http://skinmed.id/skinmed/sa/js/jquery.js"></script>
+	<script src="http://skinmed.id/skinmed/sa/js/global.js"></script>
+	<script src="http://skinmed.id/skinmed/sa/js/user.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -26,7 +26,7 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="<?php echo site_url('main.css'); ?>" rel="stylesheet">
+	<link href="http://skinmed.id/skinmed/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
