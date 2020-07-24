@@ -1,2 +1,2 @@
 const HOST = "skinmed.id";
-const PHP_URL = "http://"+HOST+"/skinmed/sa/index.php";
+const PHP_URL = "http://"+HOST+"/sa/index.php";
