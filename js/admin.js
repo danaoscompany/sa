@@ -33,7 +33,7 @@ function getAdmins() {
 }
 
 function editAdmin(index) {
-	window.location.href = "admin/edit?id="+admins[index]['id'];
+	window.location.href = "http://localhost/sa/admin/edit?id="+admins[index]['id'];
 }
 
 function confirmDeleteAdmin(index) {

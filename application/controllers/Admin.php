@@ -30,7 +30,7 @@ class Admin extends CI_Controller {
 
 	public function logout() {
 		$this->session->unset_userdata("logged_in");
-		header("Location: http://skinmed.id/sa/login");
+		header("Location: http://localhost/sa/login");
 	}
 
 	public function edit() {
