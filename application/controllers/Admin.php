@@ -20,6 +20,17 @@ class Admin extends CI_Controller {
 		echo json_encode($sessions);
 	}
 
+	public function get_sessions_by_user_id() {
+		$userID = intval($this->input->post('user_id'));
+		$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID)->result_array();
+		for ($i=0; $i<sizeof($sessions); $i++) {
+			$session = $sessions[$i];
+			$user = $this->db->query("SELECT * FROM `users` WHERE `id`=" . $session['user_id'])->row_array();
+			$sessions[$i]['user_name'] = $user['first_name'] . " " . $user['last_name'];
+		}
+		echo json_encode($sessions);
+	}
+
 	public function add() {
 		if ($this->session->logged_in == 1) {
 			$this->load->view('admin/add');
@@ -30,7 +41,7 @@ class Admin extends CI_Controller {
 
 	public function logout() {
 		$this->session->unset_userdata("logged_in");
-		header("Location: http://skinmed.id/sa/login");
+		header("Location: http://localhost/sa/login");
 	}
 
 	public function edit() {
@@ -256,6 +267,10 @@ class Admin extends CI_Controller {
 	public function get_all_users() {
 		$start = intval($this->input->post('start'));
 		$length = intval($this->input->post('length'));
+		if ($length == -1) {
+			echo json_encode($this->db->query("SELECT * FROM `users` ORDER BY `first_name`")->result_array());
+			return;
+		}
 		$users = $this->db->query("SELECT * FROM `user` ORDER BY `first_name` ASC LIMIT " . $start . "," . $length)->result_array();
 		for ($i=0; $i<sizeof($users); $i++) {
 		}

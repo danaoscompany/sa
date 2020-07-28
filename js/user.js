@@ -43,12 +43,22 @@ function getUsers() {
                     "                                        <td>"+user['email']+"</td>" +
                     "                                        <td>"+user['password']+"</td>" +
                     "                                        <td>"+user['phone']+"</td>" +
+					"                                        <td><button onclick='viewDevices("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Lihat</button></td>" +
+					"                                        <td><button onclick='viewPatients("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Lihat</button></td>" +
                     "                                        <td><button onclick='editUser("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
                     "                                        <td><button onclick='confirmDeleteUser("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Hapus</button></td>" +
                     "                                    </tr>");
             }
         }
     });
+}
+
+function viewDevices(index) {
+	window.location.href = "http://localhost/sa/devices?id="+users[index]['id'];
+}
+
+function viewPatients(index) {
+	window.location.href = "http://localhost/sa/patients?id="+users[index]['id'];
 }
 
 function editUser(index) {

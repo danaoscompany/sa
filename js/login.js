@@ -19,7 +19,6 @@ function login() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			alert(response);
 			let obj = JSON.parse(response);
 			var responseCode = parseInt(obj['response_code']);
 			if (responseCode == 1) {

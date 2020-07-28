@@ -12,6 +12,42 @@ class User extends CI_Controller {
 			header("Location: login");
 		}
 	}
+	
+	public function add_device() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
+		$device = $this->input->post('device');
+		$model = $this->input->post('model');
+		$type = $this->input->post('type');
+		$this->db->insert('devices', array(
+			'user_id' => $userID,
+			'uuid' => $uuid,
+			'device' => $device,
+			'model' => $model,
+			'type' => $type
+		));
+	}
+	
+	public function update_device_by_uuid() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
+		$device = $this->input->post('device');
+		$model = $this->input->post('model');
+		$type = $this->input->post('type');
+		$this->db->where('uuid', $uuid);
+		$this->db->update('devices', array(
+			'user_id' => $userID,
+			'device' => $device,
+			'model' => $model,
+			'type' => $type
+		));
+	}
+	
+	public function delete_device_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		$this->db->delete('devices');
+	}
 
 	public function clear() {
 		$this->db->query("DELETE FROM `buckets`");
@@ -27,6 +63,12 @@ class User extends CI_Controller {
 		$this->db->query("DELETE FROM `devices`");
 		$this->db->query("DELETE FROM `sessions`");
 		$this->db->query("DELETE FROM `patients`");
+	}
+	
+	public function get_patients_by_user_id() {
+		$userID = intval($this->input->post('user_id'));
+		$patients = $this->db->query("SELECT * FROM `patients` WHERE `user_id`=" . $userID)->result_array();
+		echo json_encode($patients);
 	}
 
 	public function add_patient() {
@@ -49,7 +91,9 @@ class User extends CI_Controller {
 			'birthday' => $birthday
 		));
 		$id = intval($this->db->insert_id());
-		echo json_encode($this->db->get_where('users', array('id' => $id))->row_array());
+		$patient = $this->db->get_where('patients', array('id' => $id))->row_array();
+		$patient['response_code'] = 1;
+		echo json_encode($patient);
 	}
 
 	public function get_sessions() {
@@ -329,6 +373,10 @@ class User extends CI_Controller {
 		$type = intval($this->input->post('type'));
 		$date = $this->input->post('date');
 		$type = intval($this->input->post('type'));
+		$imageX = doubleval($this->input->post('image_x'));
+		$imageY = doubleval($this->input->post('image_y'));
+		$imageWidth = doubleval($this->input->post('image_width'));
+		$imageHeight = doubleval($this->input->post('image_height'));
 		$config = array(
 	        'upload_path' => './userdata/',
 	        'allowed_types' => "*",
@@ -344,6 +392,10 @@ class User extends CI_Controller {
         		'session_uuid' => $sessionUUID,
         		'path' => $this->upload->data()['file_name'],
         		'note' => $note,
+        		'image_x' => $imageX,
+        		'image_y' => $imageY,
+        		'image_width' => $imageWidth,
+        		'image_height' => $imageHeight,
         		'points' => $points,
         		'type' => $type,
         		'date' => $date,
