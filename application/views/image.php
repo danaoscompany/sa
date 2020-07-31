@@ -13,10 +13,10 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://localhost/sa/js/jquery.js"></script>
-	<script src="http://localhost/sa/js/global.js"></script>
-	<script src="http://localhost/sa/js/jquery.redirect.js"></script>
-	<script src="http://localhost/sa/js/image.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.js"></script>
+	<script src="http://skinmed.id/sa/js/global.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.redirect.js"></script>
+	<script src="http://skinmed.id/sa/js/image.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -27,7 +27,7 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://localhost/sa/main.css" rel="stylesheet">
+	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -138,19 +138,19 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://localhost/sa/admin">
+							<a href="http://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="http://localhost/sa/user">
+							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/sessions">
+							<a href="http://skinmed.id/sa/sessions">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Session
 							</a>
@@ -197,7 +197,7 @@
 										<div class="card-shadow-danger mb-3 widget-chart widget-chart2 text-left card">
 											<div class="widget-content">
 												<div class="widget-content-outer">
-													<img src="http://localhost/sa/userdata/sample_img.jpg" width="100%" height="150px">
+													<img src="http://skinmed.id/sa/userdata/sample_img.jpg" width="100%" height="150px">
 													<div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
 														<button class="mb-2 mr-2 btn btn-info" style="margin-top: 10px;">Lihat</button>
 														<button class="mb-2 mr-2 btn btn-danger" style="margin-top: -5px;">Hapus</button>
@@ -234,7 +234,7 @@
 		</div>
 	</div>
 </div>
-<form id="view-image" style="display: none;" method="POST" action="http://localhost/sa/image/view_image">
+<form id="view-image" style="display: none;" method="POST" action="http://skinmed.id/sa/image/view_image">
 	<input id="uuid" type="hidden" value="">
 </form>
 <script type="text/javascript" src="./assets/scripts/main.js"></script>

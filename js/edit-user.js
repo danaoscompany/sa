@@ -1,11 +1,7 @@
 var userID = 0;
 
 $(document).ready(function() {
-    var params = window.location.search;
-    if (params.startsWith("?")) {
-        params = params.substr(1, params.length);
-    }
-    userID = params.split("&")[0].split("=")[1];
+    userID = parseInt($("#user-id").val());
     let fd = new FormData();
     fd.append("cmd", "SELECT * FROM `users` WHERE `id`="+userID);
     $.ajax({
@@ -70,7 +66,7 @@ function save() {
         success: function(response) {
             var obj = JSON.parse(response);
             var responseCode = parseInt(obj['response_code']);
-            window.location.href = "user.html";
+            window.location.href = "http://skinmed.id/sa/user";
         }
     });
 }

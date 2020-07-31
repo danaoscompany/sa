@@ -31,7 +31,7 @@ function addPatient() {
 		cache: false,
 		success: function(response) {
 			alert(response);
-			window.location.href = "http://localhost/sa/patients?id="+userID;
+			window.location.href = "http://skinmed.id/sa/patients?id="+userID;
 		}
 	});
 }

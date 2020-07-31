@@ -3,7 +3,7 @@ var selectedUserIndex = 0;
 
 $(document).ready(function() {
     getUsers();
-    let userID = parseInt($("#user-id").val());
+    let userID = parseInt($("#admin-id").val());
     let fd = new FormData();
     fd.append("cmd", "SELECT * FROM `admins` WHERE `id`="+userID);
     $.ajax({
@@ -54,15 +54,24 @@ function getUsers() {
 }
 
 function viewDevices(index) {
-	window.location.href = "http://localhost/sa/devices?id="+users[index]['id'];
+	var user = users[index];
+	$.redirect("http://skinmed.id/sa/patients", {
+		id: parseInt(user['id'])
+	});
 }
 
 function viewPatients(index) {
-	window.location.href = "http://localhost/sa/patients?id="+users[index]['id'];
+	var user = users[index];
+	$.redirect("http://skinmed.id/sa/patients", {
+		id: parseInt(user['id'])
+	});
 }
 
 function editUser(index) {
-    window.location.href = "edit-user.html?id="+users[index]['id'];
+	var user = users[index];
+	$.redirect("http://skinmed.id/sa/user/edit", {
+		id: parseInt(user['id'])
+	});
 }
 
 function confirmDeleteUser(index) {

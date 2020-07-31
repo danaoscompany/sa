@@ -3,13 +3,14 @@
 class Patients extends CI_Controller {
 
 	public function index() {
-		$userID = intval($this->input->get('id'));
+		$userID = intval($this->input->post('id'));
 		if ($this->session->logged_in == 1) {
 			$this->load->view('patients', array(
-				'id' => $userID
+				'adminID' => intval($this->session->user_id),
+				'userID' => $userID
 			));
 		} else {
-			header("Location: http://localhost/sa/login");
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 
@@ -20,7 +21,7 @@ class Patients extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: http://localhost/sa/patients/add");
+			header("Location: http://skinmed.id/sa/patients/add");
 		}
 	}
 
@@ -33,7 +34,7 @@ class Patients extends CI_Controller {
 				'uuid' => $uuid
 			));
 		} else {
-			header("Location: http://localhost/sa/patients/edit");
+			header("Location: http://skinmed.id/sa/patients/edit");
 		}
 	}
 

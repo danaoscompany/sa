@@ -43,7 +43,7 @@ function save() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			window.location.href = "http://localhost/sa/devices?id="+userID;
+			window.location.href = "http://skinmed.id/sa/devices?id="+userID;
 		}
 	});
 }

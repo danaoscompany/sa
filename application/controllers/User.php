@@ -9,7 +9,18 @@ class User extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: login");
+			header("Location: http://skinmed.id/sa/login");
+		}
+	}
+
+	public function edit() {
+		if ($this->session->logged_in == 1) {
+			$userID = intval($this->input->post('id'));
+			$this->load->view('user/edit', array(
+				'id' => $userID
+			));
+		} else {
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 	

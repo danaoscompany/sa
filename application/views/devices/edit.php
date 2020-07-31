@@ -13,9 +13,9 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Build whatever layout you need with our Architect framework.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://localhost/sa/js/jquery.js"></script>
-	<script src="http://localhost/sa/js/global.js"></script>
-	<script src="http://localhost/sa/js/edit-device.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.js"></script>
+	<script src="http://skinmed.id/sa/js/global.js"></script>
+	<script src="http://skinmed.id/sa/js/edit-device.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -26,7 +26,7 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://localhost/sa/main.css" rel="stylesheet">
+	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -539,19 +539,19 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://localhost/sa/admin">
+							<a href="http://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="http://localhost/sa/user">
+							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/sessions">
+							<a href="http://skinmed.id/sa/sessions">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Session
 							</a>

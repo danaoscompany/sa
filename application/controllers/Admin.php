@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 		if ($this->session->logged_in == 1) {
 			$this->load->view('admin');
 		} else {
-			header("Location: login");
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 
@@ -35,13 +35,13 @@ class Admin extends CI_Controller {
 		if ($this->session->logged_in == 1) {
 			$this->load->view('admin/add');
 		} else {
-			header("Location: login");
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 
 	public function logout() {
 		$this->session->unset_userdata("logged_in");
-		header("Location: http://localhost/sa/login");
+		header("Location: http://skinmed.id/sa/login");
 	}
 
 	public function edit() {
@@ -49,7 +49,7 @@ class Admin extends CI_Controller {
 		if ($this->session->logged_in == 1) {
 			$this->load->view("admin/edit", array('id' => $id));
 		} else {
-			header("Location: login");
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 
@@ -254,6 +254,16 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function get_by_id() {
+		$adminID = intval($this->input->post('id'));
+		echo json_encode($this->db->query("SELECT * FROM `admins` WHERE `id`=" . $adminID)->row_array());
+	}
+
+	public function get_user_by_id() {
+		$userID = intval($this->input->post('id'));
+		echo json_encode($this->db->query("SELECT * FROM `users` WHERE `id`=" . $userID)->row_array());
+	}
+
 	public function get_users() {
 		$adminID = intval($this->input->post('admin_id'));
 		$start = intval($this->input->post('start'));
@@ -263,8 +273,12 @@ class Admin extends CI_Controller {
 		}
 		echo json_encode($users);
 	}
-	
+
 	public function get_all_users() {
+		echo json_encode($this->db->query("SELECT * FROM `users` ORDER BY `first_name`")->result_array());
+	}
+	
+	public function get_all_users_with_length() {
 		$start = intval($this->input->post('start'));
 		$length = intval($this->input->post('length'));
 		if ($length == -1) {

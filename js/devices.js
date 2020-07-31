@@ -37,7 +37,7 @@ function getDevices() {
 }
 
 function editDevice(index) {
-	window.location.href = "http://localhost/sa/devices/edit?uuid="+devices[index]['uuid']+"&id="+devices[index]['user_id'];
+	window.location.href = "http://skinmed.id/sa/devices/edit?uuid="+devices[index]['uuid']+"&id="+devices[index]['user_id'];
 }
 
 function confirmDeleteDevice(index) {

@@ -6,7 +6,7 @@ class Image extends CI_Controller {
 		if ($this->session->logged_in == 1) {
 			$this->load->view('image');
 		} else {
-			header("Location: login");
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 
@@ -17,7 +17,7 @@ class Image extends CI_Controller {
 				'uuid' => $uuid
 			));
 		} else {
-			header("Location: login");
+			header("Location: http://skinmed.id/sa/login");
 		}
 	}
 

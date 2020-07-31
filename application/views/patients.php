@@ -13,9 +13,9 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://localhost/sa/js/jquery.js"></script>
-	<script src="http://localhost/sa/js/global.js"></script>
-	<script src="http://localhost/sa/js/patients.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.js"></script>
+	<script src="http://skinmed.id/sa/js/global.js"></script>
+	<script src="http://skinmed.id/sa/js/patients.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -26,7 +26,7 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://localhost/sa/main.css" rel="stylesheet">
+	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
@@ -532,21 +532,27 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://localhost/sa/admin">
+							<a href="http://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
-						<li class="mm-active">
-							<a href="http://localhost/sa/user">
+						<li>
+							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/sessions">
+							<a href="http://skinmed.id/sa/sessions">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Session
+							</a>
+						</li>
+						<li class="mm-active">
+							<a href="http://skinmed.id/sa/patients">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Patients
 							</a>
 						</li>
 					</ul>
@@ -569,7 +575,7 @@
 						</div>
 						<div class="page-title-actions">
 							<div class="d-inline-block dropdown">
-								<button onclick="window.location.href='http://localhost/sa/patients/add?id='+<?php echo $id; ?>" type="button" class="btn-shadow btn btn-info">
+								<button onclick="window.location.href='http://skinmed.id/sa/patients/add?id='+<?php echo $userID; ?>" type="button" class="btn-shadow btn btn-info">
 									Tambah Pasien
 								</button>
 							</div>
@@ -580,7 +586,11 @@
 					<div class="col-lg-6">
 						<div class="main-card mb-3 card" style="width: 1000px;">
 							<div class="card-body"><h5 class="card-title">DAFTAR PASIEN</h5>
-								<table class="mb-0 table">
+								<label style="margin-top: 10px;">Pengguna:</label>
+								<select id="select-user" style="margin-top: 5px;" class="form-control-sm form-control">
+									<option>Pilih Pengguna</option>
+								</select>
+								<table class="mb-0 table" style="margin-top: 20px;">
 									<thead>
 									<tr>
 										<th>#</th>
@@ -679,7 +689,8 @@
 		</div>
 	</div>
 </div>
-<input type="hidden" id="user-id" value="<?php echo $id; ?>">
+<input type="hidden" id="admin-id" value="<?php echo $adminID; ?>">
+<input type="hidden" id="user-id" value="<?php echo $userID; ?>">
 <script type="text/javascript" src="./assets/scripts/main.js"></script>
 </body>
 </html>
