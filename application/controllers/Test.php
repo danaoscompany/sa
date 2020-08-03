@@ -24,6 +24,10 @@ class Test extends CI_Controller {
 	}
 	
 	public function test2() {
-		echo file_get_contents("http://www.google.com");
+		$date = "2020-08-02T18:56:43.178Z";
+		$date = str_replace("T", " ", $date);
+		$date = str_replace("Z", " ", $date);
+		$date = substr($date, 0, strpos($date, "."));
+		echo "Date: " . $date . "\n";
 	}
 }
