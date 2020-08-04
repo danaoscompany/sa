@@ -30,4 +30,25 @@ class Test extends CI_Controller {
 		$date = substr($date, 0, strpos($date, "."));
 		echo "Date: " . $date . "\n";
 	}
+
+	public function clear() {
+		$this->db->query("DELETE FROM `buckets`");
+		$this->db->query("DELETE FROM `bucket_images`");
+		$this->db->query("DELETE FROM `images`");
+		$this->db->query("DELETE FROM `sessions`");
+	}
+
+	public function clear_buckets() {
+		$this->db->query("DELETE FROM `buckets`");
+		$this->db->query("DELETE FROM `bucket_images`");
+		$this->db->query("DELETE FROM `images`");
+		$this->db->query("DELETE FROM `devices`");
+		$this->db->query("DELETE FROM `sessions`");
+		$this->db->query("DELETE FROM `patients`");
+	}
+
+	public function clear_bucket_images() {
+		$this->db->query("DELETE FROM `buckets`");
+		$this->db->query("DELETE FROM `bucket_images`");
+	}
 }

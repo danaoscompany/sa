@@ -110,7 +110,7 @@ class User extends CI_Controller {
 		$userID = intval($this->input->post('user_id'));
 		$results = $this->db->query("SELECT * FROM `bucket_images` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->result_array();
 		if (sizeof($results) > 0) {
-			echo inval($results->row_array()['id'])+1;
+			echo intval($results[0]['id'])+1;
 		} else {
 			echo 1;
 		}
@@ -171,22 +171,6 @@ class User extends CI_Controller {
 		$uuid = $this->input->post('uuid');
 		$this->db->where('uuid', $uuid);
 		$this->db->delete('devices');
-	}
-
-	public function clear() {
-		$this->db->query("DELETE FROM `buckets`");
-		$this->db->query("DELETE FROM `bucket_images`");
-		$this->db->query("DELETE FROM `images`");
-		$this->db->query("DELETE FROM `sessions`");
-	}
-
-	public function clear_buckets() {
-		$this->db->query("DELETE FROM `buckets`");
-		$this->db->query("DELETE FROM `bucket_images`");
-		$this->db->query("DELETE FROM `images`");
-		$this->db->query("DELETE FROM `devices`");
-		$this->db->query("DELETE FROM `sessions`");
-		$this->db->query("DELETE FROM `patients`");
 	}
 	
 	public function get_patients_by_user_id() {
@@ -501,6 +485,10 @@ class User extends CI_Controller {
 		$imageY = doubleval($this->input->post('image_y'));
 		$imageWidth = doubleval($this->input->post('image_width'));
 		$imageHeight = doubleval($this->input->post('image_height'));
+		$this->db->where('uuid', $bucketUUID);
+		$bucket = $this->db->get('buckets')->row_array();
+		$images = json_decode($bucket['images'], true);
+		$photoNum = intval($images[sizeof($images)-1]['photo_num']);
 		$config = array(
 	        'upload_path' => './userdata/',
 	        'allowed_types' => "*",
@@ -523,7 +511,8 @@ class User extends CI_Controller {
         		'points' => $points,
         		'type' => $type,
         		'date' => $date,
-        		'type' => $type
+        		'type' => $type,
+        		'photo_num' => $photoNum
         	));
         	$id = intval($this->db->insert_id());
         	echo json_encode(array(
