@@ -523,7 +523,12 @@ class User extends CI_Controller {
 		$this->db->where('uuid', $bucketUUID);
 		$bucket = $this->db->get('buckets')->row_array();
 		$images = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
-		$photoNum = intval($images[sizeof($images)-1]['photo_num']);
+		$photoNum = 0;
+		if (sizeof($images) > 0) {
+			$photoNum = intval($images[sizeof($images)-1]['photo_num']);
+		} else {
+			$photoNum = 1;
+		}
 		$config = array(
 	        'upload_path' => './userdata/',
 	        'allowed_types' => "*",
