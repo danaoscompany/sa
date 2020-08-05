@@ -494,6 +494,8 @@ class User extends CI_Controller {
 	
 	public function add_bucket() {
 		$uuid = $this->input->post('uuid');
+		$image1UUID = $this->input->post('image_1_uuid');
+		$image2UUID = $this->input->post('image_2_uuid');
 		$deviceUUID = $this->input->post('device_uuid');
 		$sessionUUID = $this->input->post('session_uuid');
 		$userID = intval($this->input->post('user_id'));
@@ -506,6 +508,7 @@ class User extends CI_Controller {
 		));
 		$bucketID = intval($this->db->insert_id());
 		$this->db->insert('bucket_images', array(
+			'uuid' => $image1UUID,
 			'bucket_uuid' => $uuid,
 			'session_uuid' => $sessionUUID,
 			'type' => 0,
@@ -513,6 +516,7 @@ class User extends CI_Controller {
 			'local' => 0
 		));
 		$this->db->insert('bucket_images', array(
+			'uuid' => $image2UUID,
 			'bucket_uuid' => $uuid,
 			'session_uuid' => $sessionUUID,
 			'type' => 1,
