@@ -34,6 +34,7 @@ function getAdmins() {
 				let admin = admins[i];
 				$("#admins").append("<tr>" +
 					"                                        <th scope=\"row\">"+(i+1)+"</th>" +
+					"                                        <td>"+admin['name']+"</td>" +
 					"                                        <td>"+admin['email']+"</td>" +
 					"                                        <td>"+admin['password']+"</td>" +
 					"                                        <td><button onclick='editAdmin("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
