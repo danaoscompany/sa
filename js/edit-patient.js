@@ -37,7 +37,7 @@ function save() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			window.location.href = "http://localhost/sa/patients?id="+userID;
+			window.location.href = "http://skinmed.id/sa/patients?id="+userID;
 		}
 	});
 }

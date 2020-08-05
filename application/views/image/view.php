@@ -13,10 +13,10 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://localhost/sa/js/jquery.js"></script>
-	<script src="http://localhost/sa/js/global.js"></script>
-	<script src="http://localhost/sa/js/jquery.redirect.js"></script>
-	<script src="http://localhost/sa/js/view_image.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.js"></script>
+	<script src="http://skinmed.id/sa/js/global.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.redirect.js"></script>
+	<script src="http://skinmed.id/sa/js/view_image.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -27,13 +27,13 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://localhost/sa/main.css" rel="stylesheet">
+	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
+			<img src="http://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -102,7 +102,7 @@
 	<div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
+				<img src="http://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -138,25 +138,25 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://localhost/sa/common">
+							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Umum
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/admin">
+							<a href="http://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="http://localhost/sa/user">
+							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/sessions">
+							<a href="http://skinmed.id/sa/sessions">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Session
 							</a>
@@ -169,13 +169,13 @@
 							</a>
 							<ul class="mm-show">
 								<li>
-									<a href="http://localhost/sa/payment/unpaid">
+									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
 										</i>Belum Dibayar
 									</a>
 								</li>
 								<li>
-									<a href="http://localhost/sa/payment/paid">
+									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
 										</i>Sudah Dibayar
 									</a>
@@ -183,7 +183,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="http://localhost/sa/admin/logout">
+							<a href="http://skinmed.id/sa/admin/logout">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Logout
 							</a>
@@ -220,7 +220,7 @@
 								<div style="width: 100%; margin-top: 50px; display: flex; flex-direction: row;">
 									<div style="width: 50%; height: 500px; position: relative;">
 										<img id="anatomy-img" style="width: auto; height: 500px;
-													position: absolute;" src="http://localhost/sa/userdata/anatomy.png">
+													position: absolute;" src="http://skinmed.id/sa/userdata/anatomy.png">
 										<canvas id="cvs" width="100%" height="100%"
 												style="position: absolute;"></canvas>
 									</div>
@@ -253,7 +253,7 @@
 	</div>
 </div>
 <input id="uuid" type="hidden" value="<?php echo $uuid ?>">
-<script type="text/javascript" src="http://localhost/sa/assets/scripts/main.js"></script>
+<script type="text/javascript" src="http://skinmed.id/sa/assets/scripts/main.js"></script>
 </body>
 </html>
 
