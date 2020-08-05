@@ -509,6 +509,7 @@ class User extends CI_Controller {
 		$bucketID = intval($this->db->insert_id());
 		$this->db->insert('bucket_images', array(
 			'uuid' => $image1UUID,
+			'user_id' => $userID,
 			'bucket_uuid' => $uuid,
 			'session_uuid' => $sessionUUID,
 			'type' => 0,
@@ -517,6 +518,7 @@ class User extends CI_Controller {
 		));
 		$this->db->insert('bucket_images', array(
 			'uuid' => $image2UUID,
+			'user_id' => $userID,
 			'bucket_uuid' => $uuid,
 			'session_uuid' => $sessionUUID,
 			'type' => 1,
