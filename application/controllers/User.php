@@ -497,13 +497,29 @@ class User extends CI_Controller {
 		$deviceUUID = $this->input->post('device_uuid');
 		$sessionUUID = $this->input->post('session_uuid');
 		$userID = intval($this->input->post('user_id'));
+		$photoNum = intval($this->input->post('photo_num'));
 		$this->db->insert('buckets', array(
 			'user_id' => $userID,
 			'uuid' => $uuid,
 			'session_uuid' => $sessionUUID,
 			'device_uuid' => $deviceUUID
 		));
-		echo intval($this->db->insert_id());
+		$bucketID = intval($this->db->insert_id());
+		$this->db->insert('bucket_images', array(
+			'bucket_uuid' => $uuid,
+			'session_uuid' => $sessionUUID,
+			'type' => 0,
+			'photo_num' => $photoNum,
+			'local' => 0
+		));
+		$this->db->insert('bucket_images', array(
+			'bucket_uuid' => $uuid,
+			'session_uuid' => $sessionUUID,
+			'type' => 1,
+			'photo_num' => $photoNum+1,
+			'local' => 0
+		));
+		return $bucketID;
 	}
 	
 	public function upload_skin_image() {
@@ -539,23 +555,44 @@ class User extends CI_Controller {
         );
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
-        	$this->db->insert('bucket_images', array(
-        		'user_id' => $userID,
-        		'uuid' => $uuid,
-        		'bucket_uuid' => $bucketUUID,
-        		'session_uuid' => $sessionUUID,
-        		'path' => $this->upload->data()['file_name'],
-        		'note' => $note,
-        		'image_x' => $imageX,
-        		'image_y' => $imageY,
-        		'image_width' => $imageWidth,
-        		'image_height' => $imageHeight,
-        		'points' => $points,
-        		'type' => $type,
-        		'date' => $date,
-        		'type' => $type,
-        		'photo_num' => $photoNum
-        	));
+        	$images = $this->db->query("SELECT * FROM `bucket_images` WHERE `uuid`='" . $uuid . "'")->result_array();
+        	if (sizeof($images) > 0) {
+        		$this->db->where('uuid', $uuid);
+	        	$this->db->update('bucket_images', array(
+	        		'user_id' => $userID,
+	        		'bucket_uuid' => $bucketUUID,
+	        		'session_uuid' => $sessionUUID,
+	        		'path' => $this->upload->data()['file_name'],
+	        		'note' => $note,
+	        		'image_x' => $imageX,
+	        		'image_y' => $imageY,
+	        		'image_width' => $imageWidth,
+	        		'image_height' => $imageHeight,
+	        		'points' => $points,
+	        		'type' => $type,
+	        		'date' => $date,
+	        		'type' => $type,
+	        		'photo_num' => $photoNum
+	        	));
+        	} else {
+	        	$this->db->insert('bucket_images', array(
+	        		'user_id' => $userID,
+	        		'uuid' => $uuid,
+	        		'bucket_uuid' => $bucketUUID,
+	        		'session_uuid' => $sessionUUID,
+	        		'path' => $this->upload->data()['file_name'],
+	        		'note' => $note,
+	        		'image_x' => $imageX,
+	        		'image_y' => $imageY,
+	        		'image_width' => $imageWidth,
+	        		'image_height' => $imageHeight,
+	        		'points' => $points,
+	        		'type' => $type,
+	        		'date' => $date,
+	        		'type' => $type,
+	        		'photo_num' => $photoNum
+	        	));
+        	}
         	$id = intval($this->db->insert_id());
         	echo json_encode(array(
         		'id' => $id,
