@@ -3,18 +3,30 @@ var selectedAdminIndex = 0;
 
 $(document).ready(function() {
 	getAdmins();
+	let userID = parseInt($("#admin-id").val());
+	let fd = new FormData();
+	fd.append("id", userID);
+	$.ajax({
+		type: 'POST',
+		url: PHP_URL+"/admin/get_by_id",
+		data: fd,
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(response) {
+			var obj = JSON.parse(response);
+			$("#admin-name").html(obj['name']);
+			$("#admin-email").html(obj['email']);
+		}
+	});
 });
 
 function getAdmins() {
 	$("#admins").find("*").remove();
-	let fd = new FormData();
-	fd.append("cmd", "SELECT * FROM `admins`");
 	$.ajax({
-		type: 'POST',
-		url: PHP_URL+'/main/query',
-		data: fd,
-		processData: false,
-		contentType: false,
+		type: 'GET',
+		url: PHP_URL+'/admin/get',
+		dataType: 'text',
 		cache: false,
 		success: function(response) {
 			admins = JSON.parse(response);
@@ -33,7 +45,7 @@ function getAdmins() {
 }
 
 function editAdmin(index) {
-	window.location.href = "http://skinmed.id/sa/admin/edit?id="+admins[index]['id'];
+	window.location.href = "http://localhost/sa/admin/edit?id="+admins[index]['id'];
 }
 
 function confirmDeleteAdmin(index) {

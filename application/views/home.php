@@ -25,7 +25,7 @@
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<div class="logo-src"></div>
+			<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -400,7 +400,7 @@
 	</div>        <div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<div class="logo-src"></div>
+				<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -428,20 +428,60 @@
                                 </span>
                             </button>
                         </span>
-			</div>    <div class="scrollbar-sidebar">
+			</div>
+			<div class="scrollbar-sidebar">
 				<div class="app-sidebar__inner">
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="admin">
+							<a href="http://localhost/sa/common">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Umum
+							</a>
+						</li>
+						<li>
+							<a href="http://localhost/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="user">
+							<a href="http://localhost/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
+							</a>
+						</li>
+						<li>
+							<a href="http://localhost/sa/sessions">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Session
+							</a>
+						</li>
+						<li class="mm-active">
+							<a href="#">
+								<i class="metismenu-icon pe-7s-car"></i>
+								Pembayaran
+								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+							</a>
+							<ul class="mm-show">
+								<li>
+									<a href="http://localhost/sa/payment/unpaid">
+										<i class="metismenu-icon">
+										</i>Belum Dibayar
+									</a>
+								</li>
+								<li>
+									<a href="http://localhost/sa/payment/paid">
+										<i class="metismenu-icon">
+										</i>Sudah Dibayar
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="http://localhost/sa/admin/logout">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Logout
 							</a>
 						</li>
 					</ul>
@@ -1154,5 +1194,5 @@
 		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	</div>
 </div>
-<script type="text/javascript" src="./assets/scripts/main.js"></script></body>
+<script type="text/javascript" src="http://localhost/sa/assets/scripts/main.js"></script></body>
 </html>

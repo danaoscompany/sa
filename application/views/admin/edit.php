@@ -13,9 +13,9 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Build whatever layout you need with our Architect framework.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://skinmed.id/sa/js/jquery.js"></script>
-	<script src="http://skinmed.id/sa/js/global.js"></script>
-	<script src="http://skinmed.id/sa/js/edit-admin.js"></script>
+	<script src="http://localhost/sa/js/jquery.js"></script>
+	<script src="http://localhost/sa/js/global.js"></script>
+	<script src="http://localhost/sa/js/edit-admin.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -26,13 +26,13 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
+	<link href="http://localhost/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<div class="logo-src"></div>
+			<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -503,7 +503,7 @@
 	<div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<div class="logo-src"></div>
+				<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -537,204 +537,56 @@
 			<div class="scrollbar-sidebar">
 				<div class="app-sidebar__inner">
 					<ul class="vertical-nav-menu">
-						<li class="app-sidebar__heading">Dashboards</li>
 						<li>
-							<a href="index.html">
-								<i class="metismenu-icon pe-7s-rocket"></i>
-								Dashboard Example 1
+						<li>
+							<a href="http://localhost/sa/common">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Umum
 							</a>
 						</li>
-						<li class="app-sidebar__heading">UI Components</li>
-						<li
-
-
-						>
-							<a href="#">
-								<i class="metismenu-icon pe-7s-diamond"></i>
-								Elements
-								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+						<li class="mm-active">
+							<a href="http://localhost/sa/admin">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Admin
 							</a>
-							<ul
-
-
-							>
-								<li>
-									<a href="elements-buttons-standard.html">
-										<i class="metismenu-icon"></i>
-										Buttons
-									</a>
-								</li>
-								<li>
-									<a href="elements-dropdowns.html">
-										<i class="metismenu-icon">
-										</i>Dropdowns
-									</a>
-								</li>
-								<li>
-									<a href="elements-icons.html">
-										<i class="metismenu-icon">
-										</i>Icons
-									</a>
-								</li>
-								<li>
-									<a href="elements-badges-labels.html">
-										<i class="metismenu-icon">
-										</i>Badges
-									</a>
-								</li>
-								<li>
-									<a href="elements-cards.html">
-										<i class="metismenu-icon">
-										</i>Cards
-									</a>
-								</li>
-								<li>
-									<a href="elements-list-group.html">
-										<i class="metismenu-icon">
-										</i>List Groups
-									</a>
-								</li>
-								<li>
-									<a href="elements-navigation.html">
-										<i class="metismenu-icon">
-										</i>Navigation Menus
-									</a>
-								</li>
-								<li>
-									<a href="elements-utilities.html">
-										<i class="metismenu-icon">
-										</i>Utilities
-									</a>
-								</li>
-							</ul>
 						</li>
-						<li
-
-
-						>
+						<li>
+							<a href="http://localhost/sa/user">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Pengguna
+							</a>
+						</li>
+						<li>
+							<a href="http://localhost/sa/sessions">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Session
+							</a>
+						</li>
+						<li class="mm-active">
 							<a href="#">
 								<i class="metismenu-icon pe-7s-car"></i>
-								Components
+								Pembayaran
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
-							<ul
-
-
-							>
+							<ul class="mm-show">
 								<li>
-									<a href="components-tabs.html">
+									<a href="http://localhost/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Tabs
+										</i>Belum Dibayar
 									</a>
 								</li>
 								<li>
-									<a href="components-accordions.html">
+									<a href="http://localhost/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Accordions
-									</a>
-								</li>
-								<li>
-									<a href="components-notifications.html">
-										<i class="metismenu-icon">
-										</i>Notifications
-									</a>
-								</li>
-								<li>
-									<a href="components-modals.html">
-										<i class="metismenu-icon">
-										</i>Modals
-									</a>
-								</li>
-								<li>
-									<a href="components-progress-bar.html">
-										<i class="metismenu-icon">
-										</i>Progress Bar
-									</a>
-								</li>
-								<li>
-									<a href="components-tooltips-popovers.html">
-										<i class="metismenu-icon">
-										</i>Tooltips &amp; Popovers
-									</a>
-								</li>
-								<li>
-									<a href="components-carousel.html">
-										<i class="metismenu-icon">
-										</i>Carousel
-									</a>
-								</li>
-								<li>
-									<a href="components-calendar.html">
-										<i class="metismenu-icon">
-										</i>Calendar
-									</a>
-								</li>
-								<li>
-									<a href="components-pagination.html">
-										<i class="metismenu-icon">
-										</i>Pagination
-									</a>
-								</li>
-								<li>
-									<a href="components-scrollable-elements.html">
-										<i class="metismenu-icon">
-										</i>Scrollable
-									</a>
-								</li>
-								<li>
-									<a href="components-maps.html">
-										<i class="metismenu-icon">
-										</i>Maps
+										</i>Sudah Dibayar
 									</a>
 								</li>
 							</ul>
 						</li>
 						<li>
-							<a href="user.html">
-								<i class="metismenu-icon pe-7s-display2"></i>
-								Tables
-							</a>
-						</li>
-						<li class="app-sidebar__heading">Widgets</li>
-						<li>
-							<a href="dashboard-boxes.html">
-								<i class="metismenu-icon pe-7s-display2"></i>
-								Dashboard Boxes
-							</a>
-						</li>
-						<li class="app-sidebar__heading">Forms</li>
-						<li>
-							<a href="forms-controls.html">
-								<i class="metismenu-icon pe-7s-mouse">
-								</i>Forms Controls
-							</a>
-						</li>
-						<li>
-							<a href="add-user.html" class="mm-active">
-								<i class="metismenu-icon pe-7s-eyedropper">
-								</i>Forms Layouts
-							</a>
-						</li>
-						<li>
-							<a href="forms-validation.html">
-								<i class="metismenu-icon pe-7s-pendrive">
-								</i>Forms Validation
-							</a>
-						</li>
-						<li class="app-sidebar__heading">Charts</li>
-						<li>
-							<a href="charts-chartjs.html">
-								<i class="metismenu-icon pe-7s-graph2">
-								</i>ChartJS
-							</a>
-						</li>
-						<li class="app-sidebar__heading">PRO Version</li>
-						<li>
-							<a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/"
-							   target="_blank">
-								<i class="metismenu-icon pe-7s-graph2">
-								</i>
-								Upgrade to PRO
+							<a href="http://localhost/sa/admin/logout">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Logout
 							</a>
 						</li>
 					</ul>
@@ -922,7 +774,7 @@
 	</div>
 </div>
 <input type="hidden" id="admin-id" value="<?php echo $id; ?>" />
-<script type="text/javascript" src="./assets/scripts/main.js"></script>
+<script type="text/javascript" src="http://localhost/sa/assets/scripts/main.js"></script>
 </body>
 </html>
 

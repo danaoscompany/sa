@@ -13,9 +13,10 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://skinmed.id/sa/js/jquery.js"></script>
-	<script src="http://skinmed.id/sa/js/global.js"></script>
-	<script src="http://skinmed.id/sa/js/devices.js"></script>
+	<script src="http://localhost/sa/js/jquery.js"></script>
+	<script src="http://localhost/sa/js/jquery.redirect.js"></script>
+	<script src="http://localhost/sa/js/global.js"></script>
+	<script src="http://localhost/sa/js/devices.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -26,13 +27,13 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
+	<link href="http://localhost/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<div class="logo-src"></div>
+			<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -496,7 +497,7 @@
 	<div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<div class="logo-src"></div>
+				<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -532,21 +533,54 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://skinmed.id/sa/admin">
+							<a href="http://localhost/sa/common">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Umum
+							</a>
+						</li>
+						<li>
+							<a href="http://localhost/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="http://skinmed.id/sa/user">
+							<a href="http://localhost/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
 							</a>
 						</li>
 						<li>
-							<a href="http://skinmed.id/sa/sessions">
+							<a href="http://localhost/sa/sessions">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Session
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="metismenu-icon pe-7s-car"></i>
+								Pembayaran
+								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+							</a>
+							<ul class="mm-show">
+								<li>
+									<a href="http://localhost/sa/payment/unpaid">
+										<i class="metismenu-icon">
+										</i>Belum Dibayar
+									</a>
+								</li>
+								<li>
+									<a href="http://localhost/sa/payment/paid">
+										<i class="metismenu-icon">
+										</i>Sudah Dibayar
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="http://localhost/sa/admin/logout">
+								<i class="metismenu-icon pe-7s-users"></i>
+								Logout
 							</a>
 						</li>
 					</ul>
@@ -569,7 +603,7 @@
 						</div>
 						<div class="page-title-actions">
 							<div class="d-inline-block dropdown">
-								<button onclick="window.location.href='http://skinmed.id/sa/devices/add?id='+<?php echo $userID; ?>" type="button" class="btn-shadow btn btn-info">
+								<button onclick="addDevice()" type="button" class="btn-shadow btn btn-info">
 									Tambah Perangkat
 								</button>
 							</div>
@@ -677,7 +711,6 @@
 	</div>
 </div>
 <input type="hidden" id="user-id" value="<?php echo $userID; ?>">
-<script type="text/javascript" src="./assets/scripts/main.js"></script>
+<script type="text/javascript" src="http://localhost/sa/assets/scripts/main.js"></script>
 </body>
 </html>
-

@@ -1,4 +1,4 @@
-const HOST = "skinmed.id";
+const HOST = "localhost";
 const PHP_URL = "http://"+HOST+"/sa/index.php";
 
 function uuidv4() {
@@ -6,4 +6,18 @@ function uuidv4() {
 		var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
 		return v.toString(16);
 	});
+}
+
+function logout() {
+	if (confirm("Apakah Anda yakin ingin logout?")) {
+		$.ajax({
+			type: 'GET',
+			url: PHP_URL+"/admin/logout",
+			dataType: 'text',
+			cache: false,
+			success: function(response) {
+				window.location.href = "http://localhost/sa/login";
+			}
+		});
+	}
 }

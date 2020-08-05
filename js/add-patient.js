@@ -10,9 +10,16 @@ function addPatient() {
 	var city = $("#city").val().trim();
 	var province = $("#province").val().trim();
 	var birthday = $("#birthday").val().trim();
+	var email = $("#email").val().trim();
+	var phone = $("#phone").val().trim();
+	var genderIndex = $("#gender").prop('selectedIndex');
 	if (name == "" || address == "" || city == "" || province == "" || birthday == "") {
 		alert("Mohon lengkapi data");
 		return;
+	}
+	var gender = 'L';
+	if (genderIndex == 1) {
+		gender = 'P';
 	}
 	let fd = new FormData();
 	fd.append("user_id", userID);
@@ -22,6 +29,9 @@ function addPatient() {
 	fd.append("city", city);
 	fd.append("province", province);
 	fd.append("birthday", birthday);
+	fd.append("gender", gender);
+	fd.append("email", email);
+	fd.append("phone", phone);
 	$.ajax({
 		type: 'POST',
 		url: PHP_URL+"/patients/add_patient",
@@ -30,8 +40,11 @@ function addPatient() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			alert(response);
-			window.location.href = "http://skinmed.id/sa/patients?id="+userID;
+			window.history.back();
 		}
 	});
+}
+
+function cancelEditing() {
+	window.history.back();
 }

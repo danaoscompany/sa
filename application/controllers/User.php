@@ -11,10 +11,23 @@ class User extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
-	
+
+	public function get() {
+		$this->db->from('users');
+		$this->db->order_by('first_name', 'asc');
+		echo json_encode($this->db->get()->result_array());
+	}
+
+	public function get_by_id() {
+		$id = intval($this->input->post('id'));
+		$this->db->from('users');
+		$this->db->where('id', $id);
+		echo json_encode($this->db->get()->row_array());
+	}
+
 	public function purchase() {
 		$userID = intval($this->input->post('user_id'));
 		$externalID = $this->input->post('external_id');
@@ -126,14 +139,27 @@ class User extends CI_Controller {
 		));
 	}
 
-	public function edit() {
+	public function add() {
 		if ($this->session->logged_in == 1) {
-			$userID = intval($this->input->post('id'));
-			$this->load->view('user/edit', array(
-				'id' => $userID
+			$adminID = $this->session->user_id;
+			$this->load->view('user/add', array(
+				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
+		}
+	}
+
+	public function edit() {
+		if ($this->session->logged_in == 1) {
+			$adminID = $this->session->user_id;
+			$userID = intval($this->input->post('user_id'));
+			$this->load->view('user/edit', array(
+				'adminID' => $adminID,
+				'userID' => $userID
+			));
+		} else {
+			header("Location: http://localhost/sa/login");
 		}
 	}
 	

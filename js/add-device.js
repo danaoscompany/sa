@@ -26,7 +26,9 @@ function addDevice() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			window.location.href = "http://skinmed.id/sa/devices?id="+userID;
+			$.redirect("http://localhost/sa/devices", {
+				id: userID
+			});
 		}
 	});
 }
