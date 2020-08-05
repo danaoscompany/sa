@@ -41,7 +41,7 @@ $(document).ready(function() {
 function getUsers() {
 	users = [];
 	$("#select-user").find("*").remove();
-	$("#select-user").append("<option>Pilih Pengguna</option>");
+	$("#select-user").append("<option>--- Choose User ---</option>");
 	$.ajax({
 		type: 'GET',
 		url: PHP_URL+"/admin/get_all_users",
@@ -97,9 +97,9 @@ function getPatients(id) {
 					"                                        <td>"+patient['city']+"</td>" +
 					"                                        <td>"+patient['province']+"</td>" +
 					"                                        <td>"+patient['birthday']+"</td>" +
-					"                                        <td><button onclick='viewImages("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Lihat</button></td>" +
-					"                                        <td><button onclick='editPatient("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
-					"                                        <td><button onclick='confirmDeletePatient("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Hapus</button></td>" +
+					"                                        <td><button onclick='viewImages("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>View</button></td>" +
+					"                                        <td><button onclick='editPatient("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Edit</button></td>" +
+					"                                        <td><button onclick='confirmDeletePatient("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Delete</button></td>" +
 					"                                    </tr>");
 			}
 		}
@@ -128,8 +128,8 @@ function editPatient(index) {
 
 function confirmDeletePatient(index) {
 	selectedPatientIndex = index;
-	$("#confirmLabel").html("Hapus Pengguna");
-	$("#confirmBody").html("Apakah Anda yakin ingin menghapus pengguna ini?");
+	$("#confirmLabel").html("Delete User");
+	$("#confirmBody").html("Are you sure you want to delete this user?");
 	$("#confirm").modal('show');
 }
 
@@ -152,7 +152,7 @@ function deletePatient() {
 
 function logout() {
 	$("#confirmLabel").html("Konfirmasi Log Out");
-	$("#confirm-message").html("Apakah Anda yakin ingin log out?");
+	$("#confirm-message").html("Are you sure you want to logout?");
 	$("#confirm-yes").on("click", function() {
 		window.location.href = PHP_URL+"/admin/logout";
 	});

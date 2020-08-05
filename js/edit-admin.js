@@ -23,7 +23,7 @@ $(document).ready(function() {
 	});
 	let adminID = parseInt($("#admin-id").val());
 	let fd2 = new FormData();
-	fd2.append("id", userID);
+	fd2.append("id", adminID);
 	$.ajax({
 		type: 'POST',
 		url: PHP_URL+"/admin/get_by_id",
@@ -70,4 +70,8 @@ function save() {
 			}
 		}
 	});
+}
+
+function cancelEditing() {
+	window.history.back();
 }

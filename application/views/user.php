@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Pengguna</title>
+	<title>User</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
@@ -70,7 +70,7 @@
 					<li class="nav-item">
 						<a href="http://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
-							Umum
+							Common
 						</a>
 					</li>
 					<li class="nav-item">
@@ -82,7 +82,7 @@
 					<li class="btn-group nav-item">
 						<a href="http://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
-							Pengguna
+							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
@@ -94,13 +94,13 @@
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
-							Pembayaran
+							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
-							Keluar
+							Logout
 						</a>
 					</li>
 				</ul>
@@ -175,7 +175,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -187,7 +187,7 @@
 						<li class="mm-active">
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -199,20 +199,20 @@
 						<li>
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>
@@ -236,13 +236,13 @@
 								<i class="pe-7s-drawer icon-gradient bg-happy-itmeo">
 								</i>
 							</div>
-							<div>Daftar Pengguna
+							<div>User List
 							</div>
 						</div>
 						<div class="page-title-actions">
 							<div class="d-inline-block dropdown">
 								<button onclick="window.location.href='http://skinmed.id/sa/user/add'" type="button" class="btn-shadow btn btn-info">
-									Tambah Pengguna
+									Add User
 								</button>
 							</div>
 						</div>
@@ -251,19 +251,19 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="main-card mb-3 card" style="width: 1000px;">
-							<div class="card-body"><h5 class="card-title">DAFTAR PENGGUNA</h5>
+							<div class="card-body"><h5 class="card-title">USER LIST</h5>
 								<table class="mb-0 table">
 									<thead>
 									<tr>
 										<th>#</th>
-										<th>Nama</th>
+										<th>Name</th>
 										<th>Email</th>
-										<th>Kata Sandi</th>
-										<th>Nomor HP</th>
-										<th>Perangkat</th>
-										<th>Pasien</th>
-										<th>Ubah</th>
-										<th>Hapus</th>
+										<th>Password</th>
+										<th>Phone</th>
+										<th>Devices</th>
+										<th>Patients</th>
+										<th>Edit</th>
+										<th>Delete</th>
 									</tr>
 									</thead>
 									<tbody id="users">
@@ -299,17 +299,17 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="confirmLabel">Hapus Pengguna</h5>
+				<h5 class="modal-title" id="confirmLabel">Delete User</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p id="confirm-message" class="mb-0">Apakah Anda yakin ingin menghapus pengguna ini?</p>
+				<p id="confirm-message" class="mb-0">Are you sure you want to delete this user?</p>
 			</div>
 			<div class="modal-footer">
-				<button id="confirm-no" type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-				<button id="confirm-yes" type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteUser()">Ya</button>
+				<button id="confirm-no" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				<button id="confirm-yes" type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteUser()">Yes</button>
 			</div>
 		</div>
 	</div>

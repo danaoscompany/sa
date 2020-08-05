@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Ubah Session</title>
+	<title>Edit Session</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Build whatever layout you need with our Architect framework.">
@@ -68,7 +68,7 @@
 					<li class="nav-item">
 						<a href="http://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
-							Umum
+							Common
 						</a>
 					</li>
 					<li class="nav-item">
@@ -80,7 +80,7 @@
 					<li class="btn-group nav-item">
 						<a href="http://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
-							Pengguna
+							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
@@ -92,13 +92,13 @@
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
-							Pembayaran
+							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
-							Keluar
+							Logout
 						</a>
 					</li>
 				</ul>
@@ -176,7 +176,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -188,7 +188,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -200,20 +200,20 @@
 						<li class="mm-active">
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>
@@ -237,7 +237,7 @@
 								<i class="pe-7s-graph text-success">
 								</i>
 							</div>
-							<div>Ubah Session
+							<div>Edit Session
 							</div>
 						</div>
 					</div>
@@ -250,7 +250,7 @@
 									<input name="name" id="name" placeholder="Masukkan nama session"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="users" class="">Pengguna</label>
+								<div class="position-relative form-group"><label for="users" class="">User</label>
 									<select name="users" id="users"
 											class="form-control"></select>
 								</div>
@@ -258,7 +258,7 @@
 									<select name="patients" id="patients"
 											class="form-control"></select>
 								</div>
-								<div class="position-relative form-group"><label for="date" class="">Tanggal</label>
+								<div class="position-relative form-group"><label for="date" class="">Date</label>
 									<input name="date" id="date" placeholder="Masukkan tanggal session"
 										   type="date" class="form-control">
 								</div>
@@ -266,9 +266,9 @@
 									<input name="time" id="time" placeholder="Masukkan tanggal session"
 										   type="time" class="form-control">
 								</div>
-								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="save()">Simpan
+								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="save()">Save
 								</button>
-								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelEditing()">Batal
+								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelEditing()">Cancel
 								</button>
 							</div>
 						</div>

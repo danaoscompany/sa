@@ -98,7 +98,7 @@ class User extends CI_Controller {
 		$userID = intval($payment['user_id']);
 		$this->db->where('id', $userID);
 		$user = $this->db->get('users')->row_array();
-		FCM::send_message('Pembayaran sudah Anda lakukan', 'Klik untuk melihat info lebih lanjut', $user['fcm_token'], array(
+		FCM::send_message('Payment sudah Anda lakukan', 'Klik untuk melihat info lebih lanjut', $user['fcm_token'], array(
 			'action' => 'payment_done',
 			'external_id' => $externalID,
 			'callback' => $data,

@@ -436,7 +436,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -448,7 +448,7 @@
 						<li class="mm-active">
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -460,20 +460,20 @@
 						<li class="mm-active">
 							<a href="#">
 								<i class="metismenu-icon pe-7s-car"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>

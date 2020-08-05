@@ -4,7 +4,10 @@ class Image extends CI_Controller {
 
 	public function index() {
 		if ($this->session->logged_in == 1) {
-			$this->load->view('image');
+			$adminID = $this->session->user_id;
+			$this->load->view('image', array(
+				'adminID' => $adminID
+			));
 		} else {
 			header("Location: http://skinmed.id/sa/login");
 		}

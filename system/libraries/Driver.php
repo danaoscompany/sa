@@ -127,7 +127,7 @@ class CI_Driver_Library {
 				$file = $path.'libraries/'.$this->lib_name.'/drivers/'.$prefix.$child_name.'.php';
 				if (file_exists($file))
 				{
-					// Yes - require base class from BASEPATH
+					// Ya - require base class from BASEPATH
 					$basepath = BASEPATH.'libraries/'.$this->lib_name.'/drivers/'.$child_name.'.php';
 					if ( ! file_exists($basepath))
 					{

@@ -43,10 +43,10 @@ function getUsers() {
                     "                                        <td>"+user['email']+"</td>" +
                     "                                        <td>"+user['password']+"</td>" +
                     "                                        <td>"+user['phone']+"</td>" +
-					"                                        <td><button onclick='viewDevices("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Lihat</button></td>" +
-					"                                        <td><button onclick='viewPatients("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Lihat</button></td>" +
-                    "                                        <td><button onclick='editUser("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
-                    "                                        <td><button onclick='confirmDeleteUser("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Hapus</button></td>" +
+					"                                        <td><button onclick='viewDevices("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>View</button></td>" +
+					"                                        <td><button onclick='viewPatients("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>View</button></td>" +
+                    "                                        <td><button onclick='editUser("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Edit</button></td>" +
+                    "                                        <td><button onclick='confirmDeleteUser("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Delete</button></td>" +
                     "                                    </tr>");
             }
         }
@@ -76,8 +76,8 @@ function editUser(index) {
 
 function confirmDeleteUser(index) {
     selectedUserIndex = index;
-    $("#confirmLabel").html("Hapus Pengguna");
-    $("#confirmBody").html("Apakah Anda yakin ingin menghapus pengguna ini?");
+    $("#confirmLabel").html("Delete User");
+    $("#confirmBody").html("Are you sure you want to delete this user?");
     $("#confirm").modal('show');
 }
 
@@ -100,7 +100,7 @@ function deleteUser() {
 
 function logout() {
 	$("#confirmLabel").html("Konfirmasi Log Out");
-	$("#confirm-message").html("Apakah Anda yakin ingin log out?");
+	$("#confirm-message").html("Are you sure you want to logout?");
 	$("#confirm-yes").on("click", function() {
 		window.location.href = PHP_URL+"/admin/logout";
 	});

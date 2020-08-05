@@ -291,7 +291,7 @@ class CI_Session {
 			$params['cookie_path'],
 			$params['cookie_domain'],
 			$params['cookie_secure'],
-			TRUE // HttpOnly; Yes, this is intentional and not configurable for security reasons
+			TRUE // HttpOnly; Ya, this is intentional and not configurable for security reasons
 		);
 
 		if (empty($expiration))
@@ -376,7 +376,7 @@ class CI_Session {
 			}
 		}
 
-		// Yes, 4,5,6 are the only known possible values as of 2016-10-27
+		// Ya, 4,5,6 are the only known possible values as of 2016-10-27
 		switch ($bits_per_character)
 		{
 			case 4:

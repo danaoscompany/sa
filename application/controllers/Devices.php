@@ -18,8 +18,10 @@ class Devices extends CI_Controller {
 	public function add() {
 		$userID = $this->input->post('id');
 		if ($this->session->logged_in == 1) {
+			$adminID = $this->session->user_id;
 			$this->load->view('devices/add', array(
-				'userID' => $userID
+				'userID' => $userID,
+				'adminID' => $adminID
 			));
 		} else {
 			header("Location: http://skinmed.id/sa/devices");
@@ -27,12 +29,18 @@ class Devices extends CI_Controller {
 	}
 
 	public function edit() {
-		$userID = $this->input->get('id');
-		$uuid = $this->input->get('uuid');
-		$this->load->view('devices/edit', array(
-			'userID' => $userID,
-			'uuid' => $uuid
-		));
+		if ($this->session->logged_in == 1) {
+			$userID = $this->input->post('id');
+			$uuid = $this->input->post('uuid');
+			$adminID = $this->session->user_id;
+			$this->load->view('devices/edit', array(
+				'userID' => $userID,
+				'uuid' => $uuid,
+				'adminID' => $adminID
+			));
+		} else {
+			header("Location: http://skinmed.id/sa/devices");
+		}
 	}
 
 	public function delete() {

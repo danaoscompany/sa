@@ -10,7 +10,7 @@ $(document).ready(function() {
 	/*$("#role").prop('selectedIndex', 1);
 	$("#email").val("pengguna100@gmail.com");
 	$("#password").val("HaloDunia123");
-	$("#first-name").val("Pengguna");
+	$("#first-name").val("User");
 	$("#last-name").val("Seratus");
 	$("#phone").val("08198192892");
 	$("#address").val("Address 100");

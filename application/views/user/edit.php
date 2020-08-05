@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Ubah Pengguna</title>
+	<title>Edit User</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Build whatever layout you need with our Architect framework.">
@@ -67,7 +67,7 @@
 					<li class="nav-item">
 						<a href="http://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
-							Umum
+							Common
 						</a>
 					</li>
 					<li class="nav-item">
@@ -79,7 +79,7 @@
 					<li class="btn-group nav-item">
 						<a href="http://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
-							Pengguna
+							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
@@ -91,13 +91,13 @@
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
-							Pembayaran
+							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
-							Keluar
+							Logout
 						</a>
 					</li>
 				</ul>
@@ -172,7 +172,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -184,7 +184,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -196,20 +196,20 @@
 						<li class="mm-active">
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>
@@ -233,7 +233,7 @@
 								<i class="pe-7s-graph text-success">
 								</i>
 							</div>
-							<div>Ubah Pengguna
+							<div>Edit User
 							</div>
 						</div>
 					</div>
@@ -241,89 +241,89 @@
 				<div class="tab-content">
 					<div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
 						<div class="main-card mb-3 card">
-							<div class="card-body"><h5 class="card-title">UBAH PENGGUNA</h5>
-								<div class="position-relative form-group"><label for="first-name" class="">Posisi</label>
+							<div class="card-body"><h5 class="card-title">EDIT USER</h5>
+								<div class="position-relative form-group"><label for="first-name" class="">Position</label>
 									<select id="role" class="form-control">
-										<option>--- Pilih Role ---</option>
-										<option>Dokter</option>
+										<option>--- Choose Role ---</option>
+										<option>Doctor</option>
 										<option>Admin</option>
 									</select>
 								</div>
 								<div class="position-relative form-group"><label for="first-name" class="">Premium</label>
 									<select id="premium" class="form-control">
-										<option>--- Apakah Pengguna Termasuk Member Premium ---</option>
-										<option>Ya</option>
-										<option>Tidak</option>
+										<option>--- Is User a Premium Member? ---</option>
+										<option>Yes</option>
+										<option>No</option>
 									</select>
 								</div>
 								<div id="premium-start-container" style="display: none;"
-									 class="position-relative form-group"><label for="premium-start" class="">Tanggal Mulai Premium</label>
-									<input name="premium-start" id="premium-start" placeholder="Masukkan tanggal awal premium"
+									 class="position-relative form-group"><label for="premium-start" class="">Premium Start Date</label>
+									<input name="premium-start" id="premium-start" placeholder="Enter "
 										   type="date" class="form-control">
 								</div>
 								<div class="position-relative form-group"><label for="email" class="">Email</label>
-									<input name="email" id="email" placeholder="Masukkan tanggal awal premium"
+									<input name="email" id="email" placeholder="Enter premium start date"
 										   type="email" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="password" class="">Kata Sandi</label>
-									<input name="password" id="password" placeholder="Masukkan password"
+								<div class="position-relative form-group"><label for="password" class="">Password</label>
+									<input name="password" id="password" placeholder="Enter password"
 										   type="password" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="first-name" class="">Nama Depan</label>
-									<input name="first-name" id="first-name" placeholder="Masukkan nama depan"
+								<div class="position-relative form-group"><label for="first-name" class="">First Name</label>
+									<input name="first-name" id="first-name" placeholder="Enter first name"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="last-name" class="">Nama Belakang</label>
-									<input name="last-name" id="last-name" placeholder="Masukkan nama depan"
+								<div class="position-relative form-group"><label for="last-name" class="">Last Name</label>
+									<input name="last-name" id="last-name" placeholder="Enter last name"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="phone" class="">Nomor HP</label>
-									<input name="phone" id="phone" placeholder="Masukkan nomor HP"
+								<div class="position-relative form-group"><label for="phone" class="">Phone</label>
+									<input name="phone" id="phone" placeholder="Enter phone"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="address" class="">Alamat</label>
-									<input name="address" id="address" placeholder="Masukkan alamat"
+								<div class="position-relative form-group"><label for="address" class="">Address</label>
+									<input name="address" id="address" placeholder="Enter address"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="city" class="">Kota</label>
-									<input name="city" id="city" placeholder="Masukkan kota"
+								<div class="position-relative form-group"><label for="city" class="">City</label>
+									<input name="city" id="city" placeholder="Enter city"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="province" class="">Provinsi</label>
-									<input name="province" id="province" placeholder="Masukkan provinsi"
+								<div class="position-relative form-group"><label for="province" class="">Province</label>
+									<input name="province" id="province" placeholder="Enter province"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-name" class="">Nama Perusahaan</label>
-									<input name="company-name" id="company-name" placeholder="Masukkan nama perusahaan"
+								<div class="position-relative form-group"><label for="company-name" class="">Company Name</label>
+									<input name="company-name" id="company-name" placeholder="Enter company name"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-city" class="">Kota Perusahaan</label>
-									<input name="company-city" id="company-city" placeholder="Masukkan kota perusahaan"
+								<div class="position-relative form-group"><label for="company-city" class="">City of Company</label>
+									<input name="company-city" id="company-city" placeholder="Enter city of company"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-country" class="">Negara Perusahaan</label>
-									<input name="company-country" id="company-country" placeholder="Masukkan negara perusahaan"
+								<div class="position-relative form-group"><label for="company-country" class="">Country of Company</label>
+									<input name="company-country" id="company-country" placeholder="Enter country of company"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-street" class="">Jalan Perusahaan</label>
-									<input name="company-street" id="company-street" placeholder="Masukkan jalan perusahaan"
+								<div class="position-relative form-group"><label for="company-street" class="">Street of Company</label>
+									<input name="company-street" id="company-street" placeholder="Enter street of company"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-zip" class="">Kode ZIP Perusahaan</label>
-									<input name="company-zip" id="company-zip" placeholder="Masukkan kode zip perusahaan"
+								<div class="position-relative form-group"><label for="company-zip" class="">ZIP of Company</label>
+									<input name="company-zip" id="company-zip" placeholder="Enter ZIP of company"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-state" class="">State Perusahaan</label>
-									<input name="company-state" id="company-state" placeholder="Masukkan state perusahaan"
+								<div class="position-relative form-group"><label for="company-state" class="">Company State</label>
+									<input name="company-state" id="company-state" placeholder="Enter company state"
 										   type="text" class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="company-phone" class="">Nomor HP Perusahaan</label>
-									<input name="company-phone" id="company-phone" placeholder="Masukkan nomor HP perusahaan"
+								<div class="position-relative form-group"><label for="company-phone" class="">Company Phone</label>
+									<input name="company-phone" id="company-phone" placeholder="Enter company phone"
 										   type="text" class="form-control">
 								</div>
-								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="addUser()">Simpan
+								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="addUser()">Save
 								</button>
-								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelEditing()">Batal
+								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelEditing()">Cancel
 								</button>
 							</div>
 						</div>

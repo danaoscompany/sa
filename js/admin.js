@@ -37,8 +37,8 @@ function getAdmins() {
 					"                                        <td>"+admin['name']+"</td>" +
 					"                                        <td>"+admin['email']+"</td>" +
 					"                                        <td>"+admin['password']+"</td>" +
-					"                                        <td><button onclick='editAdmin("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
-					"                                        <td><button onclick='confirmDeleteAdmin("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Hapus</button></td>" +
+					"                                        <td><button onclick='editAdmin("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Edit</button></td>" +
+					"                                        <td><button onclick='confirmDeleteAdmin("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Delete</button></td>" +
 					"                                    </tr>");
 			}
 		}
@@ -53,8 +53,8 @@ function editAdmin(index) {
 
 function confirmDeleteAdmin(index) {
 	selectedAdminIndex = index;
-	$("#confirmLabel").html("Hapus Pengguna");
-	$("#confirmBody").html("Apakah Anda yakin ingin menghapus pengguna ini?");
+	$("#confirmLabel").html("Delete User");
+	$("#confirmBody").html("Are you sure you want to delete this user?");
 	$("#confirm").modal('show');
 }
 

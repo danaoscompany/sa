@@ -9,7 +9,7 @@ function uuidv4() {
 }
 
 function logout() {
-	if (confirm("Apakah Anda yakin ingin logout?")) {
+	if (confirm("Are you sure you want to logout?")) {
 		$.ajax({
 			type: 'GET',
 			url: PHP_URL+"/admin/logout",

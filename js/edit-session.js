@@ -26,7 +26,7 @@ $(document).ready(function() {
 function getUsers() {
 	users = [];
 	$("#users").find("*").remove();
-	$("#users").append("<option>Pilih User</option>");
+	$("#users").append("<option>--- Choose User ---</option>");
 	$.ajax({
 		type: 'GET',
 		url: PHP_URL+"/user/get",

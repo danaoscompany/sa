@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Perangkat</title>
+	<title>Device</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
@@ -69,7 +69,7 @@
 					<li class="nav-item">
 						<a href="http://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
-							Umum
+							Common
 						</a>
 					</li>
 					<li class="nav-item">
@@ -81,7 +81,7 @@
 					<li class="btn-group nav-item">
 						<a href="http://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
-							Pengguna
+							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
@@ -93,13 +93,13 @@
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
-							Pembayaran
+							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
-							Keluar
+							Logout
 						</a>
 					</li>
 				</ul>
@@ -171,10 +171,10 @@
 				<div class="app-sidebar__inner">
 					<ul class="vertical-nav-menu">
 						<li>
-						<li>
+						<li class="mm-active">
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -186,7 +186,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -195,23 +195,23 @@
 								Session
 							</a>
 						</li>
-						<li class="mm-active">
+						<li>
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>
@@ -235,7 +235,7 @@
 								<i class="pe-7s-drawer icon-gradient bg-happy-itmeo">
 								</i>
 							</div>
-							<div>Pengaturan Umum
+							<div>Common Settings
 							</div>
 						</div>
 					</div>
@@ -243,13 +243,13 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="main-card mb-3 card" style="width: 1000px;">
-							<div class="card-body"><h5 class="card-title">PENGATURAN UMUM</h5>
-								<div class="position-relative form-group" style="margin-top: 20px;"><label for="premium-price" class="">Biaya Langganan Premium per Bulan</label>
-									<input name="premium-price" id="premium-price" placeholder="Masukkan biaya" type="text"
+							<div class="card-body"><h5 class="card-title">COMMON SETTINGS</h5>
+								<div class="position-relative form-group" style="margin-top: 20px;"><label for="premium-price" class="">Monthly Premium Purchase Price</label>
+									<input name="premium-price" id="premium-price" placeholder="Enter price" type="text"
 										   class="form-control">
 								</div>
 								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="save()">
-									Simpan
+									Save
 								</button>
 							</div>
 						</div>
@@ -263,17 +263,17 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="confirmLabel">Hapus Perangkat</h5>
+				<h5 class="modal-title" id="confirmLabel">Delete Device</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p id="confirm-message" class="mb-0">Apakah Anda yakin ingin menghapus perangkat ini?</p>
+				<p id="confirm-message" class="mb-0">Are you sure you want to delete this device?</p>
 			</div>
 			<div class="modal-footer">
-				<button id="confirm-no" type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-				<button id="confirm-yes" type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteDevice()">Ya</button>
+				<button id="confirm-no" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				<button id="confirm-yes" type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteDevice()">Yes</button>
 			</div>
 		</div>
 	</div>

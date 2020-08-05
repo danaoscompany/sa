@@ -4,6 +4,22 @@ var images = [];
 
 $(document).ready(function() {
 	getUsers();
+	let adminID = parseInt($("#admin-id").val());
+	let fd = new FormData();
+	fd.append("id", adminID);
+	$.ajax({
+		type: 'POST',
+		url: PHP_URL+"/admin/get_by_id",
+		data: fd,
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(response) {
+			var obj = JSON.parse(response);
+			$("#admin-name").html(obj['name']);
+			$("#admin-email").html(obj['email']);
+		}
+	});
 });
 
 function getUsers() {
@@ -33,7 +49,7 @@ function getUsers() {
 		cache: false,
 		success: function(response) {
 			users = JSON.parse(response);
-			$("#users").append("<option>Pilih User</option>");
+			$("#users").append("<option>--- Choose User ---</option>");
 			for (var i=0; i<users.length; i++) {
 				var user = users[i];
 				$("#users").append("<option>"+user['first_name']+" "+user['last_name']+"</option>");
@@ -118,8 +134,8 @@ function getImages(userID, sessionUUID) {
 					"            <div class=\"widget-content-outer\">\n" +
 					"             <img src=\"http://skinmed.id/sa/userdata/"+image['path']+"\" style='border-radius: 5px;' width=\"100%\" height=\"150px\">\n" +
 					"             <div style=\"width: 100%; display: flex; flex-direction: column; align-items: center;\">\n" +
-					"              <button onclick=\"viewImage("+i+")\" class=\"mb-2 mr-2 btn btn-info\" style=\"margin-top: 10px;\">Lihat</button>\n" +
-					"              <button class=\"mb-2 mr-2 btn btn-danger\" style=\"margin-top: -5px;\">Hapus</button>\n" +
+					"              <button onclick=\"viewImage("+i+")\" class=\"mb-2 mr-2 btn btn-info\" style=\"margin-top: 10px;\">View</button>\n" +
+					"              <button class=\"mb-2 mr-2 btn btn-danger\" style=\"margin-top: -5px;\">Delete</button>\n" +
 					"             </div>\n" +
 					"            </div>\n" +
 					"           </div>\n" +

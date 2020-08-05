@@ -44,8 +44,8 @@ function getDevices() {
 					"                                        <td>" + device['device'] + "</td>" +
 					"                                        <td>" + device['model'] + "</td>" +
 					"                                        <td>" + device['type'] + "</td>" +
-					"                                        <td><button onclick='editDevice(" + i + ")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
-					"                                        <td><button onclick='confirmDeleteDevice(" + i + ")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Hapus</button></td>" +
+					"                                        <td><button onclick='editDevice(" + i + ")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Edit</button></td>" +
+					"                                        <td><button onclick='confirmDeleteDevice(" + i + ")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Delete</button></td>" +
 					"                                    </tr>");
 			}
 		}
@@ -53,13 +53,16 @@ function getDevices() {
 }
 
 function editDevice(index) {
-	window.location.href = "http://skinmed.id/sa/devices/edit?uuid=" + devices[index]['uuid'] + "&id=" + devices[index]['user_id'];
+	$.redirect("http://skinmed.id/sa/devices/edit", {
+		'uuid': devices[index]['uuid'],
+		'id': devices[index]['user_id']
+	});
 }
 
 function confirmDeleteDevice(index) {
 	selectedDeviceIndex = index;
-	$("#confirmLabel").html("Hapus Perangkat");
-	$("#confirmBody").html("Apakah Anda yakin ingin menghapus perangkat ini?");
+	$("#confirmLabel").html("Delete Device");
+	$("#confirmBody").html("Are you sure you want to delete this device?");
 	$("#confirm").modal('show');
 }
 

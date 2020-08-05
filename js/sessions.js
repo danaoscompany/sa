@@ -46,7 +46,7 @@ function getUsers() {
 		cache: false,
 		success: function(response) {
 			users = JSON.parse(response);
-			$("#users").append("<option>Pilih User</option>");
+			$("#users").append("<option>--- Choose User ---</option>");
 			for (var i=0; i<users.length; i++) {
 				var user = users[i];
 				$("#users").append("<option>"+user['first_name']+" "+user['last_name']+"</option>");
@@ -80,8 +80,8 @@ function getSessions(userID) {
 					"                                        <td>"+session['user_name']+"</td>" +
 					"                                        <td>"+session['name']+"</td>" +
 					"                                        <td>"+session['date']+"</td>" +
-					"                                        <td><button onclick='editSession("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Ubah</button></td>" +
-					"                                        <td><button onclick='confirmDeleteSession("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Hapus</button></td>" +
+					"                                        <td><button onclick='editSession("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Edit</button></td>" +
+					"                                        <td><button onclick='confirmDeleteSession("+i+")' class='btn-shadow p-1 btn btn-danger btn-sm show-toastr-example' data-toggle='modal' data-target='#confirm'>Delete</button></td>" +
 					"                                    </tr>");
 			}
 		}
@@ -96,8 +96,8 @@ function editSession(index) {
 
 function confirmDeleteSession(index) {
 	selectedSessionIndex = index;
-	$("#confirmLabel").html("Hapus Session");
-	$("#confirm-message").html("Apakah Anda yakin ingin menghapus session ini?");
+	$("#confirmLabel").html("Delete Session");
+	$("#confirm-message").html("Are you sure you want to delete this session?");
 	$("#confirm").modal('show');
 }
 

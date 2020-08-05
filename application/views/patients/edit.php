@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Ubah Pasien</title>
+	<title>Edit Patient</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Build whatever layout you need with our Architect framework.">
@@ -70,7 +70,7 @@
 					<li class="nav-item">
 						<a href="http://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
-							Umum
+							Common
 						</a>
 					</li>
 					<li class="nav-item">
@@ -82,7 +82,7 @@
 					<li class="btn-group nav-item">
 						<a href="http://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
-							Pengguna
+							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
@@ -94,13 +94,13 @@
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
-							Pembayaran
+							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
-							Keluar
+							Logout
 						</a>
 					</li>
 				</ul>
@@ -175,7 +175,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -187,7 +187,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -199,20 +199,20 @@
 						<li class="mm-active">
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>
@@ -236,7 +236,7 @@
 								<i class="pe-7s-graph text-success">
 								</i>
 							</div>
-							<div>Ubah Pasien
+							<div>Edit Patient
 							</div>
 						</div>
 					</div>
@@ -244,31 +244,31 @@
 				<div class="tab-content">
 					<div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
 						<div class="main-card mb-3 card">
-							<div class="card-body"><h5 class="card-title">UBAH PASIEN</h5>
-								<div class="position-relative form-group"><label for="name" class="">Nama</label>
+							<div class="card-body"><h5 class="card-title">EDIT PATIENT</h5>
+								<div class="position-relative form-group"><label for="name" class="">Name</label>
 									<input name="name" id="name" placeholder="Masukkan nama" type="text"
 										   class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="address" class="">Alamat</label>
+								<div class="position-relative form-group"><label for="address" class="">Address</label>
 									<input name="address" id="address" placeholder="Masukkan alamat" type="text"
 										   class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="city" class="">Kota</label>
+								<div class="position-relative form-group"><label for="city" class="">City</label>
 									<input name="city" id="city" placeholder="Masukkan kota" type="text"
 										   class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="province" class="">Provinsi</label>
+								<div class="position-relative form-group"><label for="province" class="">Province</label>
 									<input name="province" id="province" placeholder="Masukkan provinsi" type="text"
 										   class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="province" class="">Tanggal Lahir</label>
+								<div class="position-relative form-group"><label for="province" class="">Birthday</label>
 									<input name="birthday" id="birthday" placeholder="Masukkan tanggal lahir" type="date"
 										   class="form-control">
 								</div>
-								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="save()">Ubah
-									Pasien
+								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="save()">Edit
+									Patient
 								</button>
-								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelEditing()">Batal
+								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelEditing()">Cancel
 								</button>
 							</div>
 						</div>

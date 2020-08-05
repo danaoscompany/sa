@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Tambah Perangkat</title>
+	<title>Tambah Device</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Build whatever layout you need with our Architect framework.">
@@ -70,7 +70,7 @@
 					<li class="nav-item">
 						<a href="http://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
-							Umum
+							Common
 						</a>
 					</li>
 					<li class="nav-item">
@@ -82,7 +82,7 @@
 					<li class="btn-group nav-item">
 						<a href="http://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
-							Pengguna
+							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
@@ -94,13 +94,13 @@
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
-							Pembayaran
+							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
 						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
-							Keluar
+							Logout
 						</a>
 					</li>
 				</ul>
@@ -113,32 +113,23 @@
 								<div class="btn-group">
 									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 									   class="p-0 btn">
-										<img width="42" class="rounded-circle" src="http://skinmed.id/sa/assets/images/avatars/1.jpg" alt="">
+										<img width="42" height="42" class="rounded-circle"
+											 src="http://skinmed.id/sa/images/profile_picture.png" alt="" style="border-radius: 21;">
 										<i class="fa fa-angle-down ml-2 opacity-8"></i>
 									</a>
 									<div tabindex="-1" role="menu" aria-hidden="true"
 										 class="dropdown-menu dropdown-menu-right">
-										<button type="button" tabindex="0" class="dropdown-item">User Account</button>
-										<button type="button" tabindex="0" class="dropdown-item">Settings</button>
-										<h6 tabindex="-1" class="dropdown-header">Header</h6>
-										<button type="button" tabindex="0" class="dropdown-item">Actions</button>
-										<div tabindex="-1" class="dropdown-divider"></div>
-										<button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+										<button onclick="logout()" type="button" tabindex="0" class="dropdown-item">
+											Logout
+										</button>
 									</div>
 								</div>
 							</div>
 							<div class="widget-content-left  ml-3 header-user-info">
-								<div class="widget-heading">
-									Alina Mclourd
+								<div id="admin-name" class="widget-heading">
 								</div>
-								<div class="widget-subheading">
-									VP People Manager
+								<div id="admin-email" class="widget-subheading">
 								</div>
-							</div>
-							<div class="widget-content-right header-user-info ml-3">
-								<button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-									<i class="fa text-white fa-calendar pr-1 pl-1"></i>
-								</button>
 							</div>
 						</div>
 					</div>
@@ -187,7 +178,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
-								Umum
+								Common
 							</a>
 						</li>
 						<li>
@@ -199,7 +190,7 @@
 						<li>
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
-								Pengguna
+								User
 							</a>
 						</li>
 						<li>
@@ -211,20 +202,20 @@
 						<li class="mm-active">
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
-								Pembayaran
+								Payment
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
 							<ul class="mm-show">
 								<li>
 									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
-										</i>Belum Dibayar
+										</i>Not Paid
 									</a>
 								</li>
 								<li>
 									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
-										</i>Sudah Dibayar
+										</i>Paid
 									</a>
 								</li>
 							</ul>
@@ -248,7 +239,7 @@
 								<i class="pe-7s-graph text-success">
 								</i>
 							</div>
-							<div>Tambah Perangkat
+							<div>Add Device
 							</div>
 						</div>
 					</div>
@@ -256,23 +247,23 @@
 				<div class="tab-content">
 					<div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
 						<div class="main-card mb-3 card">
-							<div class="card-body"><h5 class="card-title">TAMBAH PERANGKAT</h5>
-								<div class="position-relative form-group"><label for="device" class="">Nama</label>
-									<input name="device" id="device" placeholder="Masukkan nama" type="text"
+							<div class="card-body"><h5 class="card-title">ADD DEVICE</h5>
+								<div class="position-relative form-group"><label for="device" class="">Name</label>
+									<input name="device" id="device" placeholder="Enter name" type="text"
 										   class="form-control">
 								</div>
 								<div class="position-relative form-group"><label for="model" class="">Model</label>
-									<input name="model" id="model" placeholder="Masukkan model" type="text"
+									<input name="model" id="model" placeholder="Enter model" type="text"
 										   class="form-control">
 								</div>
-								<div class="position-relative form-group"><label for="type" class="">Tipe</label>
-									<input name="type" id="type" placeholder="Masukkan tipe" type="text"
+								<div class="position-relative form-group"><label for="type" class="">Type</label>
+									<input name="type" id="type" placeholder="Enter type" type="text"
 										   class="form-control">
 								</div>
-								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="addDevice()">Tambah
-									Perangkat
+								<button class="mt-2 btn btn-primary" style="width: 100%;" onclick="addDevice()">Add
+									Device
 								</button>
-								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelAdding()">Batal
+								<button class="mt-2 btn btn-danger" style="width: 100%;" onclick="cancelAdding()">Cancel
 								</button>
 							</div>
 						</div>
@@ -363,6 +354,7 @@
 	</div>
 </div>
 <input type="hidden" id="user-id" value="<?php echo $userID; ?>">
+<input type="hidden" id="admin-id" value="<?php echo $adminID; ?>">
 <script type="text/javascript" src="http://skinmed.id/sa/assets/scripts/main.js"></script>
 </body>
 </html>
