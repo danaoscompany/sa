@@ -15,7 +15,7 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<script src="http://skinmed.id/sa/js/jquery.js"></script>
 	<script src="http://skinmed.id/sa/js/global.js"></script>
-	<script src="http://skinmed.id/sa/css/main.cssjs/add-admin.js"></script>
+	<script src="http://skinmed.id/sa/js/add-admin.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
