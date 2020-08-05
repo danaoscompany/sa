@@ -46,7 +46,9 @@ function getAdmins() {
 }
 
 function editAdmin(index) {
-	window.location.href = "http://skinmed.id/sa/admin/edit?id="+admins[index]['id'];
+	$.redirect("http://skinmed.id/sa/admin/edit", {
+		'id': admins[index]['id']
+	});
 }
 
 function confirmDeleteAdmin(index) {
@@ -59,10 +61,10 @@ function confirmDeleteAdmin(index) {
 function deleteAdmin() {
 	var adminID = admins[selectedAdminIndex]['id'];
 	let fd = new FormData();
-	fd.append("cmd", "DELETE FROM `admins` WHERE `id`="+adminID);
+	fd.append("admin_id", adminID);
 	$.ajax({
 		type: 'POST',
-		url: PHP_URL+'/main/execute',
+		url: PHP_URL+'/admin/delete_by_id',
 		data: fd,
 		processData: false,
 		contentType: false,

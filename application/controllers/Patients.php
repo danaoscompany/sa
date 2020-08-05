@@ -3,8 +3,8 @@
 class Patients extends CI_Controller {
 
 	public function index() {
-		$userID = intval($this->input->post('id'));
 		if ($this->session->logged_in == 1) {
+			$userID = intval($this->input->post('id'));
 			$this->load->view('patients', array(
 				'adminID' => intval($this->session->user_id),
 				'userID' => $userID
@@ -43,11 +43,15 @@ class Patients extends CI_Controller {
 
 	public function edit() {
 		if ($this->session->logged_in == 1) {
-			$userID = intval($this->input->get('id'));
-			$uuid = $this->input->get('uuid');
+			$patientID = intval($this->input->post('id'));
+			$patientUUID = $this->input->post('uuid');
+			$adminID = $this->session->user_id;
+			$userID = intval($this->input->post('user_id'));
 			$this->load->view("patients/edit", array(
-				'id' => $userID,
-				'uuid' => $uuid
+				'patientID' => $patientID,
+				'patientUUID' => $patientUUID,
+				'adminID' => $adminID,
+				'userID' => $userID
 			));
 		} else {
 			header("Location: http://skinmed.id/sa/patients/edit");

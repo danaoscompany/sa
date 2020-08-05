@@ -3,10 +3,12 @@
 class Devices extends CI_Controller {
 
 	public function index() {
-		$userID = $this->input->post('id');
 		if ($this->session->logged_in == 1) {
+			$userID = $this->input->post('id');
+			$adminID = $this->session->user_id;
 			$this->load->view('devices', array(
-				'userID' => $userID
+				'userID' => $userID,
+				'adminID' => $adminID
 			));
 		} else {
 			header("Location: http://skinmed.id/sa/devices");

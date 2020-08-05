@@ -14,6 +14,7 @@
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
 	<script src="http://skinmed.id/sa/js/jquery.js"></script>
+	<script src="http://skinmed.id/sa/js/jquery.redirect.js"></script>
 	<script src="http://skinmed.id/sa/js/global.js"></script>
 	<script src="http://skinmed.id/sa/js/admin.js"></script>
 	<!--
@@ -348,7 +349,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteUser()">Ya</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="deleteAdmin()">Ya</button>
 			</div>
 		</div>
 	</div>

@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>Pengguna - Kelola Daftar Pengguna</title>
+	<title>Pengguna</title>
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
@@ -184,7 +184,7 @@
 								Admin
 							</a>
 						</li>
-						<li>
+						<li class="mm-active">
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
@@ -196,7 +196,7 @@
 								Session
 							</a>
 						</li>
-						<li class="mm-active">
+						<li>
 							<a href="#">
 								<i class="metismenu-icon pe-7s-piggy"></i>
 								Pembayaran

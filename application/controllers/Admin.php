@@ -34,9 +34,18 @@ class Admin extends CI_Controller {
 		echo json_encode($sessions);
 	}
 
+	public function delete_by_id() {
+		$adminID = intval($this->input->post('admin_id'));
+		$this->db->where('id', $adminID);
+		$this->db->delete('admins');
+	}
+
 	public function add() {
 		if ($this->session->logged_in == 1) {
-			$this->load->view('admin/add');
+			$adminID = $this->session->user_id;
+			$this->load->view('admin/add', array(
+				'adminID' => $adminID
+			));
 		} else {
 			header("Location: http://skinmed.id/sa/login");
 		}
@@ -48,9 +57,15 @@ class Admin extends CI_Controller {
 	}
 
 	public function edit() {
-		$id = intval($this->input->get("id"));
 		if ($this->session->logged_in == 1) {
-			$this->load->view("admin/edit", array('id' => $id));
+			$adminID = $this->session->user_id;
+			$editedAdminID = intval($this->input->post("id"));
+			$userID = intval($this->input->post("user_id"));
+			$this->load->view("admin/edit", array(
+				'adminID' => $adminID,
+				'editedAdminID' => $editedAdminID,
+				'userID' => $userID
+			));
 		} else {
 			header("Location: http://skinmed.id/sa/login");
 		}

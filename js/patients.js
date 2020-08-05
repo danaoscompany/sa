@@ -119,7 +119,11 @@ function viewPatients(index) {
 }
 
 function editPatient(index) {
-	window.location.href = "http://skinmed.id/sa/patients/edit?id="+patients[index]['id']+"&uuid="+patients[index]['uuid'];
+	$.redirect("http://skinmed.id/sa/patients/edit", {
+		'id': parseInt(patients[index]['id']),
+		'uuid': patients[index]['uuid'],
+		'user_id': parseInt(patients[index]['user_id'])
+	});
 }
 
 function confirmDeletePatient(index) {

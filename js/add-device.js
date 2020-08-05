@@ -32,3 +32,7 @@ function addDevice() {
 		}
 	});
 }
+
+function cancelAdding() {
+	window.history.back();
+}

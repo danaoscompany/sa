@@ -1,23 +1,40 @@
-var id = 0;
+var editedAdminID = 0;
 var emailChanged = 0;
 var prevEmail = "";
 
 $(document).ready(function() {
-	id = parseInt($("#admin-id").val());
+	editedAdminID = parseInt($("#edited-admin-id").val());
 	let fd = new FormData();
-	fd.append("cmd", "SELECT * FROM `admins` WHERE `id`="+id);
+	fd.append("id", editedAdminID);
 	$.ajax({
 		type: 'POST',
-		url: PHP_URL+"/main/query",
+		url: PHP_URL+"/admin/get_by_id",
 		data: fd,
 		processData: false,
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			var obj = JSON.parse(response)[0];
+			var obj = JSON.parse(response);
 			prevEmail = obj['email'];
+			$("#name").val(obj['name']);
 			$("#email").val(obj['email']);
 			$("#password").val(obj['password']);
+		}
+	});
+	let adminID = parseInt($("#admin-id").val());
+	let fd2 = new FormData();
+	fd2.append("id", userID);
+	$.ajax({
+		type: 'POST',
+		url: PHP_URL+"/admin/get_by_id",
+		data: fd2,
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(response) {
+			var obj = JSON.parse(response);
+			$("#admin-name").html(obj['name']);
+			$("#admin-email").html(obj['email']);
 		}
 	});
 });
@@ -34,7 +51,7 @@ function save() {
 		emailChanged = 1;
 	}
 	let fd = new FormData();
-	fd.append("id", id);
+	fd.append("id", editedAdminID);
 	fd.append("name", name);
 	fd.append("email", email);
 	fd.append("password", password);

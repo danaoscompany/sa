@@ -1,14 +1,44 @@
 var userID = 0;
+var patientID = 0;
 var uuid = "";
 
 $(document).ready(function() {
 	userID = parseInt($("#user-id").val().trim());
-	uuid = $("#uuid").val().trim();
+	patientID = parseInt($("#patient-id").val().trim());
+	uuid = $("#patient-uuid").val().trim();
 	let fd = new FormData();
 	fd.append("uuid", uuid);
 	$.ajax({
 		type: 'POST',
-		url: PHP_URL+"/patient/get_by_uuid"
+		url: PHP_URL+"/patients/get_by_uuid",
+		data: fd,
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(response) {
+			var obj = JSON.parse(response);
+			$("#name").val(obj['name']);
+			$("#address").val(obj['address']);
+			$("#city").val(obj['city']);
+			$("#province").val(obj['province']);
+			$("#birthday").val(obj['birthday']);
+		}
+	});
+	var adminID = parseInt($("#admin-id").val());
+	let fd2 = new FormData();
+	fd2.append("id", adminID);
+	$.ajax({
+		type: 'POST',
+		url: PHP_URL+"/admin/get_by_id",
+		data: fd2,
+		processData: false,
+		contentType: false,
+		cache: false,
+		success: function(response) {
+			var obj = JSON.parse(response);
+			$("#admin-name").html(obj['name']);
+			$("#admin-email").html(obj['email']);
+		}
 	});
 });
 
@@ -37,7 +67,13 @@ function save() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			window.location.href = "http://skinmed.id/sa/patients?id="+userID;
+			$.redirect("http://skinmed.id/sa/patients", {
+				'id': userID
+			});
 		}
 	});
+}
+
+function cancelEditing() {
+	window.history.back();
 }
