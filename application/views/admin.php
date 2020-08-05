@@ -298,6 +298,7 @@
 									<thead>
 									<tr>
 										<th>#</th>
+										<th>Nama</th>
 										<th>Email</th>
 										<th>Kata Sandi</th>
 										<th>Ubah</th>
