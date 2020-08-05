@@ -129,6 +129,13 @@ class User extends CI_Controller {
 		}
 	}
 	
+	public function get_latest_photo_num() {
+		$userID = intval($this->input->post('user_id'));
+		$bucketImage = $this->db->query("SELECT * FROM `bucket_images` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->row_array();
+		$photoNum = intval($bucketImage['photo_num']);
+		echo $photoNum+1;
+	}
+	
 	public function get_premium_status() {
 		$userID = intval($this->input->post('user_id'));
 		$this->db->where('id', $userID);
