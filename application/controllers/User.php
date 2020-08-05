@@ -500,6 +500,8 @@ class User extends CI_Controller {
 	}
 	
 	public function upload_skin_image() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
 		$bucketUUID = $this->input->post('bucket_uuid');
 		$sessionUUID = $this->input->post('session_uuid');
 		$note = $this->input->post('note');
@@ -526,6 +528,8 @@ class User extends CI_Controller {
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
         	$this->db->insert('bucket_images', array(
+        		'user_id' => $userID,
+        		'uuid' => $uuid,
         		'bucket_uuid' => $bucketUUID,
         		'session_uuid' => $sessionUUID,
         		'path' => $this->upload->data()['file_name'],
