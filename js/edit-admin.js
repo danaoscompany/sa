@@ -23,6 +23,7 @@ $(document).ready(function() {
 });
 
 function save() {
+	let name = $("#name").val().trim();
 	let email = $("#email").val().trim();
 	let password = $("#password").val().trim();
 	if (email == "" || password == "") {
@@ -34,6 +35,7 @@ function save() {
 	}
 	let fd = new FormData();
 	fd.append("id", id);
+	fd.append("name", name);
 	fd.append("email", email);
 	fd.append("password", password);
 	fd.append("email_changed", emailChanged);

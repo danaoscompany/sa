@@ -112,7 +112,7 @@
 								<div class="btn-group">
 									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 									   class="p-0 btn">
-										<img width="42" height="42" class="rounded-circle" src="images/profile_picture.png" alt="" style="border-radius: 21;">
+										<img width="42" height="42" class="rounded-circle" src="http://skinmed.id/images/profile_picture.png" alt="" style="border-radius: 21;">
 										<i class="fa fa-angle-down ml-2 opacity-8"></i>
 									</a>
 									<div tabindex="-1" role="menu" aria-hidden="true"
@@ -171,9 +171,9 @@
 				<div class="app-sidebar__inner">
 					<ul class="vertical-nav-menu">
 						<li>
-						<li class="mm-active">
+						<li>
 							<a href="http://skinmed.id/sa/common">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-settings"></i>
 								Umum
 							</a>
 						</li>
@@ -191,13 +191,13 @@
 						</li>
 						<li>
 							<a href="http://skinmed.id/sa/sessions">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-unlock"></i>
 								Session
 							</a>
 						</li>
-						<li>
+						<li class="mm-active">
 							<a href="#">
-								<i class="metismenu-icon pe-7s-car"></i>
+								<i class="metismenu-icon pe-7s-piggy"></i>
 								Pembayaran
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
@@ -218,7 +218,7 @@
 						</li>
 						<li>
 							<a href="http://skinmed.id/sa/admin/logout">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-power"></i>
 								Logout
 							</a>
 						</li>

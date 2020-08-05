@@ -175,7 +175,7 @@
 						<li>
 						<li>
 							<a href="http://skinmed.id/sa/common">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-settings"></i>
 								Umum
 							</a>
 						</li>
@@ -185,7 +185,7 @@
 								Admin
 							</a>
 						</li>
-						<li class="mm-active">
+						<li>
 							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Pengguna
@@ -193,13 +193,13 @@
 						</li>
 						<li>
 							<a href="http://skinmed.id/sa/sessions">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-unlock"></i>
 								Session
 							</a>
 						</li>
 						<li class="mm-active">
 							<a href="#">
-								<i class="metismenu-icon pe-7s-car"></i>
+								<i class="metismenu-icon pe-7s-piggy"></i>
 								Pembayaran
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
@@ -220,7 +220,7 @@
 						</li>
 						<li>
 							<a href="http://skinmed.id/sa/admin/logout">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-power"></i>
 								Logout
 							</a>
 						</li>

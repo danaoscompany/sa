@@ -65,30 +65,41 @@
 		</div>
 		<div class="app-header__content">
 			<div class="app-header-left">
-				<div class="search-wrapper">
-					<div class="input-holder">
-						<input type="text" class="search-input" placeholder="Type to search">
-						<button class="search-icon"><span></span></button>
-					</div>
-					<button class="close"></button>
-				</div>
 				<ul class="header-menu nav">
 					<li class="nav-item">
-						<a href="javascript:void(0);" class="nav-link">
-							<i class="nav-link-icon fa fa-database"> </i>
-							Statistics
+						<a href="http://skinmed.id/sa/common" class="nav-link">
+							<i class="nav-link-icon fa fa-cogs"> </i>
+							Umum
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="http://skinmed.id/sa/admin" class="nav-link">
+							<i class="nav-link-icon fa fa-users-cog"> </i>
+							Admin
 						</a>
 					</li>
 					<li class="btn-group nav-item">
-						<a href="javascript:void(0);" class="nav-link">
-							<i class="nav-link-icon fa fa-edit"></i>
-							Projects
+						<a href="http://skinmed.id/sa/user" class="nav-link">
+							<i class="nav-link-icon fa fa-user"></i>
+							Pengguna
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="javascript:void(0);" class="nav-link">
-							<i class="nav-link-icon fa fa-cog"></i>
-							Settings
+						<a href="http://skinmed.id/sa/sessions" class="nav-link">
+							<i class="nav-link-icon fa fa-unlock-alt"></i>
+							Session
+						</a>
+					</li>
+					<li class="dropdown nav-item">
+						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
+							<i class="nav-link-icon fa fa-shopping-cart"></i>
+							Pembayaran
+						</a>
+					</li>
+					<li class="dropdown nav-item">
+						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
+							<i class="nav-link-icon fa fa-sign-out-alt"></i>
+							Keluar
 						</a>
 					</li>
 				</ul>
@@ -540,11 +551,11 @@
 						<li>
 						<li>
 							<a href="http://skinmed.id/sa/common">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-settings"></i>
 								Umum
 							</a>
 						</li>
-						<li class="mm-active">
+						<li>
 							<a href="http://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
@@ -558,13 +569,13 @@
 						</li>
 						<li>
 							<a href="http://skinmed.id/sa/sessions">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-unlock"></i>
 								Session
 							</a>
 						</li>
 						<li class="mm-active">
 							<a href="#">
-								<i class="metismenu-icon pe-7s-car"></i>
+								<i class="metismenu-icon pe-7s-piggy"></i>
 								Pembayaran
 								<i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
 							</a>
@@ -585,7 +596,7 @@
 						</li>
 						<li>
 							<a href="http://skinmed.id/sa/admin/logout">
-								<i class="metismenu-icon pe-7s-users"></i>
+								<i class="metismenu-icon pe-7s-power"></i>
 								Logout
 							</a>
 						</li>
@@ -603,8 +614,6 @@
 								</i>
 							</div>
 							<div>Ubah Perangkat
-								<div class="page-title-subheading">Kelola perangkat dengan mudah.
-								</div>
 							</div>
 						</div>
 						<div class="page-title-actions">

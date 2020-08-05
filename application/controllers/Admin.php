@@ -249,12 +249,14 @@ class Admin extends CI_Controller {
 	}
 	
 	public function add_admin() {
+		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		if (sizeof($this->db->query("SELECT * FROM `admins` WHERE `email`='" . $email . "'")->result_array()) > 0) {
 			echo -1;
 		} else {
 			$this->db->insert('admins', array(
+				'name' => $name,
 				'email' => $email,
 				'password' => $password
 			));
@@ -281,6 +283,7 @@ class Admin extends CI_Controller {
 
 	public function edit_admin() {
 		$id = intval($_POST['id']);
+		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 		$emailChanged = intval($_POST['email_changed']);
@@ -290,6 +293,7 @@ class Admin extends CI_Controller {
 			} else {
 				$this->db->where('id', $id);
 				$this->db->update('admins', array(
+					'name' => $name,
 					'email' => $email,
 					'password' => $password
 				));
@@ -298,6 +302,7 @@ class Admin extends CI_Controller {
 		} else if ($emailChanged == 0) {
 			$this->db->where('id', $id);
 			$this->db->update('admins', array(
+				'name' => $name,
 				'email' => $email,
 				'password' => $password
 			));
