@@ -27,7 +27,7 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
+	<link href="http://skinmed.id/sa/css/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
