@@ -123,17 +123,43 @@ class User extends CI_Controller {
 		$userID = intval($this->input->post('user_id'));
 		$results = $this->db->query("SELECT * FROM `bucket_images` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->result_array();
 		if (sizeof($results) > 0) {
-			echo intval($results[0]['id'])+1;
+			echo intval($results[0]['photo_num'])+1;
 		} else {
 			echo 1;
 		}
 	}
 	
+	public function update_device_detail() {
+		$uuid = $this->input->post('uuid');
+		$device = $this->input->post('device');
+		$model = $this->input->post('model');
+		$type = $this->input->post('type');
+		$this->db->where('uuid', $uuid);
+		$this->db->update('devices', array(
+			'device' => $device,
+			'model' => $model,
+			'type' => $type
+		));
+	}
+	
 	public function get_latest_photo_num() {
-		$userID = intval($this->input->post('user_id'));
-		$bucketImage = $this->db->query("SELECT * FROM `bucket_images` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->row_array();
-		$photoNum = intval($bucketImage['photo_num']);
-		echo $photoNum+1;
+		$sessionUUID = $this->input->post('session_uuid');
+		$sessionImage = $this->db->query("SELECT * FROM `session_images` WHERE `session_uuid`='" . $sessionUUID . "' ORDER BY `photo_num` DESC LIMIT 1")->row_array();
+		if ($sessionImage != null) {
+			echo intval($sessionImage['photo_num'])+1;
+		} else {
+			echo 1;
+		}
+	}
+	
+	public function get_latest_preview_photo_num() {
+		$sessionUUID = $this->input->post('session_uuid');
+		$sessionImage = $this->db->query("SELECT * FROM `preview_images` WHERE `session_uuid`='" . $sessionUUID . "' ORDER BY `photo_num` DESC LIMIT 1")->row_array();
+		if ($sessionImage != null) {
+			echo intval($sessionImage['photo_num'])+1;
+		} else {
+			echo 1;
+		}
 	}
 	
 	public function get_premium_status() {
@@ -206,6 +232,22 @@ class User extends CI_Controller {
 		$this->db->delete('devices');
 	}
 	
+	public function get_all_devices() {
+		echo json_encode($this->db->query("SELECT * FROM `devices` ORDER BY `device`")->result_array());
+	}
+	
+	public function get_session_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		echo json_encode($this->db->get('sessions')->row_array());
+	}
+	
+	public function get_patient_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		echo json_encode($this->db->get('patients')->row_array());
+	}
+	
 	public function get_patients_by_user_id() {
 		$userID = intval($this->input->post('user_id'));
 		$patients = $this->db->query("SELECT * FROM `patients` WHERE `user_id`=" . $userID)->result_array();
@@ -238,12 +280,24 @@ class User extends CI_Controller {
 	}
 
 	public function get_sessions() {
-		$sessions = $this->db->query("SELECT * FROM `sessions` ORDER BY `name`")->result_array();
+		$userID = intval($this->input->post('user_id'));
+		$deviceUUID = $this->input->post('device_uuid');
+		$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " AND `device_uuid`='" . $deviceUUID . "' ORDER BY `name`")->result_array();
 		for ($i=0; $i<sizeof($sessions); $i++) {
 			$session = $sessions[$i];
-			$sessions[$i]['images'] = $this->db->query("SELECT * FROM `bucket_images` WHERE `session_uuid`='" . $session['uuid'] . "' LIMIT 5")->result_array();
+			$sessions[$i]['images'] = $this->db->query("SELECT * FROM `session_images` WHERE `session_uuid`='" . $session['uuid'] . "' LIMIT 5")->result_array();
 		}
 		echo json_encode($sessions);
+	}
+	
+	public function get_devices() {
+		echo json_encode($this->db->query("SELECT * FROM `devices` ORDER BY `device`")->result_array());
+	}
+	
+	public function get_device_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		echo json_encode($this->db->get('devices')->row_array());
 	}
 
 	public function get_session() {
@@ -292,6 +346,49 @@ class User extends CI_Controller {
 		} else {
 			return 0;
 		}
+	}
+	
+	public function sync_session_images() {
+		$sessionImages = json_decode($this->input->post('session_images'), true);
+		for ($i=0; $i<sizeof($sessionImages); $i++) {
+			$sessionImage = $sessionImages[$i];
+			$imageUUID = $sessionImage['uuid'];
+			if ($imageUUID != null) {
+				$newImagePath = $_FILES[$imageUUID]['name'];
+				move_uploaded_file($_FILES[$imageUUID]['tmp_name'], "userdata/" . $newImagePath);
+				if ($this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $imageUUID . "'")->num_rows() > 0) {
+					$this->db->where("uuid", $this->get_real_string($sessionImage, 'uuid'));
+					$this->db->update("session_images", array(
+						"user_id" => $this->get_real_int($sessionImage, 'user_id'),
+						"uuid" => $this->get_real_string($sessionImage, 'uuid'),
+						"device_uuid" => $this->get_real_string($sessionImage, 'device_uuid'),
+						"session_uuid" => $this->get_real_string($sessionImage, 'session_uuid'),
+						"type" => $this->get_real_int($sessionImage, 'type'),
+						"name" => $this->get_real_string($sessionImage, 'name'),
+						"path" => $newImagePath,
+						"points" => json_encode($this->get_real_json_array($sessionImage, 'points')),
+						"note" => $this->get_real_string($sessionImage, 'note'),
+						"date" => $this->get_real_string($sessionImage, 'date'),
+						"local" => $this->get_boolean_value($sessionImage, 'local')
+					));
+				} else {
+					$this->db->insert("session_images", array(
+						"user_id" => $this->get_real_int($sessionImage, 'user_id'),
+						"uuid" => $this->get_real_string($sessionImage, 'uuid'),
+						"device_uuid" => $this->get_real_string($sessionImage, 'device_uuid'),
+						"session_uuid" => $this->get_real_string($sessionImage, 'session_uuid'),
+						"type" => $this->get_real_int($sessionImage, 'type'),
+						"name" => $this->get_real_string($sessionImage, 'name'),
+						"path" => $newImagePath,
+						"points" => json_encode($this->get_real_json_array($sessionImage, 'points')),
+						"note" => $this->get_real_string($sessionImage, 'note'),
+						"date" => $this->get_real_string($sessionImage, 'date'),
+						"local" => $this->get_boolean_value($sessionImage, 'local')
+					));
+				}
+			}
+		}
+		echo json_encode($sessionImages);
 	}
 	
 	public function sync_buckets() {
@@ -430,6 +527,7 @@ class User extends CI_Controller {
 					"name" => $this->get_real_string($session, 'name'),
 					"date" => $this->get_real_string($session, 'date'),
 					"patient_uuid" => $this->get_real_string($session, 'patient_uuid'),
+					"device_uuid" => $this->get_real_string($session, 'device_uuid')
 				));
 			} else {
 				$this->db->insert("sessions", array(
@@ -438,6 +536,7 @@ class User extends CI_Controller {
 					"name" => $this->get_real_string($session, 'name'),
 					"date" => $this->get_real_string($session, 'date'),
 					"patient_uuid" => $this->get_real_string($session, 'patient_uuid'),
+					"device_uuid" => $this->get_real_string($session, 'device_uuid')
 				));
 			}
 		}
@@ -492,6 +591,69 @@ class User extends CI_Controller {
 		echo json_encode($buckets);
 	}
 	
+	public function get_images_by_session_uuid() {
+		$sessionUUID = $this->input->post('session_uuid');
+		$this->db->from('session_images');
+		$this->db->where('session_uuid', $sessionUUID);
+		$this->db->order_by('date', 'asc');
+		$images = $this->db->get()->result_array();
+		echo json_encode($images);
+	}
+	
+	public function get_session_image_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->from('session_images');
+		$this->db->where('uuid', $uuid);
+		$image = $this->db->get()->row_array();
+		echo json_encode($image);
+	}
+	
+	public function get_session_images_by_user_id() {
+		$userID = intval($this->input->post('user_id'));
+		$this->db->from('session_images');
+		$this->db->where('user_id', $userID);
+		$this->db->order_by('date', 'desc');
+		echo json_encode($this->db->get()->result_array());
+	}
+	
+	public function get_bucket_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$bucket = $this->db->query("SELECT * FROM `buckets` WHERE `uuid`='" . $uuid . "'")->row_array();
+		if ($bucket != null) {
+			$bucket['images'] = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $uuid . "'")->result_array();
+			echo json_encode($bucket);
+		}
+	}
+	
+	public function get_latest_bucket() {
+		$userID = intval($this->input->post('user_id'));
+		$bucket = $this->db->query("SELECT * FROM `buckets` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->row_array();
+		if ($bucket != null) {
+			$bucket['images'] = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
+			echo json_encode($bucket);
+		}
+	}
+	
+	public function add_session() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
+		$name = $this->input->post('name');
+		$date = $this->input->post('date');
+		$deviceUUID = $this->input->post('device_uuid');
+		$patientUUID = $this->input->post('patient_uuid');
+		$this->db->insert('sessions', array(
+			'user_id' => $userID,
+			'uuid' => $uuid,
+			'name' => $name,
+			'date' => $date,
+			'device_uuid' => $deviceUUID,
+			'patient_uuid' => $patientUUID
+		));
+		$sessionID = intval($this->db->insert_id());
+		$this->db->where('id', $sessionID);
+		echo json_encode($this->db->get('sessions')->row_array());
+	}
+	
 	public function add_bucket() {
 		$uuid = $this->input->post('uuid');
 		$image1UUID = $this->input->post('image_1_uuid');
@@ -525,14 +687,164 @@ class User extends CI_Controller {
 			'photo_num' => $photoNum+1,
 			'local' => 0
 		));
-		return $bucketID;
+		echo $bucketID;
+	}
+	
+	public function upload_to_db() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
+		$deviceUUID = $this->input->post('device_uuid');
+		$sessionUUID = $this->input->post('session_uuid');
+		$name = $this->input->post('name');
+		$note = $this->input->post('note');
+		$path = $this->input->post('path');
+		$points = $this->input->post('points');
+		$type = intval($this->input->post('type'));
+		$date = $this->input->post('date');
+		$photoNum = intval($this->input->post('photo_num'));
+		$type = intval($this->input->post('type'));
+		$imageX = doubleval($this->input->post('image_x'));
+		$imageY = doubleval($this->input->post('image_y'));
+		$imageWidth = doubleval($this->input->post('image_width'));
+		$imageHeight = doubleval($this->input->post('image_height'));
+		$images = $this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->result_array();
+        	if (sizeof($images) > 0) {
+        		$this->db->where('uuid', $uuid);
+	        	$this->db->update('session_images', array(
+	        		'user_id' => $userID,
+	        		'device_uuid' => $deviceUUID,
+	        		'session_uuid' => $sessionUUID,
+	        		'name' => $name,
+	        		'note' => $note,
+	        		'image_x' => $imageX,
+	        		'image_y' => $imageY,
+	        		'image_width' => $imageWidth,
+	        		'image_height' => $imageHeight,
+	        		'points' => $points,
+	        		'type' => $type,
+	        		'date' => $date,
+	        		'path' => $path,
+	        		'type' => $type,
+	        		'photo_num' => $photoNum,
+	        		'storage_method' => 'db'
+	        	));
+        		$this->db->where('uuid', $uuid);
+        		echo json_encode($this->db->get('session_images')->row_array());
+        	} else {
+	        	$this->db->insert('session_images', array(
+	        		'user_id' => $userID,
+	        		'uuid' => $uuid,
+	        		'device_uuid' => $deviceUUID,
+	        		'session_uuid' => $sessionUUID,
+	        		'name' => $name,
+	        		'note' => $note,
+	        		'path' => $path,
+	        		'image_x' => $imageX,
+	        		'image_y' => $imageY,
+	        		'image_width' => $imageWidth,
+	        		'image_height' => $imageHeight,
+	        		'points' => $points,
+	        		'type' => $type,
+	        		'date' => $date,
+	        		'type' => $type,
+	        		'photo_num' => $photoNum,
+	        		'storage_method' => 'db'
+	        	));
+        		$this->db->where('uuid', $uuid);
+        		echo json_encode($this->db->get('session_images')->row_array());
+        	}
+        	$id = intval($this->db->insert_id());
+        	echo json_encode(array(
+        		'id' => $id,
+        		'path' => $this->upload->data()['file_name']
+        	));
+	}
+	
+	public function upload_to_gd() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
+		$deviceUUID = $this->input->post('device_uuid');
+		$sessionUUID = $this->input->post('session_uuid');
+		$name = $this->input->post('name');
+		$note = $this->input->post('note');
+		$path = $this->input->post('path');
+		$points = $this->input->post('points');
+		$type = intval($this->input->post('type'));
+		$date = $this->input->post('date');
+		$type = intval($this->input->post('type'));
+		$gdFileID = $this->input->post('gd_file_id');
+		$imageX = doubleval($this->input->post('image_x'));
+		$imageY = doubleval($this->input->post('image_y'));
+		$imageWidth = doubleval($this->input->post('image_width'));
+		$imageHeight = doubleval($this->input->post('image_height'));
+		$photoNum = intval($this->input->post('photo_num'));
+		$images = $this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->result_array();
+        	if (sizeof($images) > 0) {
+        		$this->db->where('uuid', $uuid);
+	        	$this->db->update('session_images', array(
+	        		'user_id' => $userID,
+	        		'device_uuid' => $deviceUUID,
+	        		'session_uuid' => $sessionUUID,
+	        		'name' => $name,
+	        		'note' => $note,
+	        		'path' => $path,
+	        		'gd_file_id' => $gdFileID,
+	        		'image_x' => $imageX,
+	        		'image_y' => $imageY,
+	        		'image_width' => $imageWidth,
+	        		'image_height' => $imageHeight,
+	        		'points' => $points,
+	        		'type' => $type,
+	        		'date' => $date,
+	        		'type' => $type,
+	        		'photo_num' => $photoNum,
+	        		'storage_method' => 'gd'
+	        	));
+        		$this->db->where('uuid', $uuid);
+        		echo json_encode($this->db->get('session_images')->row_array());
+        	} else {
+	        	$this->db->insert('session_images', array(
+	        		'user_id' => $userID,
+	        		'uuid' => $uuid,
+	        		'device_uuid' => $deviceUUID,
+	        		'session_uuid' => $sessionUUID,
+	        		'gd_file_id' => $gdFileID,
+	        		'name' => $name,
+	        		'note' => $note,
+	        		'path' => $path,
+	        		'image_x' => $imageX,
+	        		'image_y' => $imageY,
+	        		'image_width' => $imageWidth,
+	        		'image_height' => $imageHeight,
+	        		'points' => $points,
+	        		'type' => $type,
+	        		'date' => $date,
+	        		'type' => $type,
+	        		'photo_num' => $photoNum,
+	        		'storage_method' => 'gd'
+	        	));
+        		$this->db->where('uuid', $uuid);
+        		echo json_encode($this->db->get('session_images')->row_array());
+        	}
+        	$id = intval($this->db->insert_id());
+        	echo json_encode(array(
+        		'id' => $id,
+        		'path' => $this->upload->data()['file_name']
+        	));
+	}
+	
+	public function delete_image_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		$this->db->delete('session_images');
 	}
 	
 	public function upload_skin_image() {
 		$userID = intval($this->input->post('user_id'));
 		$uuid = $this->input->post('uuid');
-		$bucketUUID = $this->input->post('bucket_uuid');
+		$deviceUUID = $this->input->post('device_uuid');
 		$sessionUUID = $this->input->post('session_uuid');
+		$name = $this->input->post('name');
 		$note = $this->input->post('note');
 		$points = $this->input->post('points');
 		$type = intval($this->input->post('type'));
@@ -542,15 +854,8 @@ class User extends CI_Controller {
 		$imageY = doubleval($this->input->post('image_y'));
 		$imageWidth = doubleval($this->input->post('image_width'));
 		$imageHeight = doubleval($this->input->post('image_height'));
-		$this->db->where('uuid', $bucketUUID);
-		$bucket = $this->db->get('buckets')->row_array();
-		$images = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
-		$photoNum = 0;
-		if (sizeof($images) > 0) {
-			$photoNum = intval($images[sizeof($images)-1]['photo_num']);
-		} else {
-			$photoNum = 1;
-		}
+		$photoNum = intval($this->input->post('photo_num'));
+		$images = $this->db->query("SELECT * FROM `session_images` WHERE `session_uuid`='" . $sessionUUID . "'")->result_array();
 		$config = array(
 	        'upload_path' => './userdata/',
 	        'allowed_types' => "*",
@@ -561,14 +866,15 @@ class User extends CI_Controller {
         );
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
-        	$images = $this->db->query("SELECT * FROM `bucket_images` WHERE `uuid`='" . $uuid . "'")->result_array();
+        	$images = $this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->result_array();
         	if (sizeof($images) > 0) {
         		$this->db->where('uuid', $uuid);
-	        	$this->db->update('bucket_images', array(
+	        	$this->db->update('session_images', array(
 	        		'user_id' => $userID,
-	        		'bucket_uuid' => $bucketUUID,
+	        		'device_uuid' => $deviceUUID,
 	        		'session_uuid' => $sessionUUID,
 	        		'path' => $this->upload->data()['file_name'],
+	        		'name' => $name,
 	        		'note' => $note,
 	        		'image_x' => $imageX,
 	        		'image_y' => $imageY,
@@ -578,15 +884,19 @@ class User extends CI_Controller {
 	        		'type' => $type,
 	        		'date' => $date,
 	        		'type' => $type,
-	        		'photo_num' => $photoNum
+	        		'photo_num' => $photoNum,
+	        		'storage_method' => 'my_account'
 	        	));
+        		$this->db->where('uuid', $uuid);
+        		echo json_encode($this->db->get('session_images')->row_array());
         	} else {
-	        	$this->db->insert('bucket_images', array(
+	        	$this->db->insert('session_images', array(
 	        		'user_id' => $userID,
 	        		'uuid' => $uuid,
-	        		'bucket_uuid' => $bucketUUID,
+	        		'device_uuid' => $deviceUUID,
 	        		'session_uuid' => $sessionUUID,
 	        		'path' => $this->upload->data()['file_name'],
+	        		'name' => $name,
 	        		'note' => $note,
 	        		'image_x' => $imageX,
 	        		'image_y' => $imageY,
@@ -596,8 +906,11 @@ class User extends CI_Controller {
 	        		'type' => $type,
 	        		'date' => $date,
 	        		'type' => $type,
-	        		'photo_num' => $photoNum
+	        		'photo_num' => $photoNum,
+	        		'storage_method' => 'my_account'
 	        	));
+        		$this->db->where('uuid', $uuid);
+        		echo json_encode($this->db->get('session_images')->row_array());
         	}
         	$id = intval($this->db->insert_id());
         	echo json_encode(array(
@@ -607,6 +920,111 @@ class User extends CI_Controller {
         } else {
         	echo json_encode($this->upload->display_errors());
         }
+	}
+	
+	public function update_image_points_and_note() {
+		$uuid = $this->input->post('uuid');
+		$points = $this->input->post('points');
+		$note = $this->input->post('note');
+		$this->db->where('uuid', $uuid);
+		$this->db->update('session_images', array(
+			'note' => $note,
+			'points' => $points
+		));
+	}
+	
+	public function get_user_by_id() {
+		$userID = intval($this->input->post('user_id'));
+		$this->db->where('id', $userID);
+		echo json_encode($this->db->get('users')->row_array());
+	}
+	
+	public function update_user() {
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$this->db->where('email', $email);
+		$this->db->update('users', array(
+			'password' => $password
+		));
+	}
+	
+	public function update_user_details() {
+		$id = intval($this->input->post('id'));
+		$uuid = $this->input->post('uuid');
+		$firstName = $this->input->post('first_name');
+		$lastName = $this->input->post('last_name');
+		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
+		$address = $this->input->post('address');
+		$city = $this->input->post('city');
+		$province = $this->input->post('province');
+		$companyName = $this->input->post('company_name');
+		$companyCity = $this->input->post('company_city');
+		$companyCountry = $this->input->post('company_country');
+		$companyStreet = $this->input->post('company_street');
+		$companyZIPCode = $this->input->post('company_zip_code');
+		$companyState = $this->input->post('company_state');
+		$companyPhone = $this->input->post('company_phone');
+		$this->db->where('id', $userID);
+		$this->db->update('users', array(
+			'uuid' => $uuid,
+			'first_name' => $firstName,
+			'last_name' => $lastName,
+			'email' => $email,
+			'phone' => $phone,
+			'address' => $address,
+			'city' => $city,
+			'province' => $province,
+			'company_name' => $companyName,
+			'company_city' => $companyCity,
+			'company_country' => $companyCountry,
+			'company_street' => $companyStreet,
+			'company_zip_code' => $companyZIPCode,
+			'company_state' => $companyState,
+			'company_phone' => $companyPhone
+		));
+	}
+	
+	public function update_fcm_token() {
+		$userID = intval($this->input->post('user_id'));
+		$fcmToken = $this->input->post('fcm_token');
+		$this->db->where('id', $userID);
+		$this->db->update('users', array(
+			'fcm_token' => $fcmToken
+		));
+	}
+	
+	public function update_session() {
+		$uuid = $this->input->post('uuid');
+		$name = $this->input->post('name');
+		$date = $this->input->post('date');
+		$selectedPatientUUID = $this->input->post('patient_uuid');
+		$this->db->where('uuid', $selectedPatientUUID);
+		$this->db->update('sessions', array(
+			'name' => $name,
+			'date' => $date,
+			'patient_uuid' => $selectedPatientUUID
+		));
+	}
+	
+	public function delete_session() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		$this->db->delete('sessions');
+	}
+	
+	public function delete_session_image() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		$this->db->delete('session_images');
+	}
+	
+	public function check_email_phone_availability() {
+		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
+		$this->db->where('email', $email)->or_where('phone', $phone);
+		$users = $this->db->get('users')->result_array();
+		echo json_encode($users);
 	}
 
 	public function send_password_reset_email() {
@@ -653,6 +1071,7 @@ class User extends CI_Controller {
 		$phone = $this->input->post('phone');
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+		$isAdmin = intval($this->input->post('is_admin'));
 		$this->db->where('phone', $phone);
 		$users = $this->db->get('users')->result_array();
 		if (sizeof($users) > 0) {
@@ -670,7 +1089,8 @@ class User extends CI_Controller {
 			'address' => $address,
 			'phone' => $phone,
 			'email' => $email,
-			'password' => $password
+			'password' => $password,
+			'is_admin' => $isAdmin
 		));
 		echo json_encode(array('response_code' => 1, 'user_id' => intval($this->db->insert_id())));
 	}
