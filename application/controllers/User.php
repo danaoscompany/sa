@@ -282,7 +282,12 @@ class User extends CI_Controller {
 	public function get_sessions() {
 		$userID = intval($this->input->post('user_id'));
 		$deviceUUID = $this->input->post('device_uuid');
-		$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " AND `device_uuid`='" . $deviceUUID . "' ORDER BY `name`")->result_array();
+		$sessions = NULL;
+		if ($deviceUUID == "") {
+			$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " ORDER BY `name`")->result_array();
+		} else {
+			$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " AND `device_uuid`='" . $deviceUUID . "' ORDER BY `name`")->result_array();
+		}
 		for ($i=0; $i<sizeof($sessions); $i++) {
 			$session = $sessions[$i];
 			$sessions[$i]['images'] = $this->db->query("SELECT * FROM `session_images` WHERE `session_uuid`='" . $session['uuid'] . "' LIMIT 5")->result_array();
@@ -1019,12 +1024,37 @@ class User extends CI_Controller {
 		$this->db->delete('session_images');
 	}
 	
-	public function check_email_phone_availability() {
+	public function check_availability() {
+		$username = $this->input->post('username');
 		$email = $this->input->post('email');
 		$phone = $this->input->post('phone');
-		$this->db->where('email', $email)->or_where('phone', $phone);
+		$this->db->where('email', $email);
 		$users = $this->db->get('users')->result_array();
-		echo json_encode($users);
+		if (sizeof($users) > 0) {
+			echo json_encode(array(
+				'response_code' => -1
+			));
+			return;
+		}
+		$this->db->where('username', $username);
+		$users = $this->db->get('users')->result_array();
+		if (sizeof($users) > 0) {
+			echo json_encode(array(
+				'response_code' => -2
+			));
+			return;
+		}
+		$this->db->where('phone', $phone);
+		$users = $this->db->get('users')->result_array();
+		if (sizeof($users) > 0) {
+			echo json_encode(array(
+				'response_code' => -3
+			));
+			return;
+		}
+		echo json_encode(array(
+			'response_code' => 1
+		));
 	}
 
 	public function send_password_reset_email() {
@@ -1053,14 +1083,27 @@ class User extends CI_Controller {
 	public function login() {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
-		$this->db->where('email', $email)->where('password', $password);
-		$users = $this->db->get('users')->result_array();
-		if (sizeof($users) > 0) {
-			$user = $users[0];
-			$user['response_code'] = 1;
-			echo json_encode($user);
+		if (strpos($email, '@') !== false) {
+			$this->db->where('email', $email)->where('password', $password);
+			$users = $this->db->get('users')->result_array();
+			if (sizeof($users) > 0) {
+				$user = $users[0];
+				$user['response_code'] = 1;
+				echo json_encode($user);
+			} else {
+				echo json_encode(array('response_code' => -1));
+			}
 		} else {
-			echo json_encode(array('response_code' => -1));
+			$username = $email;
+			$this->db->where('username', $username)->where('password', $password);
+			$users = $this->db->get('users')->result_array();
+			if (sizeof($users) > 0) {
+				$user = $users[0];
+				$user['response_code'] = 1;
+				echo json_encode($user);
+			} else {
+				echo json_encode(array('response_code' => -2));
+			}
 		}
 	} 
 
@@ -1070,6 +1113,7 @@ class User extends CI_Controller {
 		$address = $this->input->post('address');
 		$phone = $this->input->post('phone');
 		$email = $this->input->post('email');
+		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$isAdmin = intval($this->input->post('is_admin'));
 		$this->db->where('phone', $phone);
@@ -1089,6 +1133,7 @@ class User extends CI_Controller {
 			'address' => $address,
 			'phone' => $phone,
 			'email' => $email,
+			'username' => $username,
 			'password' => $password,
 			'is_admin' => $isAdmin
 		));
