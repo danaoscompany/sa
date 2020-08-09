@@ -999,7 +999,7 @@ class User extends CI_Controller {
 		$name = $this->input->post('name');
 		$date = $this->input->post('date');
 		$selectedPatientUUID = $this->input->post('patient_uuid');
-		$this->db->where('uuid', $selectedPatientUUID);
+		$this->db->where('uuid', $uuid);
 		$this->db->update('sessions', array(
 			'name' => $name,
 			'date' => $date,
