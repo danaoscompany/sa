@@ -299,6 +299,12 @@ class User extends CI_Controller {
 		echo json_encode($this->db->query("SELECT * FROM `devices` ORDER BY `device`")->result_array());
 	}
 	
+	public function get_devices_by_user_id() {
+		$userID = intval($this->input->post('user_id'));
+		$this->db->where('user_id', $userID);
+		echo json_encode($this->db->get('devices')->result_array());
+	}
+	
 	public function get_device_by_uuid() {
 		$uuid = $this->input->post('uuid');
 		$this->db->where('uuid', $uuid);
