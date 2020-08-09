@@ -929,13 +929,44 @@ class User extends CI_Controller {
 	
 	public function update_image_points_and_note() {
 		$uuid = $this->input->post('uuid');
-		$points = $this->input->post('points');
+		$userID = intval($this->input->post('user_id'));
+		$sessionImageUUID = $this->input->post('session_image_uuid');
 		$note = $this->input->post('note');
-		$this->db->where('uuid', $uuid);
+		$sessionUUID = $this->input->post('session_uuid');
+		$patientUUID = $this->input->post('patient_uuid');
+		$leftPoints = $this->input->post('left_points');
+		$frontPoints = $this->input->post('front_points');
+		$rightPoints = $this->input->post('right_points');
+		$backPoints = $this->input->post('back_points');
+		$this->db->where('uuid', $sessionImageUUID);
 		$this->db->update('session_images', array(
-			'note' => $note,
-			'points' => $points
+			'note' => $note
 		));
+		$this->db->where('session_uuid', $sessionUUID);
+		$markings = $this->db->get('marks')->result_array();
+		if (sizeof($markings) > 0) {
+			$this->db->where('session_uuid', $sessionUUID);
+			$this->db->update('marks', array(
+				'uuid' => $uuid,
+				'user_id' => $userID,
+				'patient_uuid' => $patientUUID,
+				'left_points' => $leftPoints,
+				'front_points' => $frontPoints,
+				'right_points' => $rightPoints,
+				'back_points' => $backPoints
+			));
+		} else {
+			$this->db->insert('marks', array(
+				'uuid' => $uuid,
+				'session_uuid' => $sessionUUID,
+				'user_id' => $userID,
+				'patient_uuid' => $patientUUID,
+				'left_points' => $leftPoints,
+				'front_points' => $frontPoints,
+				'right_points' => $rightPoints,
+				'back_points' => $backPoints
+			));
+		}
 	}
 	
 	public function get_user_by_id() {
@@ -1105,7 +1136,13 @@ class User extends CI_Controller {
 				echo json_encode(array('response_code' => -2));
 			}
 		}
-	} 
+	}
+	
+	public function get_markings_by_session_uuid() {
+		$sessionUUID = $this->input->post('session_uuid');
+		$this->db->where('session_uuid', $sessionUUID);
+		echo json_encode($this->db->get('marks')->result_array());
+	}
 
 	public function signup() {
 		$firstName = $this->input->post('first_name');
