@@ -283,11 +283,12 @@ class User extends CI_Controller {
 		$userID = intval($this->input->post('user_id'));
 		$deviceUUID = $this->input->post('device_uuid');
 		$sessions = NULL;
-		if ($deviceUUID == "") {
+		/*if ($deviceUUID == "") {
 			$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " ORDER BY `name`")->result_array();
 		} else {
 			$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " AND `device_uuid`='" . $deviceUUID . "' ORDER BY `name`")->result_array();
-		}
+		}*/
+		$sessions = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " ORDER BY `name`")->result_array();
 		for ($i=0; $i<sizeof($sessions); $i++) {
 			$session = $sessions[$i];
 			$sessions[$i]['images'] = $this->db->query("SELECT * FROM `session_images` WHERE `session_uuid`='" . $session['uuid'] . "' LIMIT 5")->result_array();
