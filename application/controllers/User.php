@@ -719,6 +719,16 @@ class User extends CI_Controller {
 		$imageWidth = doubleval($this->input->post('image_width'));
 		$imageHeight = doubleval($this->input->post('image_height'));
 		$images = $this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->result_array();
+		$config = array(
+	        'upload_path' => './userdata/',
+	        'allowed_types' => "*",
+	        'overwrite' => TRUE,
+	        'max_size' => "2048000", 
+	        'max_height' => "8192",
+	        'max_width' => "8192"
+        );
+        $this->load->library('upload', $config);
+		if ($this->upload->do_upload('file')) {
         	if (sizeof($images) > 0) {
         		$this->db->where('uuid', $uuid);
 	        	$this->db->update('session_images', array(
@@ -734,7 +744,9 @@ class User extends CI_Controller {
 	        		'points' => $points,
 	        		'type' => $type,
 	        		'date' => $date,
-	        		'path' => $path,
+	        		'path' => $this->upload->data('file_name'),
+	        		'gd_path' => "",
+	        		'db_path' => $path,
 	        		'type' => $type,
 	        		'photo_num' => $photoNum,
 	        		'storage_method' => 'db'
@@ -749,7 +761,9 @@ class User extends CI_Controller {
 	        		'session_uuid' => $sessionUUID,
 	        		'name' => $name,
 	        		'note' => $note,
-	        		'path' => $path,
+	        		'path' => $this->upload->data('file_name'),
+	        		'gd_path' => "",
+	        		'db_path' => $path,
 	        		'image_x' => $imageX,
 	        		'image_y' => $imageY,
 	        		'image_width' => $imageWidth,
@@ -769,6 +783,13 @@ class User extends CI_Controller {
         		'id' => $id,
         		'path' => $this->upload->data()['file_name']
         	));
+        }
+	}
+	
+	public function get_google_drive_image() {
+		$gdFileID = $this->input->post('gd_file_id');
+		$this->db->where('gd_file_id', $gdFileID);
+		echo json_encode($this->db->get('session_images')->row_array());
 	}
 	
 	public function upload_to_gd() {
@@ -790,6 +811,16 @@ class User extends CI_Controller {
 		$imageHeight = doubleval($this->input->post('image_height'));
 		$photoNum = intval($this->input->post('photo_num'));
 		$images = $this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->result_array();
+		$config = array(
+	        'upload_path' => './userdata/',
+	        'allowed_types' => "*",
+	        'overwrite' => TRUE,
+	        'max_size' => "2048000", 
+	        'max_height' => "8192",
+	        'max_width' => "8192"
+        );
+        $this->load->library('upload', $config);
+		if ($this->upload->do_upload('file')) {
         	if (sizeof($images) > 0) {
         		$this->db->where('uuid', $uuid);
 	        	$this->db->update('session_images', array(
@@ -798,7 +829,9 @@ class User extends CI_Controller {
 	        		'session_uuid' => $sessionUUID,
 	        		'name' => $name,
 	        		'note' => $note,
-	        		'path' => $path,
+	        		'path' => $this->upload->data('file_name'),
+	        		'gd_path' => $path,
+	        		'db_path' => "",
 	        		'gd_file_id' => $gdFileID,
 	        		'image_x' => $imageX,
 	        		'image_y' => $imageY,
@@ -822,7 +855,9 @@ class User extends CI_Controller {
 	        		'gd_file_id' => $gdFileID,
 	        		'name' => $name,
 	        		'note' => $note,
-	        		'path' => $path,
+	        		'path' => $this->upload->data('file_name'),
+	        		'gd_path' => $path,
+	        		'db_path' => "",
 	        		'image_x' => $imageX,
 	        		'image_y' => $imageY,
 	        		'image_width' => $imageWidth,
@@ -842,6 +877,7 @@ class User extends CI_Controller {
         		'id' => $id,
         		'path' => $this->upload->data()['file_name']
         	));
+        }
 	}
 	
 	public function delete_image_by_uuid() {
