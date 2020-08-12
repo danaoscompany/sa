@@ -16,7 +16,7 @@ function logout() {
 			dataType: 'text',
 			cache: false,
 			success: function(response) {
-				window.location.href = "http://localhost/sa/login";
+				window.location.href = "http://skinmed.id/sa/login";
 			}
 		});
 	}

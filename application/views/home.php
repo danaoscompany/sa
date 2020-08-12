@@ -25,7 +25,7 @@
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
+			<img src="http://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -89,7 +89,7 @@
 							<div class="widget-content-left">
 								<div class="btn-group">
 									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-										<img width="42" class="rounded-circle" src="http://localhost/sa/assets/images/avatars/1.jpg" alt="">
+										<img width="42" class="rounded-circle" src="http://skinmed.id/sa/assets/images/avatars/1.jpg" alt="">
 										<i class="fa fa-angle-down ml-2 opacity-8"></i>
 									</a>
 									<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
@@ -400,7 +400,7 @@
 	</div>        <div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<img src="http://localhost/sa/assets/images/icon.png" width="50px" height="50px">
+				<img src="http://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -434,25 +434,25 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://localhost/sa/common">
+							<a href="http://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Common
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/admin">
+							<a href="http://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="http://localhost/sa/user">
+							<a href="http://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								User
 							</a>
 						</li>
 						<li>
-							<a href="http://localhost/sa/sessions">
+							<a href="http://skinmed.id/sa/sessions">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Session
 							</a>
@@ -465,13 +465,13 @@
 							</a>
 							<ul class="mm-show">
 								<li>
-									<a href="http://localhost/sa/payment/unpaid">
+									<a href="http://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
 										</i>Not Paid
 									</a>
 								</li>
 								<li>
-									<a href="http://localhost/sa/payment/paid">
+									<a href="http://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
 										</i>Paid
 									</a>
@@ -479,7 +479,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="http://localhost/sa/admin/logout">
+							<a href="http://skinmed.id/sa/admin/logout">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Logout
 							</a>
@@ -1038,7 +1038,7 @@
 												<div class="widget-content-wrapper">
 													<div class="widget-content-left mr-3">
 														<div class="widget-content-left">
-															<img width="40" class="rounded-circle" src="http://localhost/sa/assets/images/avatars/1.jpg" alt=""></div>
+															<img width="40" class="rounded-circle" src="http://skinmed.id/sa/assets/images/avatars/1.jpg" alt=""></div>
 													</div>
 													<div class="widget-content-left flex2">
 														<div class="widget-heading">Vinnie Wagstaff</div>
@@ -1192,5 +1192,5 @@
 		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	</div>
 </div>
-<script type="text/javascript" src="http://localhost/sa/assets/scripts/main.js"></script></body>
+<script type="text/javascript" src="http://skinmed.id/sa/assets/scripts/main.js"></script></body>
 </html>

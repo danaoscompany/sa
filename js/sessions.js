@@ -89,7 +89,7 @@ function getSessions(userID) {
 }
 
 function editSession(index) {
-	$.redirect('http://localhost/sa/sessions/edit', {
+	$.redirect('http://skinmed.id/sa/sessions/edit', {
 		'uuid': sessions[index]['uuid']
 	});
 }

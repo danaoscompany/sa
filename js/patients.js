@@ -107,19 +107,19 @@ function getPatients(id) {
 }
 
 function viewImages(index) {
-	window.location.href = "http://localhost/sa/image";
+	window.location.href = "http://skinmed.id/sa/image";
 }
 
 function viewDevices(index) {
-	window.location.href = "http://localhost/sa/devices?id="+patients[index]['id'];
+	window.location.href = "http://skinmed.id/sa/devices?id="+patients[index]['id'];
 }
 
 function viewPatients(index) {
-	window.location.href = "http://localhost/sa/patients?id="+patients[index]['id'];
+	window.location.href = "http://skinmed.id/sa/patients?id="+patients[index]['id'];
 }
 
 function editPatient(index) {
-	$.redirect("http://localhost/sa/patients/edit", {
+	$.redirect("http://skinmed.id/sa/patients/edit", {
 		'id': parseInt(patients[index]['id']),
 		'uuid': patients[index]['uuid'],
 		'user_id': parseInt(patients[index]['user_id'])

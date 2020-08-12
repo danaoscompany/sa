@@ -53,7 +53,7 @@ function getDevices() {
 }
 
 function editDevice(index) {
-	$.redirect("http://localhost/sa/devices/edit", {
+	$.redirect("http://skinmed.id/sa/devices/edit", {
 		'uuid': devices[index]['uuid'],
 		'id': devices[index]['user_id']
 	});
@@ -84,7 +84,7 @@ function deleteDevice() {
 }
 
 function addDevice() {
-	$.redirect("http://localhost/sa/devices/add", {
+	$.redirect("http://skinmed.id/sa/devices/add", {
 		id: userID
 	});
 }
