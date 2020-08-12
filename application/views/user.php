@@ -16,6 +16,7 @@
 	<script src="http://skinmed.id/sa/js/jquery.js"></script>
 	<script src="http://skinmed.id/sa/js/global.js"></script>
 	<script src="http://skinmed.id/sa/js/jquery.redirect.js"></script>
+	<script src="http://skinmed.id/sa/js/moment.js"></script>
 	<script src="http://skinmed.id/sa/js/user.js"></script>
 	<!--
 	=========================================================
@@ -259,7 +260,7 @@
 										<th>Name</th>
 										<th>Email</th>
 										<th>Password</th>
-										<th>Phone</th>
+										<th>Premium Member</th>
 										<th>Devices</th>
 										<th>Patients</th>
 										<th>Edit</th>

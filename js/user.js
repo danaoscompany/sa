@@ -37,12 +37,21 @@ function getUsers() {
             for (let i=0; i<users.length; i++) {
                 let user = users[i];
                 let name = user['first_name'] + " " + user['last_name'];
+                var premium = parseInt(user['premium']);
+                if (premium == 0) {
+					premium = "No";
+				} else if (premium == 1) {
+                	var premiumStart = user['premium_start'];
+                	premiumStart = moment(premiumStart, "yyyy-MM-dd HH:mm:ss").valueOf();
+					premiumStart += 30*24*60*60*1000;
+					premium = "Until "+moment(premiumStart).format("d MMMM yyyy HH:mm:ss");
+				}
                 $("#users").append("<tr>" +
                     "                                        <th scope=\"row\">"+(i+1)+"</th>" +
                     "                                        <td>"+name+"</td>" +
                     "                                        <td>"+user['email']+"</td>" +
                     "                                        <td>"+user['password']+"</td>" +
-                    "                                        <td>"+user['phone']+"</td>" +
+                    "                                        <td>"+premium+"</td>" +
 					"                                        <td><button onclick='viewDevices("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>View</button></td>" +
 					"                                        <td><button onclick='viewPatients("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>View</button></td>" +
                     "                                        <td><button onclick='editUser("+i+")' class='btn-shadow p-1 btn btn-primary btn-sm show-toastr-example'>Edit</button></td>" +
