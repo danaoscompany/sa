@@ -9,7 +9,7 @@ class Image extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -20,18 +20,18 @@ class Image extends CI_Controller {
 				'uuid' => $uuid
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
 	public function get_images() {
 		$userID = intval($this->input->post('user_id'));
 		$sessionUUID = $this->input->post('session_uuid');
-		echo json_encode($this->db->query("SELECT * FROM `bucket_images` WHERE `user_id`=" . $userID . " AND `session_uuid`='" . $sessionUUID . "' ORDER BY `date`")->result_array());
+		echo json_encode($this->db->query("SELECT * FROM `session_images` WHERE `user_id`=" . $userID . " AND `session_uuid`='" . $sessionUUID . "' ORDER BY `date`")->result_array());
 	}
 
 	public function get_by_uuid() {
 		$uuid = $this->input->post('uuid');
-		echo json_encode($this->db->query("SELECT * FROM `bucket_images` WHERE `uuid`='" . $uuid . "'")->row_array());
+		echo json_encode($this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->row_array());
 	}
 }

@@ -11,7 +11,7 @@ class User extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -121,7 +121,7 @@ class User extends CI_Controller {
 	
 	public function get_latest_bucket_image_id() {
 		$userID = intval($this->input->post('user_id'));
-		$results = $this->db->query("SELECT * FROM `bucket_images` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->result_array();
+		$results = $this->db->query("SELECT * FROM `session_images` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->result_array();
 		if (sizeof($results) > 0) {
 			echo intval($results[0]['photo_num'])+1;
 		} else {
@@ -179,7 +179,7 @@ class User extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -192,7 +192,7 @@ class User extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 	
@@ -317,7 +317,7 @@ class User extends CI_Controller {
 		$session = $this->db->get_where('sessions', array(
 			'uuid' => $uuid
 		))->row_array();
-		$session['images'] = $this->db->get_where('bucket_images', array(
+		$session['images'] = $this->db->get_where('session_images', array(
 			'session_uuid' => $uuid
 		))->result_array();
 		$session['patient_name'] = $this->db->get_where('patients', array(
@@ -407,7 +407,7 @@ class User extends CI_Controller {
 		$buckets = json_decode($this->input->post('buckets'), true);
 		for ($i=0; $i<sizeof($buckets); $i++) {
 			$bucket = $buckets[$i];
-			if ($this->db->query("SELECT * FROM `buckets` WHERE `uuid`='" . $bucket['uuid'] . "'")->num_rows() > 0) {
+			if ($this->db->query("SELECT * FROM `sessions` WHERE `uuid`='" . $bucket['uuid'] . "'")->num_rows() > 0) {
 				$this->db->where("uuid", $bucket['uuid']);
 				$this->db->update("buckets", array(
 					"uuid" => $this->get_real_string($bucket, 'uuid'),
@@ -430,9 +430,9 @@ class User extends CI_Controller {
 				if ($imageUUID != "") {
 					$newImagePath = $_FILES[$imageUUID]['name'];
 					move_uploaded_file($_FILES[$imageUUID]['tmp_name'], "userdata/" . $newImagePath);
-					if ($this->db->query("SELECT * FROM `bucket_images` WHERE `uuid`='" . $imageUUID . "'")->num_rows() > 0) {
+					if ($this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $imageUUID . "'")->num_rows() > 0) {
 						$this->db->where("uuid", $this->get_real_string($image, 'uuid'));
-						$this->db->update("bucket_images", array(
+						$this->db->update("session_images", array(
 							"user_id" => $this->get_real_int($bucket, 'user_id'),
 							"uuid" => $this->get_real_string($image, 'uuid'),
 							"bucket_uuid" => $this->get_real_string($image, 'bucket_uuid'),
@@ -446,7 +446,7 @@ class User extends CI_Controller {
 							"local" => $this->get_boolean_value($image, 'local')
 						));
 					} else {
-						$this->db->insert("bucket_images", array(
+						$this->db->insert("session_images", array(
 							"user_id" => $this->get_real_int($bucket, 'user_id'),
 							"uuid" => $this->get_real_string($image, 'uuid'),
 							"bucket_uuid" => $this->get_real_string($image, 'bucket_uuid'),
@@ -556,13 +556,13 @@ class User extends CI_Controller {
 	
 	public function delete_bucket() {
 		$uuid = $this->input->post('uuid');
-		$images = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $uuid . "'")->result_array();
+		$images = $this->db->query("SELECT * FROM `session_images` WHERE `bucket_uuid`='" . $uuid . "'")->result_array();
 		for ($i=0; $i<sizeof($images); $i++) {
 			$image = $images[$i];
 			unlink("./userdata/" . $image['path']);
-			$this->db->query("DELETE FROM `bucket_images` WHERE `id`=" . $image['id']);
+			$this->db->query("DELETE FROM `session_images` WHERE `id`=" . $image['id']);
 		}
-		$this->db->query("DELETE FROM `buckets` WHERE `uuid`='" . $uuid . "'");
+		$this->db->query("DELETE FROM `sessions` WHERE `uuid`='" . $uuid . "'");
 	}
 
 	public function sync_devices_with_uuid() {
@@ -594,10 +594,10 @@ class User extends CI_Controller {
 	public function get_buckets() {
 		$userID = intval($this->input->post('user_id'));
 		$sessionUUID = $this->input->post('session_uuid');
-		$buckets = $this->db->query("SELECT * FROM `buckets` WHERE `user_id`=" . $userID . " AND `session_uuid`='" . $sessionUUID . "'")->result_array();
+		$buckets = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " AND `session_uuid`='" . $sessionUUID . "'")->result_array();
 		for ($i=0; $i<sizeof($buckets); $i++) {
 			$bucket = $buckets[$i];
-			$images = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
+			$images = $this->db->query("SELECT * FROM `session_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
 			$buckets[$i]['images'] = $images;
 		}
 		echo json_encode($buckets);
@@ -630,18 +630,18 @@ class User extends CI_Controller {
 	
 	public function get_bucket_by_uuid() {
 		$uuid = $this->input->post('uuid');
-		$bucket = $this->db->query("SELECT * FROM `buckets` WHERE `uuid`='" . $uuid . "'")->row_array();
+		$bucket = $this->db->query("SELECT * FROM `sessions` WHERE `uuid`='" . $uuid . "'")->row_array();
 		if ($bucket != null) {
-			$bucket['images'] = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $uuid . "'")->result_array();
+			$bucket['images'] = $this->db->query("SELECT * FROM `session_images` WHERE `bucket_uuid`='" . $uuid . "'")->result_array();
 			echo json_encode($bucket);
 		}
 	}
 	
 	public function get_latest_bucket() {
 		$userID = intval($this->input->post('user_id'));
-		$bucket = $this->db->query("SELECT * FROM `buckets` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->row_array();
+		$bucket = $this->db->query("SELECT * FROM `sessions` WHERE `user_id`=" . $userID . " ORDER BY `id` DESC LIMIT 1")->row_array();
 		if ($bucket != null) {
-			$bucket['images'] = $this->db->query("SELECT * FROM `bucket_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
+			$bucket['images'] = $this->db->query("SELECT * FROM `session_images` WHERE `bucket_uuid`='" . $bucket['uuid'] . "'")->result_array();
 			echo json_encode($bucket);
 		}
 	}
@@ -681,7 +681,7 @@ class User extends CI_Controller {
 			'device_uuid' => $deviceUUID
 		));
 		$bucketID = intval($this->db->insert_id());
-		$this->db->insert('bucket_images', array(
+		$this->db->insert('session_images', array(
 			'uuid' => $image1UUID,
 			'user_id' => $userID,
 			'bucket_uuid' => $uuid,
@@ -690,7 +690,7 @@ class User extends CI_Controller {
 			'photo_num' => $photoNum,
 			'local' => 0
 		));
-		$this->db->insert('bucket_images', array(
+		$this->db->insert('session_images', array(
 			'uuid' => $image2UUID,
 			'user_id' => $userID,
 			'bucket_uuid' => $uuid,

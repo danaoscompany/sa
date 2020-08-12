@@ -116,6 +116,7 @@ function getImages(userID, sessionUUID) {
 	let fd = new FormData();
 	fd.append("user_id", userID);
 	fd.append("session_uuid", sessionUUID);
+	alert("Getting images: "+sessionUUID);
 	$.ajax({
 		type: 'POST',
 		url: PHP_URL+"/image/get_images",
@@ -124,6 +125,7 @@ function getImages(userID, sessionUUID) {
 		contentType: false,
 		cache: false,
 		success: function(response) {
+			alert(response);
 			images = JSON.parse(response);
 			$("#images").find("*").remove();
 			for (var i=0; i<images.length; i++) {
@@ -132,7 +134,7 @@ function getImages(userID, sessionUUID) {
 					"          <div class=\"card-shadow-danger mb-3 widget-chart widget-chart2 text-left card\">\n" +
 					"           <div class=\"widget-content\">\n" +
 					"            <div class=\"widget-content-outer\">\n" +
-					"             <img src=\"http://skinmed.id/sa/userdata/"+image['path']+"\" style='border-radius: 5px;' width=\"100%\" height=\"150px\">\n" +
+					"             <img src=\"http://localhost/sa/userdata/"+image['path']+"\" style='border-radius: 5px;' width=\"100%\" height=\"150px\">\n" +
 					"             <div style=\"width: 100%; display: flex; flex-direction: column; align-items: center;\">\n" +
 					"              <button onclick=\"viewImage("+i+")\" class=\"mb-2 mr-2 btn btn-info\" style=\"margin-top: 10px;\">View</button>\n" +
 					"              <button class=\"mb-2 mr-2 btn btn-danger\" style=\"margin-top: -5px;\">Delete</button>\n" +
@@ -149,7 +151,7 @@ function getImages(userID, sessionUUID) {
 function viewImage(index) {
 	var image = images[index];
 	$("#uuid").val(image['uuid']);
-	$.redirect("http://skinmed.id/sa/image/view_image", {
+	$.redirect("http://localhost/sa/image/view_image", {
 		uuid: image['uuid']
 	});
 }

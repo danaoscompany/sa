@@ -13,7 +13,7 @@ $(document).ready(function() {
 		cache: false,
 		success: function(response) {
 			var image = JSON.parse(response);
-			$("#img-preview").attr("src", "http://skinmed.id/sa/userdata/"+image['path']);
+			$("#img-preview").attr("src", "http://localhost/sa/userdata/"+image['path']);
 			var c = document.getElementById("cvs");
 			var ctx = c.getContext("2d");
 			var points = JSON.parse(image['points']);

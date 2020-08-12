@@ -9,7 +9,7 @@ class Sessions extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -57,7 +57,7 @@ class Sessions extends CI_Controller {
 				'adminID' => $this->session->user_id
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -69,7 +69,7 @@ class Sessions extends CI_Controller {
 				'adminID' => $this->session->user_id
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 

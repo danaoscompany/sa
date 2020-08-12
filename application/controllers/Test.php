@@ -32,8 +32,8 @@ class Test extends CI_Controller {
 	}
 
 	public function clear() {
-		$this->db->query("DELETE FROM `buckets`");
-		$this->db->query("DELETE FROM `bucket_images`");
+		$this->db->query("DELETE FROM `sessions`");
+		$this->db->query("DELETE FROM `session_images`");
 		$this->db->query("DELETE FROM `images`");
 		$this->db->query("DELETE FROM `sessions`");
 	}
@@ -47,16 +47,16 @@ class Test extends CI_Controller {
 	}
 
 	public function clear_buckets() {
-		$this->db->query("DELETE FROM `buckets`");
-		$this->db->query("DELETE FROM `bucket_images`");
+		$this->db->query("DELETE FROM `sessions`");
+		$this->db->query("DELETE FROM `session_images`");
 		$this->db->query("DELETE FROM `images`");
 		$this->db->query("DELETE FROM `devices`");
 		$this->db->query("DELETE FROM `sessions`");
 		$this->db->query("DELETE FROM `patients`");
 	}
 
-	public function clear_bucket_images() {
-		$this->db->query("DELETE FROM `buckets`");
-		$this->db->query("DELETE FROM `bucket_images`");
+	public function clear_session_images() {
+		$this->db->query("DELETE FROM `sessions`");
+		$this->db->query("DELETE FROM `session_images`");
 	}
 }

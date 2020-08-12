@@ -9,7 +9,7 @@ class Common extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 }
