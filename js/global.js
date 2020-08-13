@@ -1,5 +1,5 @@
 const HOST = "skinmed.id";
-const PHP_URL = "http://"+HOST+"/sa/index.php";
+const PHP_URL = "https://"+HOST+"/sa/index.php";
 
 function uuidv4() {
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -16,7 +16,7 @@ function logout() {
 			dataType: 'text',
 			cache: false,
 			success: function(response) {
-				window.location.href = "http://skinmed.id/sa/login";
+				window.location.href = "https://skinmed.id/sa/login";
 			}
 		});
 	}

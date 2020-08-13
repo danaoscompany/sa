@@ -67,7 +67,7 @@ function save() {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			$.redirect("http://skinmed.id/sa/patients", {
+			$.redirect("https://skinmed.id/sa/patients", {
 				'id': userID
 			});
 		}

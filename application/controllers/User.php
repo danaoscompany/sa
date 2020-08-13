@@ -11,7 +11,7 @@ class User extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: https://skinmed.id/sa/login");
 		}
 	}
 
@@ -179,7 +179,7 @@ class User extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: https://skinmed.id/sa/login");
 		}
 	}
 
@@ -192,7 +192,7 @@ class User extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: http://skinmed.id/sa/login");
+			header("Location: https://skinmed.id/sa/login");
 		}
 	}
 	
@@ -978,9 +978,25 @@ class User extends CI_Controller {
 		$sessionUUID = $this->input->post('session_uuid');
 		$patientUUID = $this->input->post('patient_uuid');
 		$leftPoints = $this->input->post('left_points');
+		$leftImageX = intval($this->input->post('left_image_x'));
+		$leftImageY = intval($this->input->post('left_image_y'));
+		$leftImageWidth = intval($this->input->post('left_image_width'));
+		$leftImageHeight = intval($this->input->post('left_image_height'));
 		$frontPoints = $this->input->post('front_points');
+		$frontImageX = intval($this->input->post('front_image_x'));
+		$frontImageY = intval($this->input->post('front_image_y'));
+		$frontImageWidth = intval($this->input->post('front_image_width'));
+		$frontImageHeight = intval($this->input->post('front_image_height'));
 		$rightPoints = $this->input->post('right_points');
+		$rightImageX = intval($this->input->post('right_image_x'));
+		$rightImageY = intval($this->input->post('right_image_y'));
+		$rightImageWidth = intval($this->input->post('right_image_width'));
+		$rightImageHeight = intval($this->input->post('right_image_height'));
 		$backPoints = $this->input->post('back_points');
+		$backImageX = intval($this->input->post('back_image_x'));
+		$backImageY = intval($this->input->post('back_image_y'));
+		$backImageWidth = intval($this->input->post('back_image_width'));
+		$backImageHeight = intval($this->input->post('back_image_height'));
 		$this->db->where('uuid', $sessionImageUUID);
 		$this->db->update('session_images', array(
 			'note' => $note
@@ -994,9 +1010,25 @@ class User extends CI_Controller {
 				'user_id' => $userID,
 				'patient_uuid' => $patientUUID,
 				'left_points' => $leftPoints,
+				'left_image_x' => $leftImageX,
+				'left_image_y' => $leftImageY,
+				'left_image_width' => $leftImageWidth,
+				'left_image_height' => $leftImageHeight,
 				'front_points' => $frontPoints,
+				'front_image_x' => $frontImageX,
+				'front_image_y' => $frontImageY,
+				'front_image_width' => $frontImageWidth,
+				'front_image_height' => $frontImageHeight,
 				'right_points' => $rightPoints,
-				'back_points' => $backPoints
+				'right_image_x' => $rightImageX,
+				'right_image_y' => $rightImageY,
+				'right_image_width' => $rightImageWidth,
+				'right_image_height' => $rightImageHeight,
+				'back_points' => $backPoints,
+				'back_image_x' => $backImageX,
+				'back_image_y' => $backImageY,
+				'back_image_width' => $backImageWidth,
+				'back_image_height' => $backImageHeight
 			));
 		} else {
 			$this->db->insert('marks', array(
@@ -1005,9 +1037,25 @@ class User extends CI_Controller {
 				'user_id' => $userID,
 				'patient_uuid' => $patientUUID,
 				'left_points' => $leftPoints,
+				'left_image_x' => $leftImageX,
+				'left_image_y' => $leftImageY,
+				'left_image_width' => $leftImageWidth,
+				'left_image_height' => $leftImageHeight,
 				'front_points' => $frontPoints,
+				'front_image_x' => $frontImageX,
+				'front_image_y' => $frontImageY,
+				'front_image_width' => $frontImageWidth,
+				'front_image_height' => $frontImageHeight,
 				'right_points' => $rightPoints,
-				'back_points' => $backPoints
+				'right_image_x' => $rightImageX,
+				'right_image_y' => $rightImageY,
+				'right_image_width' => $rightImageWidth,
+				'right_image_height' => $rightImageHeight,
+				'back_points' => $backPoints,
+				'back_image_x' => $backImageX,
+				'back_image_y' => $backImageY,
+				'back_image_width' => $backImageWidth,
+				'back_image_height' => $backImageHeight
 			));
 		}
 	}

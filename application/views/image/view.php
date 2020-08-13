@@ -13,10 +13,10 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="http://skinmed.id/sa/js/jquery.js"></script>
-	<script src="http://skinmed.id/sa/js/global.js"></script>
-	<script src="http://skinmed.id/sa/js/jquery.redirect.js"></script>
-	<script src="http://skinmed.id/sa/js/view_image.js"></script>
+	<script src="https://skinmed.id/sa/js/jquery.js"></script>
+	<script src="https://skinmed.id/sa/js/global.js"></script>
+	<script src="https://skinmed.id/sa/js/jquery.redirect.js"></script>
+	<script src="https://skinmed.id/sa/js/view_image.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -27,13 +27,13 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="http://skinmed.id/sa/main.css" rel="stylesheet">
+	<link href="https://skinmed.id/sa/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<img src="http://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
+			<img src="https://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -68,37 +68,37 @@
 			<div class="app-header-left">
 				<ul class="header-menu nav">
 					<li class="nav-item">
-						<a href="http://skinmed.id/sa/common" class="nav-link">
+						<a href="https://skinmed.id/sa/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
 							Common
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="http://skinmed.id/sa/admin" class="nav-link">
+						<a href="https://skinmed.id/sa/admin" class="nav-link">
 							<i class="nav-link-icon fa fa-users-cog"> </i>
 							Admin
 						</a>
 					</li>
 					<li class="btn-group nav-item">
-						<a href="http://skinmed.id/sa/user" class="nav-link">
+						<a href="https://skinmed.id/sa/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
 							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="http://skinmed.id/sa/sessions" class="nav-link">
+						<a href="https://skinmed.id/sa/sessions" class="nav-link">
 							<i class="nav-link-icon fa fa-unlock-alt"></i>
 							Session
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="http://skinmed.id/sa/payment/unpaid" class="nav-link">
+						<a href="https://skinmed.id/sa/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
 							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="http://skinmed.id/sa/admin/logout" class="nav-link">
+						<a href="https://skinmed.id/sa/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
 							Logout
 						</a>
@@ -113,7 +113,7 @@
 								<div class="btn-group">
 									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 									   class="p-0 btn">
-										<img width="42" height="42" class="rounded-circle" src="http://skinmed.id/sa/images/profile_picture.png" alt="" style="border-radius: 21;">
+										<img width="42" height="42" class="rounded-circle" src="https://skinmed.id/sa/images/profile_picture.png" alt="" style="border-radius: 21;">
 										<i class="fa fa-angle-down ml-2 opacity-8"></i>
 									</a>
 									<div tabindex="-1" role="menu" aria-hidden="true"
@@ -128,11 +128,6 @@
 								<div id="admin-email" class="widget-subheading">
 								</div>
 							</div>
-							<div class="widget-content-right header-user-info ml-3">
-								<button onclick="logout()" type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-									<i class="fa text-white fa-sign-out pr-1 pl-1"></i>
-								</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -142,7 +137,7 @@
 	<div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<img src="http://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
+				<img src="https://skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -178,25 +173,25 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="http://skinmed.id/sa/common">
+							<a href="https://skinmed.id/sa/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
 								Common
 							</a>
 						</li>
 						<li>
-							<a href="http://skinmed.id/sa/admin">
+							<a href="https://skinmed.id/sa/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li>
-							<a href="http://skinmed.id/sa/user">
+							<a href="https://skinmed.id/sa/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								User
 							</a>
 						</li>
 						<li>
-							<a href="http://skinmed.id/sa/sessions">
+							<a href="https://skinmed.id/sa/sessions">
 								<i class="metismenu-icon pe-7s-unlock"></i>
 								Session
 							</a>
@@ -209,13 +204,13 @@
 							</a>
 							<ul class="mm-show">
 								<li>
-									<a href="http://skinmed.id/sa/payment/unpaid">
+									<a href="https://skinmed.id/sa/payment/unpaid">
 										<i class="metismenu-icon">
 										</i>Not Paid
 									</a>
 								</li>
 								<li>
-									<a href="http://skinmed.id/sa/payment/paid">
+									<a href="https://skinmed.id/sa/payment/paid">
 										<i class="metismenu-icon">
 										</i>Paid
 									</a>
@@ -223,7 +218,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="http://skinmed.id/sa/admin/logout">
+							<a href="https://skinmed.id/sa/admin/logout">
 								<i class="metismenu-icon pe-7s-power"></i>
 								Logout
 							</a>
@@ -256,10 +251,28 @@
 							<div class="card-body"><h5 class="card-title">PREVIEW IMAGE</h5>
 								<img id="img-preview" width="100%" height="auto" style="border-radius: 5px;">
 								<div style="width: 100%; margin-top: 50px; display: flex; flex-direction: row;">
-									<div style="width: 50%; height: 500px; position: relative;">
-										<img id="anatomy-img" style="width: auto; height: 500px;
-													position: absolute;" src="http://skinmed.id/sa/userdata/anatomy.png">
-										<canvas id="cvs" width="100%" height="100%"
+									<div style="width: 141px; height: 400px; position: relative;">
+										<img id="anatomy-img" style="width: 141px; height: 400px;
+													position: absolute;" src="https://skinmed.id/sa/userdata/system/images/anatomy_left.png">
+										<canvas id="cvs-left" width="141px" height="400px"
+												style="position: absolute;"></canvas>
+									</div>
+									<div style="width: 341px; height: 400px; position: relative;">
+										<img id="anatomy-img" style="width: 341px; height: 400px;
+													position: absolute;" src="https://skinmed.id/sa/userdata/system/images/anatomy_front.png">
+										<canvas id="cvs-front" width="341px" height="400px"
+												style="position: absolute;"></canvas>
+									</div>
+									<div style="width: 141px; height: 400px; position: relative;">
+										<img id="anatomy-img" style="width: 141px; height: 400px;
+													position: absolute;" src="https://skinmed.id/sa/userdata/system/images/anatomy_right.png">
+										<canvas id="cvs-right" width="141px" height="400px"
+												style="position: absolute;"></canvas>
+									</div>
+									<div style="width: 341px; height: 400px; position: relative;">
+										<img id="anatomy-img" style="width: 341px; height: 400px;
+													position: absolute;" src="https://skinmed.id/sa/userdata/system/images/anatomy_back.png">
+										<canvas id="cvs-back" width="341px" height="400px"
 												style="position: absolute;"></canvas>
 									</div>
 								</div>
@@ -290,8 +303,9 @@
 		</div>
 	</div>
 </div>
-<input id="uuid" type="hidden" value="<?php echo $uuid ?>">
-<script type="text/javascript" src="http://skinmed.id/sa/assets/scripts/main.js"></script>
+<input id="uuid" type="hidden" value="<?php echo $uuid; ?>">
+<input id="admin-id" type="hidden" value="<?php echo $adminID; ?>">
+<script type="text/javascript" src="https://skinmed.id/sa/assets/scripts/main.js"></script>
 </body>
 </html>
 
