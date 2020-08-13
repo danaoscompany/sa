@@ -116,7 +116,6 @@ function getImages(userID, sessionUUID) {
 	let fd = new FormData();
 	fd.append("user_id", userID);
 	fd.append("session_uuid", sessionUUID);
-	alert("Getting images: "+sessionUUID);
 	$.ajax({
 		type: 'POST',
 		url: PHP_URL+"/image/get_images",
@@ -125,7 +124,6 @@ function getImages(userID, sessionUUID) {
 		contentType: false,
 		cache: false,
 		success: function(response) {
-			alert(response);
 			images = JSON.parse(response);
 			$("#images").find("*").remove();
 			for (var i=0; i<images.length; i++) {
