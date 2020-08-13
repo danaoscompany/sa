@@ -27,6 +27,17 @@ class User extends CI_Controller {
 		$this->db->where('id', $id);
 		echo json_encode($this->db->get()->row_array());
 	}
+	
+	public function get_remaining_quota() {
+		$userID = intval($this->input->post('user_id'));
+		$maxQuota = doubleval($this->db->get('settings')->row_array()['max_quota']);
+		$this->db->where('id', $userID);
+		$usedQuota = doubleval($this->db->get('users')->row_array()['used_quota']);
+		echo json_encode(array(
+			'max_quota' => $maxQuota,
+			'used_quota' => $usedQuota
+		));
+	}
 
 	public function purchase() {
 		$userID = intval($this->input->post('user_id'));
@@ -702,6 +713,17 @@ class User extends CI_Controller {
 		echo $bucketID;
 	}
 	
+	private function use_quota($userID, $fileSizeKB) {
+		$this->db->where('id', $userID);
+		$usedQuota = doubleval($this->db->get('users')->row_array()['used_quota']);
+		$fileSize = doubleval($fileSizeKB)/1024;
+		$usedQuota += $fileSize;
+		$this->db->where('id', $userID);
+		$this->db->update('users', array(
+			'used_quota' => $usedQuota
+		));
+	}
+	
 	public function upload_to_db() {
 		$userID = intval($this->input->post('user_id'));
 		$uuid = $this->input->post('uuid');
@@ -730,6 +752,7 @@ class User extends CI_Controller {
         );
         $this->load->library('upload', $config);
 		if ($this->upload->do_upload('file')) {
+			$this->use_quota($userID, $this->upload->data()['file_size']);
         	if (sizeof($images) > 0) {
         		$this->db->where('uuid', $uuid);
 	        	$this->db->update('session_images', array(
@@ -823,6 +846,7 @@ class User extends CI_Controller {
         $this->load->library('upload', $config);
 		if ($this->upload->do_upload('file')) {
         	if (sizeof($images) > 0) {
+        		$this->use_quota($userID, $this->upload->data()['file_size']);
         		$this->db->where('uuid', $uuid);
 	        	$this->db->update('session_images', array(
 	        		'user_id' => $userID,
