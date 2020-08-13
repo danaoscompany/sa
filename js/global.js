@@ -1,5 +1,5 @@
-const HOST = "skinmed.id";
-const PHP_URL = "https://"+HOST+"/sa/index.php";
+const HOST = "admin.skinmed.id";
+const PHP_URL = "https://"+HOST+"/index.php";
 
 function uuidv4() {
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
