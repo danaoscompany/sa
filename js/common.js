@@ -41,7 +41,7 @@ function save() {
 		contentType: false,
 		cache: false,
 		success: function (response) {
-			window.location.href = "https://skinmed.id/sa/common";
+			window.location.href = "https://admin.skinmed.id/common";
 		}
 	});
 }

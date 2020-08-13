@@ -13,7 +13,7 @@ class Payment extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://skinmed.id/sa/login");
+			header("Location: https://admin.skinmed.id/login");
 		}
 	}
 
@@ -24,7 +24,7 @@ class Payment extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://skinmed.id/sa/login");
+			header("Location: https://admin.skinmed.id/login");
 		}
 	}
 

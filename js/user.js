@@ -64,21 +64,21 @@ function getUsers() {
 
 function viewDevices(index) {
 	var user = users[index];
-	$.redirect("https://skinmed.id/sa/devices", {
+	$.redirect("https://admin.skinmed.id/devices", {
 		id: parseInt(user['id'])
 	});
 }
 
 function viewPatients(index) {
 	var user = users[index];
-	$.redirect("https://skinmed.id/sa/patients", {
+	$.redirect("https://admin.skinmed.id/patients", {
 		id: parseInt(user['id'])
 	});
 }
 
 function editUser(index) {
 	var user = users[index];
-	$.redirect("https://skinmed.id/sa/user/edit", {
+	$.redirect("https://admin.skinmed.id/user/edit", {
 		'user_id': parseInt(user['id'])
 	});
 }

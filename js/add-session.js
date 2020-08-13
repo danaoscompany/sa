@@ -77,7 +77,7 @@ function getPatients(userID) {
 						var selectedUserIndex = $("#users").prop('selectedIndex');
 						if (selectedUserIndex > 0) {
 							selectedUserIndex--;
-							$.redirect("https://skinmed.id/sa/patients/add", {
+							$.redirect("https://admin.skinmed.id/patients/add", {
 								'id': users[selectedUserIndex]['id']
 							});
 						}

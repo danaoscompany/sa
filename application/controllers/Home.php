@@ -6,7 +6,7 @@ class Home extends CI_Controller {
 		if ($this->session->logged_in == 1) {
 			$this->load->view('home');
 		} else {
-			header("Location: https://skinmed.id/sa/login");
+			header("Location: https://admin.skinmed.id/login");
 		}
 	}
 }

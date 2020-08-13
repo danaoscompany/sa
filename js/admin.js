@@ -46,7 +46,7 @@ function getAdmins() {
 }
 
 function editAdmin(index) {
-	$.redirect("https://skinmed.id/sa/admin/edit", {
+	$.redirect("https://admin.skinmed.id/admin/edit", {
 		'id': admins[index]['id']
 	});
 }
