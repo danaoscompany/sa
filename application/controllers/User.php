@@ -145,11 +145,13 @@ class User extends CI_Controller {
 		$device = $this->input->post('device');
 		$model = $this->input->post('model');
 		$type = $this->input->post('type');
+		$zoomValue = doubleval($this->input->post('zoom_value'));
 		$this->db->where('uuid', $uuid);
 		$this->db->update('devices', array(
 			'device' => $device,
 			'model' => $model,
-			'type' => $type
+			'type' => $type,
+			'zoom_value' => $zoomValue
 		));
 	}
 	
@@ -228,11 +230,13 @@ class User extends CI_Controller {
 		$device = $this->input->post('device');
 		$model = $this->input->post('model');
 		$type = $this->input->post('type');
+		$zoomValue = doubleval($this->input->post('zoom_value'));
 		$this->db->where('uuid', $uuid);
 		$this->db->update('devices', array(
 			'user_id' => $userID,
 			'device' => $device,
 			'model' => $model,
+			'zoom_value' => $zoomValue,
 			'type' => $type
 		));
 	}
@@ -389,10 +393,15 @@ class User extends CI_Controller {
 						"type" => $this->get_real_int($sessionImage, 'type'),
 						"name" => $this->get_real_string($sessionImage, 'name'),
 						"path" => $newImagePath,
+						"db_path" => $this->get_real_string($sessionImage, 'db_path'),
+						"gd_path" => $this->get_real_string($sessionImage, 'gd_path'),
 						"points" => json_encode($this->get_real_json_array($sessionImage, 'points')),
 						"note" => $this->get_real_string($sessionImage, 'note'),
 						"date" => $this->get_real_string($sessionImage, 'date'),
-						"local" => $this->get_boolean_value($sessionImage, 'local')
+						"local" => $this->get_boolean_value($sessionImage, 'local'),
+						"photo_num" => $this->get_real_int($sessionImage, 'photo_num'),
+						"storage_method" => $this->get_real_int($sessionImage, 'storage_method'),
+						"gd_file_id" => $this->get_real_string($sessionImage, 'gd_file_id')
 					));
 				} else {
 					$this->db->insert("session_images", array(
@@ -403,10 +412,15 @@ class User extends CI_Controller {
 						"type" => $this->get_real_int($sessionImage, 'type'),
 						"name" => $this->get_real_string($sessionImage, 'name'),
 						"path" => $newImagePath,
+						"db_path" => $this->get_real_string($sessionImage, 'db_path'),
+						"gd_path" => $this->get_real_string($sessionImage, 'gd_path'),
 						"points" => json_encode($this->get_real_json_array($sessionImage, 'points')),
 						"note" => $this->get_real_string($sessionImage, 'note'),
 						"date" => $this->get_real_string($sessionImage, 'date'),
-						"local" => $this->get_boolean_value($sessionImage, 'local')
+						"local" => $this->get_boolean_value($sessionImage, 'local'),
+						"photo_num" => $this->get_real_int($sessionImage, 'photo_num'),
+						"storage_method" => $this->get_real_int($sessionImage, 'storage_method'),
+						"gd_file_id" => $this->get_real_string($sessionImage, 'gd_file_id')
 					));
 				}
 			}
@@ -538,6 +552,15 @@ class User extends CI_Controller {
 		}
 	}
 	
+	public function update_zoom_value() {
+		$uuid = $this->input->post('uuid');
+		$zoomValue = intval($this->input->post('zoom_value'));
+		$this->db->where('uuid', $uuid);
+		$this->db->update('devices', array(
+			'zoom_value' => $zoomValue
+		));
+	}
+	
 	public function sync_sessions() {
 		$sessions = json_decode($this->input->post('sessions'), true);
 		for ($i=0; $i<sizeof($sessions); $i++) {
@@ -588,7 +611,8 @@ class User extends CI_Controller {
 					'uuid' => $device['uuid'],
 					'device' => $device['device'],
 					'model' => $device['model'],
-					'type' => $device['type']
+					'type' => $device['type'],
+					'zoom_value' => doubleval($device['zoom_value'])
 				));
 			} else {
 				$this->db->where('uuid', $device['uuid']);
@@ -596,7 +620,8 @@ class User extends CI_Controller {
 					'user_id' => $device['user_id'],
 					'device' => $device['device'],
 					'model' => $device['model'],
-					'type' => $device['type']
+					'type' => $device['type'],
+					'zoom_value' => doubleval($device['zoom_value'])
 				));
 			}
 		}
@@ -629,6 +654,14 @@ class User extends CI_Controller {
 		$this->db->where('uuid', $uuid);
 		$image = $this->db->get()->row_array();
 		echo json_encode($image);
+	}
+	
+	public function get_session_images_by_session_uuid() {
+		$sessionUUID = $this->input->post('session_uuid');
+		$this->db->from('session_images');
+		$this->db->where('session_uuid', $sessionUUID);
+		$images = $this->db->get()->result_array();
+		echo json_encode($images);
 	}
 	
 	public function get_session_images_by_user_id() {
@@ -845,8 +878,8 @@ class User extends CI_Controller {
         );
         $this->load->library('upload', $config);
 		if ($this->upload->do_upload('file')) {
+			$this->use_quota($userID, doubleval($this->upload->data()['file_size']));
         	if (sizeof($images) > 0) {
-        		$this->use_quota($userID, $this->upload->data()['file_size']);
         		$this->db->where('uuid', $uuid);
 	        	$this->db->update('session_images', array(
 	        		'user_id' => $userID,
@@ -938,6 +971,7 @@ class User extends CI_Controller {
         );
         $this->load->library('upload', $config);
         if ($this->upload->do_upload('file')) {
+        	$this->use_quota($userID, doubleval($this->upload->data()['file_size']));
         	$images = $this->db->query("SELECT * FROM `session_images` WHERE `uuid`='" . $uuid . "'")->result_array();
         	if (sizeof($images) > 0) {
         		$this->db->where('uuid', $uuid);
@@ -1229,12 +1263,24 @@ class User extends CI_Controller {
 	public function login() {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
+		$androidID = $this->input->post('android_id');
+		$androidDevice = $this->input->post('android_device');
 		if (strpos($email, '@') !== false) {
 			$this->db->where('email', $email)->where('password', $password);
 			$users = $this->db->get('users')->result_array();
 			if (sizeof($users) > 0) {
 				$user = $users[0];
+				if ($user['android_id'] != NULL && $user['android_id'] != "" && $user['android_id'] != $androidID) {
+					$user['response_code'] = -3;
+					echo json_encode($user);
+					return;
+				}
 				$user['response_code'] = 1;
+				$this->db->where('id', intval($user['id']));
+				$this->db->update('users', array(
+					'android_id' => $androidID,
+					'android_device' => $androidDevice
+				));
 				echo json_encode($user);
 			} else {
 				echo json_encode(array('response_code' => -1));
@@ -1245,12 +1291,33 @@ class User extends CI_Controller {
 			$users = $this->db->get('users')->result_array();
 			if (sizeof($users) > 0) {
 				$user = $users[0];
+				if ($user['android_id'] != NULL && $user['android_id'] != "" && $user['android_id'] != $androidID) {
+					$user['response_code'] = -3;
+					echo json_encode($user);
+					return;
+				}
 				$user['response_code'] = 1;
+				$this->db->where('id', intval($user['id']));
+				$this->db->update('users', array(
+					'android_id' => $androidID,
+					'android_device' => $androidDevice
+				));
 				echo json_encode($user);
 			} else {
 				echo json_encode(array('response_code' => -2));
 			}
 		}
+	}
+	
+	public function update_current_user_device() {
+		$userID = intval($this->input->post('user_id'));
+		$androidID = $this->input->post('android_id');
+		$androidDevice = $this->input->post('android_device');
+		$this->db->where('id', $userID);
+		$this->db->update('users', array(
+			'android_id' => $androidID,
+			'android_device' => $androidDevice
+		));
 	}
 	
 	public function get_markings_by_session_uuid() {
