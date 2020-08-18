@@ -268,6 +268,15 @@ class User extends CI_Controller {
 		$patients = $this->db->query("SELECT * FROM `patients` WHERE `user_id`=" . $userID)->result_array();
 		echo json_encode($patients);
 	}
+	
+	public function change_session_patient() {
+		$sessionUUID = $this->input->post('session_uuid');
+		$patientUUID = $this->input->post('patient_uuid');
+		$this->db->where('uuid', $sessionUUID);
+		$this->db->update('sessions', array(
+			'patient_uuid' => $patientUUID
+		));
+	}
 
 	public function add_patient() {
 		$userID = intval($this->input->post('user_id'));
