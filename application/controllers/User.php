@@ -11,7 +11,7 @@ class User extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -192,7 +192,7 @@ class User extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 
@@ -205,7 +205,7 @@ class User extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/login");
+			header("Location: http://localhost/sa/login");
 		}
 	}
 	

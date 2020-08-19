@@ -29,7 +29,7 @@ $(document).ready(function() {
 		cache: false,
 		success: function(response) {
 			var image = JSON.parse(response);
-			$("#img-preview").attr("src", "https://admin.skinmed.id/userdata/"+image['path']);
+			$("#img-preview").attr("src", "http://localhost/sa/userdata/"+image['path']);
 			let fd2 = new FormData();
 			fd2.append("session_uuid", image['session_uuid']);
 			$.ajax({

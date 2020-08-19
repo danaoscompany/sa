@@ -11,7 +11,7 @@ class Devices extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/devices");
+			header("Location: http://localhost/sa/devices");
 		}
 	}
 
@@ -24,7 +24,7 @@ class Devices extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/devices");
+			header("Location: http://localhost/sa/devices");
 		}
 	}
 
@@ -39,7 +39,7 @@ class Devices extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/devices");
+			header("Location: http://localhost/sa/devices");
 		}
 	}
 
