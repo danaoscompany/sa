@@ -10,7 +10,7 @@ class Patients extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/sa/login");
+			header("Location: https://admin.skinmed.id/login");
 		}
 	}
 
@@ -37,7 +37,7 @@ class Patients extends CI_Controller {
 				'id' => $userID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/sa/patients/add");
+			header("Location: https://admin.skinmed.id/patients/add");
 		}
 	}
 
@@ -54,7 +54,7 @@ class Patients extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/sa/patients/edit");
+			header("Location: https://admin.skinmed.id/patients/edit");
 		}
 	}
 

@@ -13,11 +13,11 @@
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
 	<meta name="description" content="Tables are the backbone of almost all web applications.">
 	<meta name="msapplication-tap-highlight" content="no">
-	<script src="https://admin.skinmed.id/sa/js/jquery.js"></script>
-	<script src="https://admin.skinmed.id/sa/js/jquery.redirect.js"></script>
-	<script src="https://admin.skinmed.id/sa/js/moment.js"></script>
-	<script src="https://admin.skinmed.id/sa/js/global.js"></script>
-	<script src="https://admin.skinmed.id/sa/js/admin.js"></script>
+	<script src="https://admin.skinmed.id/js/jquery.js"></script>
+	<script src="https://admin.skinmed.id/js/jquery.redirect.js"></script>
+	<script src="https://admin.skinmed.id/js/moment.js"></script>
+	<script src="https://admin.skinmed.id/js/global.js"></script>
+	<script src="https://admin.skinmed.id/js/admin.js"></script>
 	<!--
 	=========================================================
 	* ArchitectUI HTML Theme Dashboard - v1.0.0
@@ -28,13 +28,13 @@
 	=========================================================
 	* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 	-->
-	<link href="https://admin.skinmed.id/sa/main.css" rel="stylesheet">
+	<link href="https://admin.skinmed.id/main.css" rel="stylesheet">
 </head>
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
-			<img src="https://admin.skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
+			<img src="https://admin.skinmed.id/assets/images/icon.png" width="50px" height="50px">
 			<div class="header__pane ml-auto">
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -69,37 +69,37 @@
 			<div class="app-header-left">
 				<ul class="header-menu nav">
 					<li class="nav-item">
-						<a href="https://admin.skinmed.id/sa/common" class="nav-link">
+						<a href="https://admin.skinmed.id/common" class="nav-link">
 							<i class="nav-link-icon fa fa-cogs"> </i>
 							Common
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="https://admin.skinmed.id/sa/admin" class="nav-link">
+						<a href="https://admin.skinmed.id/admin" class="nav-link">
 							<i class="nav-link-icon fa fa-users-cog"> </i>
 							Admin
 						</a>
 					</li>
 					<li class="btn-group nav-item">
-						<a href="https://admin.skinmed.id/sa/user" class="nav-link">
+						<a href="https://admin.skinmed.id/user" class="nav-link">
 							<i class="nav-link-icon fa fa-user"></i>
 							User
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="https://admin.skinmed.id/sa/sessions" class="nav-link">
+						<a href="https://admin.skinmed.id/sessions" class="nav-link">
 							<i class="nav-link-icon fa fa-unlock-alt"></i>
 							Session
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="https://admin.skinmed.id/sa/payment/unpaid" class="nav-link">
+						<a href="https://admin.skinmed.id/payment/unpaid" class="nav-link">
 							<i class="nav-link-icon fa fa-shopping-cart"></i>
 							Payment
 						</a>
 					</li>
 					<li class="dropdown nav-item">
-						<a href="https://admin.skinmed.id/sa/admin/logout" class="nav-link">
+						<a href="https://admin.skinmed.id/admin/logout" class="nav-link">
 							<i class="nav-link-icon fa fa-sign-out-alt"></i>
 							Logout
 						</a>
@@ -115,7 +115,7 @@
 									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 									   class="p-0 btn">
 										<img width="42" height="42" class="rounded-circle"
-											 src="https://admin.skinmed.id/sa/images/profile_picture.png" alt="" style="border-radius: 21;">
+											 src="https://admin.skinmed.id/images/profile_picture.png" alt="" style="border-radius: 21;">
 										<i class="fa fa-angle-down ml-2 opacity-8"></i>
 									</a>
 									<div tabindex="-1" role="menu" aria-hidden="true"
@@ -141,7 +141,7 @@
 	<div class="app-main">
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
-				<img src="https://admin.skinmed.id/sa/assets/images/icon.png" width="50px" height="50px">
+				<img src="https://admin.skinmed.id/assets/images/icon.png" width="50px" height="50px">
 				<div class="header__pane ml-auto">
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
@@ -177,25 +177,25 @@
 					<ul class="vertical-nav-menu">
 						<li>
 						<li>
-							<a href="https://admin.skinmed.id/sa/common">
+							<a href="https://admin.skinmed.id/common">
 								<i class="metismenu-icon pe-7s-settings"></i>
 								Common
 							</a>
 						</li>
 						<li class="mm-active">
-							<a href="https://admin.skinmed.id/sa/admin">
+							<a href="https://admin.skinmed.id/admin">
 								<i class="metismenu-icon pe-7s-users"></i>
 								Admin
 							</a>
 						</li>
 						<li>
-							<a href="https://admin.skinmed.id/sa/user">
+							<a href="https://admin.skinmed.id/user">
 								<i class="metismenu-icon pe-7s-users"></i>
 								User
 							</a>
 						</li>
 						<li>
-							<a href="https://admin.skinmed.id/sa/sessions">
+							<a href="https://admin.skinmed.id/sessions">
 								<i class="metismenu-icon pe-7s-unlock"></i>
 								Session
 							</a>
@@ -208,13 +208,13 @@
 							</a>
 							<ul class="mm-show">
 								<li>
-									<a href="https://admin.skinmed.id/sa/payment/unpaid">
+									<a href="https://admin.skinmed.id/payment/unpaid">
 										<i class="metismenu-icon">
 										</i>Not Paid
 									</a>
 								</li>
 								<li>
-									<a href="https://admin.skinmed.id/sa/payment/paid">
+									<a href="https://admin.skinmed.id/payment/paid">
 										<i class="metismenu-icon">
 										</i>Paid
 									</a>
@@ -222,7 +222,7 @@
 							</ul>
 						</li>
 						<li>
-							<a href="https://admin.skinmed.id/sa/admin/logout">
+							<a href="https://admin.skinmed.id/admin/logout">
 								<i class="metismenu-icon pe-7s-power"></i>
 								Logout
 							</a>
@@ -245,7 +245,7 @@
 						</div>
 						<div class="page-title-actions">
 							<div class="d-inline-block dropdown">
-								<button onclick="window.location.href='https://admin.skinmed.id/sa/admin/add'" type="button"
+								<button onclick="window.location.href='https://admin.skinmed.id/admin/add'" type="button"
 										class="btn-shadow btn btn-info">
 									Add Admin
 								</button>
@@ -301,11 +301,11 @@
 									<tr>
 										<th>#</th>
 										<th onclick="sortByName()" style="cursor: pointer; display: flex; flex-direction: row; align-items: center;">Name
-											<img id="name-sort-icon" style="margin-left: 8px;" src="https://admin.skinmed.id/sa/userdata/system/images/sort_down.png" width="8" height="5"></th>
+											<img id="name-sort-icon" style="margin-left: 8px;" src="https://admin.skinmed.id/userdata/system/images/sort_down.png" width="8" height="5"></th>
 										<th>Email</th>
 										<th>Password</th>
 										<th onclick="sortByRegistrationDate()" style="cursor: pointer; display: flex; flex-direction: row; align-items: center;">Reg. Date
-											<img id="registration-date-sort-icon" style="margin-left: 8px;" src="https://admin.skinmed.id/sa/userdata/system/images/sort_down.png" width="8" height="5"></th>
+											<img id="registration-date-sort-icon" style="margin-left: 8px;" src="https://admin.skinmed.id/userdata/system/images/sort_down.png" width="8" height="5"></th>
 										<th>Edit</th>
 										<th>Delete</th>
 									</tr>
@@ -368,7 +368,7 @@
 	</div>
 </div>
 <input type="hidden" id="admin-id" value="<?php echo $adminID; ?>">
-<script type="text/javascript" src="https://admin.skinmed.id/sa/assets/scripts/main.js"></script>
+<script type="text/javascript" src="https://admin.skinmed.id/assets/scripts/main.js"></script>
 </body>
 </html>
 

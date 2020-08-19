@@ -9,7 +9,7 @@ class Image extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/sa/login");
+			header("Location: https://admin.skinmed.id/login");
 		}
 	}
 
@@ -22,7 +22,7 @@ class Image extends CI_Controller {
 				'adminID'=> $adminID
 			));
 		} else {
-			header("Location: https://admin.skinmed.id/sa/login");
+			header("Location: https://admin.skinmed.id/login");
 		}
 	}
 
