@@ -105,21 +105,21 @@ function displayUsers(sortBy) {
 
 function viewDevices(index) {
 	var user = users[index];
-	$.redirect("http://localhost/sa/devices", {
+	$.redirect("https://admin.skinmed.id/sa/devices", {
 		id: parseInt(user['id'])
 	});
 }
 
 function viewPatients(index) {
 	var user = users[index];
-	$.redirect("http://localhost/sa/patients", {
+	$.redirect("https://admin.skinmed.id/sa/patients", {
 		id: parseInt(user['id'])
 	});
 }
 
 function editUser(index) {
 	var user = users[index];
-	$.redirect("http://localhost/sa/user/edit", {
+	$.redirect("https://admin.skinmed.id/sa/user/edit", {
 		'user_id': parseInt(user['id'])
 	});
 }
@@ -165,9 +165,9 @@ function goToPage(page) {
 function sortByName() {
 	sortNameUp = !sortNameUp;
 	if (sortNameUp) {
-		$("#name-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_up.png");
+		$("#name-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_up.png");
 	} else {
-		$("#name-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_down.png");
+		$("#name-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_down.png");
 	}
 	displayUsers(1);
 }
@@ -175,9 +175,9 @@ function sortByName() {
 function sortByRegistrationDate() {
 	sortRegistrationDateUp = !sortRegistrationDateUp;
 	if (sortRegistrationDateUp) {
-		$("#registration-date-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_up.png");
+		$("#registration-date-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_up.png");
 	} else {
-		$("#registration-date-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_down.png");
+		$("#registration-date-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_down.png");
 	}
 	displayUsers(2);
 }

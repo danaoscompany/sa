@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://localhost/sa/login");
+			header("Location: https://admin.skinmed.id/sa/login");
 		}
 	}
 
@@ -47,13 +47,13 @@ class Admin extends CI_Controller {
 				'adminID' => $adminID
 			));
 		} else {
-			header("Location: http://localhost/sa/login");
+			header("Location: https://admin.skinmed.id/sa/login");
 		}
 	}
 
 	public function logout() {
 		$this->session->unset_userdata("logged_in");
-		header("Location: http://localhost/sa/login");
+		header("Location: https://admin.skinmed.id/sa/login");
 	}
 
 	public function edit() {
@@ -67,7 +67,7 @@ class Admin extends CI_Controller {
 				'userID' => $userID
 			));
 		} else {
-			header("Location: http://localhost/sa/login");
+			header("Location: https://admin.skinmed.id/sa/login");
 		}
 	}
 

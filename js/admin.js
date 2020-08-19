@@ -94,9 +94,9 @@ function goToPage(page) {
 function sortByName() {
 	sortNameUp = !sortNameUp;
 	if (sortNameUp) {
-		$("#name-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_up.png");
+		$("#name-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_up.png");
 	} else {
-		$("#name-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_down.png");
+		$("#name-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_down.png");
 	}
 	displayAdmins(1);
 }
@@ -104,15 +104,15 @@ function sortByName() {
 function sortByRegistrationDate() {
 	sortRegistrationDateUp = !sortRegistrationDateUp;
 	if (sortRegistrationDateUp) {
-		$("#registration-date-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_up.png");
+		$("#registration-date-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_up.png");
 	} else {
-		$("#registration-date-sort-icon").attr("src", "http://localhost/sa/userdata/system/images/sort_down.png");
+		$("#registration-date-sort-icon").attr("src", "https://admin.skinmed.id/sa/userdata/system/images/sort_down.png");
 	}
 	displayAdmins(2);
 }
 
 function editAdmin(index) {
-	$.redirect("http://localhost/sa/admin/edit", {
+	$.redirect("https://admin.skinmed.id/sa/admin/edit", {
 		'id': admins[index]['id']
 	});
 }
