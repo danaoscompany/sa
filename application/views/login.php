@@ -38,21 +38,21 @@
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
 			<span class="login100-form-title p-b-33">
-				Masuk Akun
+				Log In
 			</span>
-			<div class="wrap-input100 validate-input" data-validate="Email valid diperlukan: ex@abc.xyz">
+			<div class="wrap-input100 validate-input" data-validate="Valid email needed: ex@abc.xyz">
 				<input id="email" class="input100" type="text" name="email" placeholder="Email">
 				<span class="focus-input100-1"></span>
 				<span class="focus-input100-2"></span>
 			</div>
-			<div class="wrap-input100 rs1 validate-input" data-validate="Kata sandi diperlukan">
-				<input id="password" class="input100" type="password" name="password" placeholder="Kata Sandi">
+			<div class="wrap-input100 rs1 validate-input" data-validate="Password needed">
+				<input id="password" class="input100" type="password" name="password" placeholder="Password">
 				<span class="focus-input100-1"></span>
 				<span class="focus-input100-2"></span>
 			</div>
 			<div class="container-login100-form-btn m-t-20">
 				<button onclick="login()" class="login100-form-btn">
-					Masuk
+					Login
 				</button>
 			</div>
 		</div>
