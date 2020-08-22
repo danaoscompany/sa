@@ -257,6 +257,12 @@ class User extends CI_Controller {
 		echo json_encode($this->db->get('sessions')->row_array());
 	}
 	
+	public function get_session_image_note() {
+		$imageUUID = $this->input->post('image_uuid');
+		$this->db->where('uuid', $imageUUID);
+		echo $this->db->get('session_images')->row_array()['note'];
+	}
+	
 	public function get_patient_by_uuid() {
 		$uuid = $this->input->post('uuid');
 		$this->db->where('uuid', $uuid);
@@ -963,7 +969,6 @@ class User extends CI_Controller {
 		$points = $this->input->post('points');
 		$type = intval($this->input->post('type'));
 		$date = $this->input->post('date');
-		$type = intval($this->input->post('type'));
 		$imageX = doubleval($this->input->post('image_x'));
 		$imageY = doubleval($this->input->post('image_y'));
 		$imageWidth = doubleval($this->input->post('image_width'));
