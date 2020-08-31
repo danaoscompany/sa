@@ -58,9 +58,4 @@ class Test extends CI_Controller {
 		$this->db->query("DELETE FROM `sessions`");
 		$this->db->query("DELETE FROM `patients`");
 	}
-
-	public function clear_session_images() {
-		$this->db->query("DELETE FROM `sessions`");
-		$this->db->query("DELETE FROM `session_images`");
-	}
 }
