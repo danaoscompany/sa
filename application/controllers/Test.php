@@ -23,6 +23,10 @@ class Test extends CI_Controller {
 		$this->email->send();
 	}
 	
+	public function post_test() {
+		echo "This is text: " . $this->input->post('text');
+	}
+	
 	public function test2() {
 		$date = "2020-08-02T18:56:43.178Z";
 		$date = str_replace("T", " ", $date);
