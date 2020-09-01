@@ -102,7 +102,7 @@ function addUser() {
 	fd.append("company_zip", companyZIP);
 	fd.append("company_state", companyState);
 	fd.append("company_phone", companyPhone);
-	fd.append("registration_date", moment(new Date()).format('YYYY-MM-DD HH:MM:SS');
+	fd.append("registration_date", moment(new Date()).format('YYYY-MM-DD HH:MM:SS'));
     $.ajax({
         type: 'POST',
         url: PHP_URL+"/admin/add_user",
