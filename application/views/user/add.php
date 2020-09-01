@@ -13,6 +13,7 @@
 	<meta name="msapplication-tap-highlight" content="no">
 	<script src="https://admin.skinmed.id/js/jquery.js"></script>
 	<script src="https://admin.skinmed.id/js/global.js"></script>
+	<script src="https://admin.skinmed.id/js/moment.js"></script>
 	<script src="https://admin.skinmed.id/js/add-user.js"></script>
 	<!--
 	=========================================================

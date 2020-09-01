@@ -96,6 +96,7 @@ class Admin extends CI_Controller {
 		$companyZIP = $this->input->post('company_zip');
 		$companyState = $this->input->post('company_state');
 		$companyPhone = $this->input->post('company_phone');
+		$registrationDate = $this->input->post('registration_date');
 		$this->db->where('email', $email);
 		$users = $this->db->get('users')->result_array();
 		if (sizeof($users) > 0) {
@@ -131,7 +132,8 @@ class Admin extends CI_Controller {
 			'company_street' => $companyStreet,
 			'company_zip_code' => $companyZIP,
 			'company_state' => $companyState,
-			'company_phone' => $companyPhone
+			'company_phone' => $companyPhone,
+			'registration_date' => $registrationDate
 		));
 		echo json_encode(array(
 			'response_code' => 1
