@@ -24,7 +24,7 @@ class Test extends CI_Controller {
 	}
 	
 	public function upload_test() {
-		$config = array(
+		/*$config = array(
 	        'upload_path' => './userdata/',
 	        'allowed_types' => "*",
 	        'overwrite' => TRUE,
@@ -38,7 +38,8 @@ class Test extends CI_Controller {
         	echo json_encode(array('id' => intval($this->db->insert_id()), 'path' => $path));
         } else {
         	echo json_encode(array('error' => $this->upload->display_errors()));
-        }
+        }*/
+        echo "OK";
 	}
 	
 	public function post_test() {
