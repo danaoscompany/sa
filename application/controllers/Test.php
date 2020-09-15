@@ -23,6 +23,24 @@ class Test extends CI_Controller {
 		$this->email->send();
 	}
 	
+	public function upload_test() {
+		$config = array(
+	        'upload_path' => './userdata/',
+	        'allowed_types' => "*",
+	        'overwrite' => TRUE,
+	        'max_size' => "10485760", 
+	        'max_height' => "8192",
+	        'max_width' => "8192"
+        );
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload('file')) {
+        	$path = $this->upload->data()['file_name'];
+        	echo json_encode(array('id' => intval($this->db->insert_id()), 'path' => $path));
+        } else {
+        	echo json_encode(array('error' => $this->upload->display_errors()));
+        }
+	}
+	
 	public function post_test() {
 		echo "This is text: " . $this->input->post('text');
 	}
