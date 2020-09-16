@@ -1147,6 +1147,15 @@ class User extends CI_Controller {
 		));
 	}
 	
+	public function update_patient() {
+		$uuid = $this->input->post('uuid');
+		$patientUUID = $this->input->post('patient_uuid');
+		$this->db->where('uuid', $uuid);
+		$this->db->update('sessions', array(
+			'patient_uuid' => $patientUUID
+		));
+	}
+	
 	public function update_user_details() {
 		$id = intval($this->input->post('id'));
 		$uuid = $this->input->post('uuid');
