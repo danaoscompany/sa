@@ -1173,7 +1173,7 @@ class User extends CI_Controller {
 		$companyZIPCode = $this->input->post('company_zip_code');
 		$companyState = $this->input->post('company_state');
 		$companyPhone = $this->input->post('company_phone');
-		$this->db->where('id', $userID);
+		$this->db->where('id', $id);
 		$this->db->update('users', array(
 			'uuid' => $uuid,
 			'first_name' => $firstName,
