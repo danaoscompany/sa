@@ -1421,4 +1421,55 @@ class User extends CI_Controller {
         ));
         echo json_encode(array('id' => intval($this->db->insert_id()), 'path' => $path));
 	}
+	
+	public function db_callback() {
+		echo "<html>
+			<head>
+				<script type='text/javascript'>
+					var urlFragment = document.location.hash;
+					urlFragment = urlFragment.substr(1, urlFragment.length);
+					var accessToken = urlFragment.substr(13, urlFragment.indexOf('&')-13);
+					window.ReactNativeWebView.postMessage(accessToken);
+				</script>
+			</head>
+			<body>
+			</body>
+		</html>";
+	}
+	
+	public function upload_image_to_db() {
+		$accessToken = $this->input->post('access_token');
+		$fileName = $this->input->post('file_name');
+		$api_url = 'https://content.dropboxapi.com/2/files/upload';
+        $headers = array('Authorization: Bearer '. $accessToken,
+            'Content-Type: application/octet-stream',
+            'Dropbox-API-Arg: '.
+            json_encode(
+                array(
+                    "path"=> '/' . $fileName,
+                    "mode" => "add",
+                    "autorename" => true,
+                    "mute" => false
+                )
+            )
+        );
+        $ch = curl_init($api_url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, true);
+        $path = $filename;
+        $fp = fopen($path, 'rb');
+        $filesize = filesize($path);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, fread($fp, $filesize));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    	curl_setopt($ch, CURLOPT_VERBOSE, 1); // debug
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        echo($response);
+        curl_close($ch);
+	}
+	
+	public function access_token_callback() {
+		$accessToken = $this->input->get('access_token');
+		echo $accessToken;
+	}
 }
