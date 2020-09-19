@@ -309,6 +309,33 @@ class User extends CI_Controller {
 		echo json_encode($patient);
 	}
 
+	public function update_patient_details() {
+		$userID = intval($this->input->post('user_id'));
+		$uuid = $this->input->post('uuid');
+		$name = $this->input->post('name');
+		$phone = $this->input->post('phone');
+		$address = $this->input->post('address');
+		$city = $this->input->post('city');
+		$province = $this->input->post('province');
+		$birthday = $this->input->post('birthday');
+		$this->db->where('uuid', $uuid);
+		$this->db->update('patients', array(
+			'user_id' => $userID,
+			'name' => $name,
+			'phone' => $phone,
+			'address' => $address,
+			'city' => $city,
+			'province' => $province,
+			'birthday' => $birthday
+		));
+	}
+	
+	public function delete_patient_by_uuid() {
+		$uuid = $this->input->post('uuid');
+		$this->db->where('uuid', $uuid);
+		$this->db->delete('patients');
+	}
+
 	public function get_sessions() {
 		$userID = intval($this->input->post('user_id'));
 		$deviceUUID = $this->input->post('device_uuid');
@@ -858,6 +885,46 @@ class User extends CI_Controller {
         }
 	}
 	
+	public function update_db_file_path() {
+		$uuid = $this->input->post('uuid');
+		$path = $this->input->post('path');
+		$this->db->where('uuid', $uuid);
+		$this->db->update('session_images', array(
+			'db_path' => $path
+		));
+	}
+	
+	public function upload_image_to_db() {
+		$accessToken = $this->input->post('access_token');
+		$fileName = $this->input->post('file_name');
+		$api_url = 'https://content.dropboxapi.com/2/files/upload';
+        $headers = array('Authorization: Bearer '. $accessToken,
+            'Content-Type: application/octet-stream',
+            'Dropbox-API-Arg: '.
+            json_encode(
+                array(
+                    "path"=> '/' . $fileName,
+                    "mode" => "add",
+                    "autorename" => true,
+                    "mute" => false
+                )
+            )
+        );
+        $ch = curl_init($api_url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, true);
+        $path = $filename;
+        $fp = fopen($path, 'rb');
+        $filesize = filesize($path);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, fread($fp, $filesize));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    	curl_setopt($ch, CURLOPT_VERBOSE, 1); // debug
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        echo($response);
+        curl_close($ch);
+	}
+	
 	public function get_google_drive_image() {
 		$gdFileID = $this->input->post('gd_file_id');
 		$this->db->where('gd_file_id', $gdFileID);
@@ -1207,12 +1274,15 @@ class User extends CI_Controller {
 		$name = $this->input->post('name');
 		$date = $this->input->post('date');
 		$selectedPatientUUID = $this->input->post('patient_uuid');
-		$this->db->where('uuid', $uuid);
+		/*$this->db->where('uuid', $uuid);
 		$this->db->update('sessions', array(
 			'name' => $name,
 			'date' => $date,
 			'patient_uuid' => $selectedPatientUUID
-		));
+		));*/
+		$sql = "UPDATE sessions SET name='" . $name . "', date='" . $date . "', patient_uuid='" . $selectedPatientUUID . "' WHERE uuid='" . $uuid . "'";
+		$this->db->query($sql);
+		echo $sql;
 	}
 	
 	public function delete_session() {
@@ -1435,37 +1505,6 @@ class User extends CI_Controller {
 			<body>
 			</body>
 		</html>";
-	}
-	
-	public function upload_image_to_db() {
-		$accessToken = $this->input->post('access_token');
-		$fileName = $this->input->post('file_name');
-		$api_url = 'https://content.dropboxapi.com/2/files/upload';
-        $headers = array('Authorization: Bearer '. $accessToken,
-            'Content-Type: application/octet-stream',
-            'Dropbox-API-Arg: '.
-            json_encode(
-                array(
-                    "path"=> '/' . $fileName,
-                    "mode" => "add",
-                    "autorename" => true,
-                    "mute" => false
-                )
-            )
-        );
-        $ch = curl_init($api_url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_POST, true);
-        $path = $filename;
-        $fp = fopen($path, 'rb');
-        $filesize = filesize($path);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, fread($fp, $filesize));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    	curl_setopt($ch, CURLOPT_VERBOSE, 1); // debug
-        $response = curl_exec($ch);
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        echo($response);
-        curl_close($ch);
 	}
 	
 	public function access_token_callback() {
